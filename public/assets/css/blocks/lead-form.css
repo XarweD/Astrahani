@@ -25,8 +25,8 @@
   --lf-btn-text: #1a093c;
 
   /* фон */
-  --lf-bg-img: url("../img/bg/bg.jpg");
-  --lf-stars-img: url("../img/services/stars.svg");
+  --lf-bg-img: url("/assets/img/bg/bg.jpg");
+  --lf-stars-img: url("/assets/img/services/stars.svg");
   --lf-bg-overlay: rgba(35, 10, 92, .72);
   --lf-bg-tint: rgba(120, 40, 220, .25);
 
