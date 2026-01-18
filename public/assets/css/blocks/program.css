@@ -1,0 +1,629 @@
+/* =========================
+   PROGRAM (Что входит в программу) — /partials/program.html
+   ========================= */
+
+:root{
+  --program-title: #1a093c;
+  --program-accent: rgb(46, 210, 241);
+
+  /* ⬇️ ВЫСОТА КАРТОЧЕК */
+  --program-card-h: 400px;
+
+  /* ⬇️ СИЛА затемнения снизу (0..1) */
+  --program-shade-strength: .38;
+
+  /* ⬇️ высота “затемнённой зоны” снизу */
+  --program-shade-height: 64%;
+
+  /* ⬇️ ЗУМ ВИДЕО (если полосы вшиты в видео) */
+  --program-video-zoom: 1.18;
+
+  /* ⬇️ ДОП. затемнение ТОЛЬКО ДЛЯ ВИДЕО */
+  --program-video-text-shade-strength: .85;
+  --program-video-text-shade-height: 90%;
+
+  /* ✅ АНТИ-ШОВ: “вылезание” медиа за края карточки (px) */
+  --program-media-bleed: 3px;
+
+  /* ✅ АНТИ-ШОВ: микрозум ВСЕХ медиа (1.01–1.03 обычно хватает) */
+  --program-media-micro: 1.02;
+
+  /* =========================
+     ✅ КНОПКА "Подобрать программу" — НАСТРОЙКИ
+     ========================= */
+  --choice-btn-maxw: 420px;
+  --choice-btn-minh: 92px;
+  --choice-btn-px: 28px;
+  --choice-btn-py: 24px;
+  --choice-btn-radius: 16px;
+  --choice-btn-fz: 18px;
+}
+
+/* секция */
+.program{
+  position: relative;
+  padding: var(--section-py) 0;
+  background: #fff;
+  overflow: hidden;
+
+  /* ✅ фикс слоёв внутри блока */
+  isolation: isolate;
+
+  /* ✅ ПРИВЯЗКА ДЕКОРА К КОНТЕЙНЕРУ */
+  --program-container-max: 1180px;
+  --program-safe-inset: 8px;
+  --program-side-space: max(0px, calc((100vw - var(--program-container-max)) / 2));
+  --program-anchor: max(var(--program-safe-inset), var(--program-side-space));
+}
+
+/* =========================
+   ✅ ДЕКОРЫ (5 картинок)
+   ========================= */
+
+/* ✅ по умолчанию скрываем декор везде */
+.program__deco{
+  display: none;
+
+  position: absolute;
+  z-index: 60;
+  width: var(--program-deco-size, 220px);
+  height: var(--program-deco-size, 220px);
+  pointer-events: none;
+  user-select: none;
+
+  background: transparent;
+  background-image: var(--program-deco-img, none);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+
+  opacity: .95;
+  transform: rotate(var(--program-deco-rot, 0deg));
+}
+
+/* контент ниже декора */
+.program__container{
+  position: relative;
+  z-index: 1;
+}
+
+/* 1) верхний левый — confeti_1.png */
+.program__deco--left{
+  --program-deco-img: url("/assets/img/move/confeti_1.png");
+  --program-deco-size: 150px;
+  --program-deco-rot: 14deg;
+
+  left: calc(var(--program-anchor) - 150px);
+  top: 140px;
+}
+
+/* 2) верхний правый — lent.webp */
+.program__deco--right{
+  --program-deco-img: url("/assets/img/move/lent.webp");
+  --program-deco-size: 260px;
+  --program-deco-rot: 150deg;
+
+  right: calc(var(--program-anchor) - 170px);
+  top: 10px;
+}
+
+/* 3) нижний левый — lent.webp */
+.program__deco--bottom-left{
+  --program-deco-img: url("/assets/img/move/lent.webp");
+  --program-deco-size: 280px;
+  --program-deco-rot: -40deg;
+
+  left: calc(var(--program-anchor) - 150px);
+  bottom: -220px; /* на “десктопе” переопределим ниже */
+}
+
+/* 4) низ по центру — deco-balloon-left.webp */
+.program__deco--bottom-mid{
+  --program-deco-img: url("/assets/img/move/deco-balloon-left.webp");
+  --program-deco-size: 350px;
+  --program-deco-rot: -20deg;
+
+  left: calc(var(--program-anchor) + 620px);
+  bottom: -90px;
+
+  transform: translateX(-50%) rotate(var(--program-deco-rot, 0deg));
+}
+
+/* 5) низ правый — confeti_2.png */
+.program__deco--bottom-right{
+  --program-deco-img: url("/assets/img/move/confeti_2.png");
+  --program-deco-size: 80px;
+  --program-deco-rot: 55deg;
+
+  right: calc(var(--program-anchor) - 150px);
+  bottom: 280px;
+}
+
+/* ✅ “строго, но комфортно”: считаем десктопом от 1100px */
+@media (min-width: 1100px){
+  /* показываем декор */
+  .program__deco{
+    display: block;
+    z-index: 20; /* поверх следующего блока */
+  }
+
+  /* разрешаем декору выходить за пределы секции Program (лента может залезать на следующий блок) */
+  .program{
+    overflow: visible;
+    z-index: 2;
+  }
+
+
+  /* чтобы левая лента точно не “резалась” — размер НЕ меняем, только позиция */
+  .program__deco--bottom-left{
+    bottom: -120px; /* было -120px */
+  }
+}
+
+.program__head{
+  text-align: center;
+  margin-bottom: clamp(18px, 4vw, 34px);
+}
+
+.program__title{
+  margin: 0;
+  line-height: 1.02;
+  font-weight: 500;
+  font-size: 45px;
+  letter-spacing: -0.02em;
+}
+
+.program__title-main{ color: var(--program-title); }
+.program__title-accent{ color: var(--program-accent); }
+
+.program__sub{
+  margin: 14px auto 0;
+  max-width: 860px;
+
+  color: var(--program-title);
+  font-size: 20px;
+  font-family: 'Onest', Arial, sans-serif;
+  font-weight: 400;
+  line-height: 1.45;
+}
+
+/* GRID */
+.program-grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(16px, 2.2vw, 22px);
+}
+
+/* CARD */
+.program-card{
+  position: relative;
+  border-radius: 22px;
+  overflow: hidden;
+  height: var(--program-card-h);
+  background: #0f0a1e;
+  box-shadow: 0 14px 40px rgba(10, 4, 28, .10);
+
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.program-card__media{
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.program-card__img,
+.program-card__video{
+  position: absolute;
+  top: calc(var(--program-media-bleed) * -1);
+  left: calc(var(--program-media-bleed) * -1);
+  right: calc(var(--program-media-bleed) * -1);
+  bottom: calc(var(--program-media-bleed) * -1);
+
+  width: calc(100% + (var(--program-media-bleed) * 2));
+  height: calc(100% + (var(--program-media-bleed) * 2));
+
+  display: block;
+  object-fit: cover;
+  object-position: center;
+
+  transform: scale(var(--program-media-micro)) translateZ(0);
+  transform-origin: center;
+
+  backface-visibility: hidden;
+  will-change: transform;
+
+  -webkit-transform: scale(var(--program-media-micro)) translateZ(0);
+}
+
+.program-card__img--hover{
+  opacity: 0;
+  transition: opacity .35s ease;
+}
+.program-card--swap:hover .program-card__img--hover{
+  opacity: 1;
+}
+
+.program-card--video .program-card__video{
+  transform: scale(calc(var(--program-media-micro) * var(--program-video-zoom))) translateZ(0);
+  -webkit-transform: scale(calc(var(--program-media-micro) * var(--program-video-zoom))) translateZ(0);
+}
+.program-card__video{
+  transform: scale(1.3)!important;
+  z-index: 1;
+}
+.program-card__shade{
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0,0,0,0) 0%,
+      rgba(0,0,0,0) calc(100% - var(--program-shade-height)),
+      rgba(0,0,0,var(--program-shade-strength)) 100%
+    );
+}
+
+.program-card__text{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  padding: 18px;
+  width: 100%;
+}
+
+.program-card__text::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  z-index: -1;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(12, 8, 28, 0) 0%,
+      rgba(12, 8, 28, .14) 35%,
+      rgba(12, 8, 28, .26) 100%
+    );
+}
+
+.program-card--video .program-card__text::before{
+  background:
+    linear-gradient(
+      180deg,
+      rgba(8, 6, 22, 0) 0%,
+      rgba(8, 6, 22, .24) 26%,
+      rgba(8, 6, 22, .45) 58%,
+      rgba(8, 6, 22, .62) 100%
+    );
+}
+
+.program-card--video .program-card__shade{
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0,0,0,0) 0%,
+      rgba(0,0,0,0) calc(100% - var(--program-video-text-shade-height)),
+      rgba(0,0,0,var(--program-video-text-shade-strength)) 100%
+    );
+}
+
+.program-card__name{
+  margin: 0 0 8px;
+  font-weight: 700;
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.program-card__desc{
+  --desc-lines: 5;
+  --desc-lh: 20px;
+
+  margin: 0;
+  line-height: var(--desc-lh);
+  color: #ffffff;
+  font-size: 14px;
+  font-family: 'Onest', Arial, sans-serif;
+  font-weight: 400;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--desc-lines);
+  line-clamp: var(--desc-lines);
+
+  overflow: hidden;
+  min-height: calc(var(--desc-lh) * var(--desc-lines));
+}
+
+/* -------------------------
+   HELP / CTA (Помочь с выбором)
+   ------------------------- */
+
+.program-choice{
+  position: relative;
+  margin-top: clamp(22px, 4vw, 34px);
+  border-radius: 26px;
+
+  /* ✅ ВАЖНО: чтобы ленты/декор НЕ резались */
+  overflow: visible;
+
+  /* ✅ слой выше соседей (на всякий) */
+  z-index: 5;
+
+  background:
+    radial-gradient(1200px 520px at 12% 55%, rgba(155, 70, 255, .55) 0%, rgba(155, 70, 255, 0) 62%),
+    radial-gradient(1100px 520px at 55% 40%, rgba(70, 120, 255, .48) 0%, rgba(70, 120, 255, 0) 66%),
+    radial-gradient(900px 480px at 88% 60%, rgba(255, 0, 214, .18) 0%, rgba(255, 0, 214, 0) 60%),
+    linear-gradient(90deg, #12063a 0%, #0f0532 38%, #12063a 100%);
+
+  box-shadow: 0 18px 50px rgba(19, 8, 48, .18);
+}
+
+/* ✅ если декор есть в другом CSS — мы его не ломаем, только фиксируем слой/позиционирование */
+.program-choice__deco{
+  position: absolute;
+  z-index: 6;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* контент всегда поверх всего */
+.program-choice__inner{
+  position: relative;
+  z-index: 7;
+
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  align-items: center;
+  gap: clamp(14px, 2.8vw, 24px);
+  padding: clamp(22px, 3.6vw, 34px);
+}
+
+/* DESKTOP */
+.program-choice__title{
+  margin: 0 0 12px;
+  line-height: 1.02;
+  font-weight: 500;
+  font-size: 45px;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+.program-choice__title-accent{ color: var(--program-accent); }
+.program-choice__title-main{ color: #fff; }
+
+.program-choice__text{
+  margin: 0;
+  color: #ffffff;
+  font-size: 20px;
+  font-family: 'Onest', Arial, sans-serif;
+  font-weight: 400;
+  line-height: 1.45;
+}
+
+.program-choice__right{
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+}
+
+.program-choice__btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: min(var(--choice-btn-maxw), 100%);
+  max-width: 100%;
+
+  min-height: var(--choice-btn-minh);
+  padding: var(--choice-btn-py) var(--choice-btn-px);
+
+  border-radius: var(--choice-btn-radius);
+  text-decoration: none;
+  text-align: center;
+
+  background: #B6FF41;
+  color: #141414;
+  font-family: var(--u-font);
+  font-weight: 600;
+  font-size: var(--choice-btn-fz);
+
+  transition: transform .18s ease, filter .18s ease;
+}
+
+.program-choice__btn:hover{ transform: translateY(-1px) scale(1.02); filter: brightness(1.03); }
+.program-choice__btn:active{ transform: translateY(0) scale(.99); }
+
+.program-choice__messengers{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  align-items: center;
+  justify-items: center;
+  margin-top: 2px;
+  min-width: 0;
+}
+
+.program-choice__ms{
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 14px;
+
+  width: 100%;
+  max-width: 100%;
+
+  text-decoration: none;
+  color: #fff;
+
+  font-family: 'Onest', Arial, sans-serif;
+  font-weight: 400;
+
+  white-space: normal;
+  min-width: 0;
+  line-height: 1.12;
+
+  transition: opacity .16s ease, transform .16s ease;
+}
+
+.program-choice__ms:hover{ opacity: .92; transform: translateY(-1px); }
+.program-choice__ms:active{ opacity: .86; transform: translateY(0); }
+
+.program-choice__ms-icon{
+  width: clamp(52px, 12vw, 80px);
+  height: clamp(52px, 12vw, 80px);
+  display: block;
+  flex: 0 0 clamp(52px, 12vw, 80px);
+}
+
+.program-choice__ms-text{
+  display: inline-block;
+  font-size: clamp(12px, 3.2vw, 16px);
+  line-height: 1.10;
+
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
+/* -------------------------
+   ADAPTIVE
+   ------------------------- */
+
+@media (max-width: 1100px){
+  .program-choice__inner{
+    grid-template-columns: 1.1fr .9fr;
+  }
+
+  .program-choice__btn{
+    width: min(340px, 100%);
+  }
+
+  .program-choice__messengers{
+    gap: 16px;
+  }
+
+  .program-choice__ms{
+    gap: 10px;
+  }
+
+  .program-choice__ms-icon{
+    width: 64px;
+    height: 64px;
+    flex-basis: 64px;
+  }
+
+  .program-choice__ms-text{
+    font-size: 13px;
+    max-width: 12ch;
+  }
+}
+
+@media (max-width: 900px){
+  :root{
+    --program-card-h: 400px;
+    --program-media-bleed: 3px;
+    --program-media-micro: 1.03;
+    --program-video-zoom: 1.28;
+
+    --choice-btn-maxw: 420px;
+    --choice-btn-minh: 78px;
+    --choice-btn-px: 24px;
+    --choice-btn-py: 18px;
+    --choice-btn-radius: 15px;
+    --choice-btn-fz: 16px;
+  }
+
+  .program-grid{ grid-template-columns: 1fr; }
+
+  .program-choice__inner{
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .program-choice__title{
+    white-space: normal;
+    font-size: clamp(22px, 7.2vw, 34px);
+    letter-spacing: -0.03em;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
+  }
+
+  .program-choice__messengers{ justify-items: center; }
+  .program-choice__ms{ justify-content: center; }
+}
+
+@media (max-width: 520px){
+  :root{
+    --program-card-h: 400px;
+    --program-media-bleed: 4px;
+    --program-media-micro: 1.04;
+    --program-video-zoom: 1.34;
+
+    --choice-btn-maxw: 100%;
+    --choice-btn-minh: 72px;
+    --choice-btn-px: 20px;
+    --choice-btn-py: 18px;
+    --choice-btn-radius: 14px;
+    --choice-btn-fz: 15px;
+  }
+
+  .program-choice__title{
+    font-size: clamp(20px, 7.6vw, 28px);
+    letter-spacing: -0.035em;
+  }
+
+  .program-choice__text{ font-size: 16px; }
+}
+
+@media (max-width: 420px){
+  .program-choice__inner{
+    padding: 18px;
+    gap: 12px;
+  }
+
+  :root{
+    --choice-btn-minh: 66px;
+    --choice-btn-px: 16px;
+    --choice-btn-py: 14px;
+    --choice-btn-fz: 14px;
+  }
+
+  .program-choice__title{
+    font-size: clamp(19px, 7.4vw, 26px);
+  }
+
+  .program-choice__messengers{
+    gap: 10px;
+  }
+
+  .program-choice__ms{
+    gap: 8px;
+  }
+
+  .program-choice__ms-icon{
+    width: 44px;
+    height: 44px;
+    flex-basis: 44px;
+  }
+
+  .program-choice__ms-text{
+    font-size: 11px;
+    line-height: 1.08;
+    max-width: 12ch;
+    text-align: left;
+  }
+}

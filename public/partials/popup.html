@@ -1,0 +1,200 @@
+<!-- POPUPS: universal + 3 service popups -->
+
+<div class="popup-layer" id="popupLayer" aria-hidden="true">
+  <div class="popup-backdrop" data-popup-close aria-hidden="true"></div>
+
+  <!-- POPUP #1: universal -->
+  <section class="popup" role="dialog" aria-modal="true" aria-label="Лид форма" data-popup="universal" tabindex="-1">
+    <button class="popup__x" type="button" aria-label="Закрыть" data-popup-close></button>
+
+    <div class="popup__card">
+      <div class="popup__head" aria-hidden="true">
+        <img src="/assets/img/popup/head.jpg" alt="" loading="lazy" />
+      </div>
+
+      <div class="popup__body">
+        <h3 class="popup__title" data-popup-title>Подберём программу под ваш бюджет</h3>
+        <p class="popup__sub" data-popup-sub>
+          Оставьте заявку, мы свяжемся с вами в течение 30 минут, чтобы подобрать программу вашего праздника
+        </p>
+
+        <form class="popup-form" data-popup-form novalidate>
+          <input type="hidden" name="popup_id" value="universal">
+          <input type="hidden" name="tag" value="">
+
+          <!-- honeypot (anti-spam): должно оставаться пустым -->
+          <input class="pf-hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+          <label class="pf-field">
+            <span class="pf-sr">Ваше имя</span>
+            <input class="pf-input" type="text" name="name" placeholder="Ваше имя" autocomplete="name">
+          </label>
+
+          <label class="pf-field pf-field--phone">
+            <span class="pf-sr">Телефон</span>
+
+            <span class="pf-phone">
+              <input class="pf-input pf-input--code" type="text" name="code" inputmode="tel" autocomplete="tel-country-code"
+                     value="+7" aria-label="Код страны" />
+              <input class="pf-input pf-input--phone" type="tel" name="phone" inputmode="tel" autocomplete="tel"
+                     placeholder="(000) 000-00-00" aria-label="Номер телефона" />
+            </span>
+          </label>
+
+          <label class="pf-consent">
+            <input class="pf-check" type="checkbox" name="consent" checked>
+            <span>Я согласен(-на) с обработкой <a class="pf-link" href="/privacy" target="_blank" rel="noopener">персональных данных</a></span>
+          </label>
+
+          <button class="pf-btn" type="submit" data-popup-btn>Заказать праздник</button>
+          <div class="pf-status" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- POPUP #2: service-1 -->
+  <section class="popup" role="dialog" aria-modal="true" aria-label="Лид форма" data-popup="service-1" tabindex="-1">
+    <button class="popup__x" type="button" aria-label="Закрыть" data-popup-close></button>
+
+    <div class="popup__card">
+      <div class="popup__head" aria-hidden="true">
+        <img src="/assets/img/popup/head.jpg" alt="" loading="lazy" />
+      </div>
+
+      <div class="popup__body">
+        <h3 class="popup__title" data-popup-title>Заказать праздник услуги Маленькое чудо</h3>
+        <p class="popup__sub" data-popup-sub>Оставьте заявку — уточним детали и посчитаем стоимость</p>
+
+        <form class="popup-form" data-popup-form novalidate>
+          <input type="hidden" name="popup_id" value="service-1">
+          <input type="hidden" name="tag" value="service-1">
+
+          <!-- honeypot (anti-spam): должно оставаться пустым -->
+          <input class="pf-hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+          <label class="pf-field">
+            <span class="pf-sr">Ваше имя</span>
+            <input class="pf-input" type="text" name="name" placeholder="Ваше имя" autocomplete="name">
+          </label>
+
+          <label class="pf-field pf-field--phone">
+            <span class="pf-sr">Телефон</span>
+
+            <span class="pf-phone">
+              <input class="pf-input pf-input--code" type="text" name="code" inputmode="tel" autocomplete="tel-country-code"
+                     value="+7" aria-label="Код страны" />
+              <input class="pf-input pf-input--phone" type="tel" name="phone" inputmode="tel" autocomplete="tel"
+                     placeholder="(000) 000-00-00" aria-label="Номер телефона" />
+            </span>
+          </label>
+
+          <label class="pf-consent">
+            <input class="pf-check" type="checkbox" name="consent" checked>
+            <span>Я согласен(-на) с обработкой <a class="pf-link" href="#" target="_blank" rel="noopener">персональных данных</a></span>
+          </label>
+
+          <button class="pf-btn" type="submit" data-popup-btn>Заказать праздник</button>
+          <div class="pf-status" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- POPUP #3: service-2 -->
+  <section class="popup" role="dialog" aria-modal="true" aria-label="Лид форма" data-popup="service-2" tabindex="-1">
+    <button class="popup__x" type="button" aria-label="Закрыть" data-popup-close></button>
+
+    <div class="popup__card">
+      <div class="popup__head" aria-hidden="true">
+        <img src="/assets/img/popup/head.jpg" alt="" loading="lazy" />
+      </div>
+
+      <div class="popup__body">
+        <h3 class="popup__title" data-popup-title>Заказать праздник услуги Классический праздник</h3>
+        <p class="popup__sub" data-popup-sub>Оставьте заявку — мы перезвоним и всё расскажем</p>
+
+        <form class="popup-form" data-popup-form novalidate>
+          <input type="hidden" name="popup_id" value="service-2">
+          <input type="hidden" name="tag" value="service-2">
+
+          <!-- honeypot (anti-spam): должно оставаться пустым -->
+          <input class="pf-hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+          <label class="pf-field">
+            <span class="pf-sr">Ваше имя</span>
+            <input class="pf-input" type="text" name="name" placeholder="Ваше имя" autocomplete="name">
+          </label>
+
+          <label class="pf-field pf-field--phone">
+            <span class="pf-sr">Телефон</span>
+
+            <span class="pf-phone">
+              <input class="pf-input pf-input--code" type="text" name="code" inputmode="tel" autocomplete="tel-country-code"
+                     value="+7" aria-label="Код страны" />
+              <input class="pf-input pf-input--phone" type="tel" name="phone" inputmode="tel" autocomplete="tel"
+                     placeholder="(000) 000-00-00" aria-label="Номер телефона" />
+            </span>
+          </label>
+
+          <label class="pf-consent">
+            <input class="pf-check" type="checkbox" name="consent" checked>
+            <span>Я согласен(-на) с обработкой <a class="pf-link" href="#" target="_blank" rel="noopener">персональных данных</a></span>
+          </label>
+
+          <button class="pf-btn" type="submit" data-popup-btn>Заказать праздник</button>
+          <div class="pf-status" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- POPUP #4: service-3 -->
+  <section class="popup" role="dialog" aria-modal="true" aria-label="Лид форма" data-popup="service-3" tabindex="-1">
+    <button class="popup__x" type="button" aria-label="Закрыть" data-popup-close></button>
+
+    <div class="popup__card">
+      <div class="popup__head" aria-hidden="true">
+        <img src="/assets/img/popup/head.jpg" alt="" loading="lazy" />
+      </div>
+
+      <div class="popup__body">
+        <h3 class="popup__title" data-popup-title>Заказать праздник услуги История с героями</h3>
+        <p class="popup__sub" data-popup-sub>Оставьте заявку — уточним детали и скажем точную цену</p>
+
+        <form class="popup-form" data-popup-form novalidate>
+          <input type="hidden" name="popup_id" value="service-3">
+          <input type="hidden" name="tag" value="service-3">
+
+          <!-- honeypot (anti-spam): должно оставаться пустым -->
+          <input class="pf-hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+          <label class="pf-field">
+            <span class="pf-sr">Ваше имя</span>
+            <input class="pf-input" type="text" name="name" placeholder="Ваше имя" autocomplete="name">
+          </label>
+
+          <label class="pf-field pf-field--phone">
+            <span class="pf-sr">Телефон</span>
+
+            <span class="pf-phone">
+              <input class="pf-input pf-input--code" type="text" name="code" inputmode="tel" autocomplete="tel-country-code"
+                     value="+7" aria-label="Код страны" />
+              <input class="pf-input pf-input--phone" type="tel" name="phone" inputmode="tel" autocomplete="tel"
+                     placeholder="(000) 000-00-00" aria-label="Номер телефона" />
+            </span>
+          </label>
+
+          <label class="pf-consent">
+            <input class="pf-check" type="checkbox" name="consent" checked>
+            <span>Я согласен(-на) с обработкой <a class="pf-link" href="#" target="_blank" rel="noopener">персональных данных</a></span>
+          </label>
+
+          <button class="pf-btn" type="submit" data-popup-btn>Заказать праздник</button>
+          <div class="pf-status" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</div>

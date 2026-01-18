@@ -1,0 +1,222 @@
+/* =========================
+   WHY-US (Почему выбирают нас)
+   ========================= */
+
+:root{
+  --whyus-title-dark: #1a093c;
+  --whyus-title-cyan: #37D6FF;
+
+  --whyus-card-r: 28px;
+  --whyus-card-gap: 22px;
+
+  --whyus-text-font: "Onest", Arial, sans-serif;
+}
+
+.why-us{
+  padding: var(--section-py) 0;
+  background: #fff;
+  position: relative;
+}
+
+/* ---------- Titles ---------- */
+.why-us__head{
+  display: none; /* desktop hides */
+  margin: 0 0 clamp(18px, 3vw, 28px);
+  text-align: center;
+}
+
+.why-us__title{
+  margin: 0;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  font-weight: 800;
+  font-size: clamp(30px, 3.2vw, 44px);
+}
+
+.why-us__title-top{
+  display: block;
+  color: var(--whyus-title-dark);
+}
+.why-us__title-bottom{
+  display: block;
+  color: var(--whyus-title-cyan);
+}
+
+/* ---------- Layout ---------- */
+.why-us__layout{
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* left column: "track" for moving title */
+.why-us__side{
+  position: relative;
+  min-height: 100%;
+}
+
+/* this wrapper is moved by JS via transform */
+.why-us__move{
+  transform: translate3d(0,0,0);
+  will-change: transform;
+}
+
+.why-us__title--sticky{
+  font-size: 42px;
+}
+
+/* ---------- Cards grid ---------- */
+.why-us__grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--whyus-card-gap);
+  max-width: 1024px;
+  margin-left: auto;
+}
+
+.whyus-card{
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--whyus-card-r);
+  padding: 22px 22px 20px;
+  min-height: 228px;
+}
+
+.whyus-card__icon{
+  width: 46px;
+  height: 46px;
+  border-radius: 16px;
+  background: #fff;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 10px 26px rgba(18, 6, 45, .10);
+  margin-bottom: 14px;
+}
+
+.whyus-card__icon img{
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
+
+.whyus-card__title{
+  margin: 0 0 10px;
+  font-family: var(--u-font);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  font-size: 22px;
+}
+
+.whyus-card__text{
+  margin: 0;
+  font-family: var(--whyus-text-font);
+  font-size: 15px;
+  line-height: 1.5;
+  opacity: .92;
+}
+
+/* Themes */
+.whyus-card--p1{ background: #580C9B; color: #fff; }
+.whyus-card--p2{ background: #E1F1FF; color: var(--whyus-title-dark); }
+.whyus-card--p4{ background: #EAE8FF; color: var(--whyus-title-dark); }
+.whyus-card--p5{ background: #FEF9E5; color: var(--whyus-title-dark); }
+
+/* Card #3: image */
+.whyus-card--p3{
+  grid-column: 1 / -1;
+  padding: 22px;
+  min-height: 320px;
+  color: #fff;
+}
+
+.whyus-card--p3 .whyus-card__icon{
+  position: relative;
+  z-index: 3;
+}
+
+.whyus-card__media{
+  position: absolute;
+  inset: 0;
+  background-image: url("/assets/img/whyus/kids.jpg");
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.02);
+}
+
+.whyus-card--p3 .whyus-card__media::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(65, 12, 110, .85) 0%,
+    rgba(65, 12, 110, .55) 46%,
+    rgba(65, 12, 110, 0) 100%
+  );
+}
+
+.whyus-card__content{
+  position: relative;
+  z-index: 3;
+  max-width: 420px;
+  margin-top: 34px;
+}
+
+.whyus-card--p3 .whyus-card__title{
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+.whyus-card--p3 .whyus-card__text{
+  opacity: .95;
+}
+
+/* Balloon desktop only */
+.why-us__balloon-space{
+  height: 220px;
+  position: relative;
+  margin-top: 220px; /* дорожка для движения заголовка */
+}
+
+/* ✅ stop marker теперь внутри balloon-space и является "линией финиша" */
+.why-us__stop{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;        /* ← КРУТИ ЭТО: ниже = заголовок доедет дальше */
+  height: 1px;
+}
+
+.why-us__balloon{
+  position: absolute;
+  left: 50px;
+  bottom: -460px; /* ты уже опустил */
+  width: 300px;
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+  transform: rotate(-15deg);
+}
+
+/* ---------- Tablet/iPad (include iPad Pro 1024) ---------- */
+@media (max-width: 1024px){
+  .why-us__head{ display: block; }
+  .why-us__layout{ grid-template-columns: 1fr; gap: 22px; }
+  .why-us__side{ display: none; }
+  .why-us__grid{ max-width: 100%; margin-left: 0; gap: 18px; }
+  .whyus-card{ border-radius: 26px; }
+  .whyus-card--p3{ min-height: 280px; }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 560px){
+  .why-us{ padding: clamp(36px, 8vw, 56px) 0; }
+  .why-us__grid{ grid-template-columns: 1fr; }
+  .whyus-card{ padding: 20px 18px 18px; min-height: 210px; }
+  .whyus-card__title{ font-size: 20px; }
+  .whyus-card__text{ font-size: 14px; }
+  .whyus-card--p3{ grid-column: auto; min-height: 300px; }
+  .whyus-card__content{ margin-top: 28px; max-width: 100%; }
+}

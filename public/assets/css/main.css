@@ -1,0 +1,118 @@
+@import url("./blocks/header.css");
+@import url("./blocks/hero.css");
+@import url("./blocks/program.css");
+@import url("./blocks/gallery.css");
+@import url("./blocks/services.css");
+@import url("./blocks/addons.css");
+@import url("./blocks/why-us.css");
+@import url("./blocks/love.css");
+@import url("./blocks/kitchen.css");
+@import url("./blocks/reviews.css");
+@import url("./blocks/faq.css");
+@import url("./blocks/lead-form.css");
+@import url("./blocks/footer.css");
+@import url("./blocks/popup.css");
+@import url("./blocks/privacy.css");
+@import url("./blocks/reveal.css");
+
+/* =========================
+   GLOBAL BASE (mini-adaptive)
+   ========================= */
+:root{
+  --u-font: "Unbounded", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+  /* Контейнер */
+  --container-max: 1200px;
+  --container-pad: 4vw;
+
+  /* Вертикальный ритм секций */
+  --section-py: clamp(44px, 7vw, 96px);
+}
+
+/* box sizing */
+*,
+*::before,
+*::after{ box-sizing:border-box; }
+
+html{
+  scrollbar-gutter: stable;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body{
+  margin:0;
+  font-family:var(--u-font);
+  overflow-x:hidden; /* защита от горизонтального скролла */
+}
+
+/* Контейнер (резиновый, но с max шириной) */
+.container{
+  width: min(var(--container-max), calc(100% - (var(--container-pad) * 2)));
+  margin: 0 auto;
+}
+
+/* Медиа никогда не вылезает за блок */
+img, video, svg, canvas{
+  max-width:100%;
+  height:auto;
+  display:block;
+}
+
+/* Формы/кнопки не ломают типографику */
+button, input, textarea, select{
+  font: inherit;
+}
+
+/* База для секций (у тебя почти все секции имеют class="section") */
+.section.gallery{
+  padding-top: var(--section-pt);
+padding-bottom: var(--section-pb);
+}
+
+/* Заголовки секций — чтобы читались на мобиле */
+.section__title{
+  margin: 0 0 clamp(16px, 3vw, 28px);
+  line-height: 1.15;
+  font-size: clamp(22px, 2.7vw, 40px);
+}
+
+/* =========================
+   DESKTOP: wider layout (НЕ трогаем мобилки)
+   ========================= */
+@media (min-width: 1200px){
+  :root{
+    /* делаем сайт шире на десктопе, но без “плавания” */
+    --container-max: 1400px;
+
+    /* фиксируем паддинги, чтобы на широких экранах не раздувало боковые отступы */
+    --container-pad: 32px;
+
+    /* чуть больше вертикальный ритм на десктопе */
+  --section-pt: clamp(56px, 4.2vw, 112px);   /* верх — как сейчас */
+  --section-pb: clamp(0px, 0vw, 90px);  
+  }
+}
+
+/* опционально: очень широкие мониторы */
+@media (min-width: 1600px){
+  :root{
+    --container-max: 1520px;
+  }
+}
+/* =============================
+   Mouse parallax (decor)
+   ============================= */
+
+.js-move{
+  --mx: 0px;
+  --my: 0px;
+
+  /* ✅ отдельно от transform, чтобы не ломать rotate/позиционирование */
+  translate: var(--mx) var(--my);
+  will-change: translate;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .js-move{ translate: 0px 0px; }
+}

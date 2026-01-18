@@ -1,0 +1,461 @@
+/* =========================
+   LEAD-FORM
+   ========================= */
+
+:root{
+  /* типографика */
+  --lf-font: Onest, Arial, sans-serif;
+
+  /* размеры */
+  --lf-radius: 22px;
+  --lf-pad: clamp(18px, 2.2vw, 28px);
+  --lf-gap: clamp(16px, 2.2vw, 28px);
+
+  /* инпуты */
+  --lf-field-h: 64px;
+  --lf-field-r: 14px;
+
+  /* акцентная обводка (как на твоем скрине) */
+  --lf-field-stroke: rgba(255, 65, 120, .95);
+
+  /* кнопка */
+  --lf-btn-h: 100px;
+  --lf-btn-r: 20px;
+  --lf-btn-bg: #b7ff39;
+  --lf-btn-text: #1a093c;
+
+  /* фон */
+  --lf-bg-img: url("../img/bg/bg.jpg");
+  --lf-stars-img: url("../img/services/stars.svg");
+  --lf-bg-overlay: rgba(35, 10, 92, .72);
+  --lf-bg-tint: rgba(120, 40, 220, .25);
+
+  /* декор (только десктоп) — крути как хочешь */
+--lf-balloon-w: 250px;
+    --lf-balloon-h: 250px;
+    --lf-balloon-right: 46%;
+    --lf-balloon-bottom: -1%;
+    --lf-balloon-rot: -20deg;
+
+    --lf-ribbon-w: 209px;
+    --lf-ribbon-h: 220px;
+    --lf-ribbon-left: 2.5%;
+    --lf-ribbon-bottom: 8%;
+    --lf-ribbon-rot: 30deg;
+}
+
+.lead-form{
+  font-family: var(--lf-font);
+}
+
+.lead-form__box{
+  position: relative;
+  border-radius: var(--lf-radius);
+  overflow: hidden;
+  padding: var(--lf-pad);
+  min-height: 260px;
+  background: #2a0b64;
+}
+
+/* фон-фото */
+.lead-form__box::before{
+  content:"";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  background-image:
+    linear-gradient(0deg, var(--lf-bg-overlay), var(--lf-bg-overlay)),
+    linear-gradient(0deg, var(--lf-bg-tint), var(--lf-bg-tint)),
+    var(--lf-bg-img);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed, fixed, fixed;
+  transform: translateZ(0);
+}
+
+/* звезды */
+.lead-form__box::after{
+  content:"";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  background-image: var(--lf-stars-img);
+  background-repeat: repeat;
+  background-size: 560px auto;
+  background-position: center;
+  background-attachment: fixed;
+
+  opacity: .75;
+  pointer-events: none;
+}
+
+.lead-form__grid{
+  position: relative;
+  z-index: 2;
+
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  gap: var(--lf-gap);
+  align-items: start;
+}
+
+.lead-form__left{
+  padding: clamp(8px, 1.2vw, 14px);
+}
+
+.lead-form__title{
+  margin: 0 0 14px;
+  font-weight: 800;
+  line-height: .95;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  font-family: "Unbounded", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-size: clamp(30px, 5vw, 106px);
+}
+
+.lead-form__text{
+  margin: 20px 0px;
+  max-width: 520px;
+  font-size: clamp(14px, 3.2vw, 25px);
+  line-height: 1.25;
+  color: rgba(255, 255, 255, .92);
+}
+.lead-form__text strong{ font-weight: 800; }
+
+.lead-form__right{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.lead-form__form{
+  width: min(520px, 100%);
+  display: grid;
+  gap: 18px;
+
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.lf-field__sr{
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.lf-field{ position: relative; }
+
+.lf-field__input{
+  width: 100%;
+  height: var(--lf-field-h);
+  border-radius: var(--lf-field-r);
+
+  border: 2px solid var(--lf-field-stroke);
+  outline: none;
+
+  padding: 0 22px;
+  background: rgba(255,255,255, .95);
+
+  font-family: var(--lf-font);
+  font-size: 18px;
+  color: #1a093c;
+
+  box-shadow: 0 10px 30px rgba(10, 3, 26, .18);
+  transition: box-shadow .2s ease, transform .15s ease, filter .15s ease;
+}
+
+.lf-field__input::placeholder{
+  color: rgba(26, 9, 60, .45);
+}
+
+.lf-field__input:focus{
+  box-shadow:
+    0 14px 40px rgba(10, 3, 26, .22),
+    0 0 0 3px rgba(255, 65, 120, .18);
+}
+
+.lf-field__textarea{
+  height: auto;
+  min-height: 120px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  resize: none;
+}
+
+.lf-consent{
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  align-items: center;
+  gap: 12px;
+
+  margin-top: 2px;
+  user-select: none;
+  color: rgba(255,255,255,.92);
+}
+
+.lf-consent__check{
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.lf-consent__box{
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background: transparent;
+  box-shadow: inset 0 0 0 2px rgba(255,255,255,.85);
+  position: relative;
+}
+
+.lf-consent__check:checked + .lf-consent__box{
+  background: rgba(183,255,57,.95);
+  box-shadow: inset 0 0 0 2px rgba(183,255,57,.15);
+}
+
+.lf-consent__check:checked + .lf-consent__box::after{
+  content:"";
+  position:absolute;
+  left: 6px;
+  top: 4px;
+  width: 9px;
+  height: 5px;
+  border-left: 3px solid #1a093c;
+  border-bottom: 3px solid #1a093c;
+  transform: rotate(-45deg);
+}
+
+.lf-consent__text{
+  font-size: 18px;
+  line-height: 1.2;
+  color: rgba(255,255,255,.92);
+  font-family: var(--lf-font);
+}
+
+.lf-submit{
+  height: var(--lf-btn-h);
+  border-radius: var(--lf-btn-r);
+  border: none;
+  cursor: pointer;
+
+  font-family: var(--lf-font);
+  font-weight: 800;
+  font-size: 22px;
+  color: var(--lf-btn-text);
+  background: var(--lf-btn-bg);
+
+  box-shadow: 0 18px 40px rgba(20, 10, 40, .22);
+  transition: transform .15s ease, filter .15s ease;
+}
+
+.lf-submit:hover{ filter: brightness(0.98); transform: translateY(-1px); }
+.lf-submit:active{ transform: translateY(0); }
+
+/* мессенджеры */
+.lf-messengers{
+  margin-top: 4px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 34px;
+}
+
+.lf-ms{
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  padding: 0;
+  border-radius: 0;
+  text-decoration: none;
+
+  background: transparent;
+  border: none;
+  box-shadow: none;
+
+  transform: translateZ(0);
+}
+
+.lf-ms:hover{ transform: translateY(-1px); }
+
+/* контейнер иконки (как было) */
+.lf-ms__icon{
+  width: 72px;
+  height: 72px;
+  border-radius: 18px;
+
+  display: grid;
+  place-items: center;
+
+  /* убираем “цветной фон”, т.к. теперь это картинка */
+  background: transparent;
+
+  box-shadow: 0 16px 30px rgba(0,0,0,.22);
+  overflow: hidden; /* важно, чтобы svg-картинка не вылезала */
+}
+
+/* ✅ НОВОЕ: сама картинка-иконка */
+.lf-ms__img{
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain; /* если иконка с полями — не обрежет */
+  background: transparent;
+}
+
+.lf-ms__text{
+  display: grid;
+  line-height: 1.05;
+  color: rgba(255,255,255,.92);
+  font-family: var(--lf-font);
+}
+.lf-ms__top{ font-size: 18px; opacity: .78; }
+.lf-ms__bot{ font-size: 22px; font-weight: 800; }
+
+.lf-error{
+  margin: 2px 0 0;
+  font-size: 14px;
+  color: #ff6a8a;
+  min-height: 18px;
+}
+
+/* ====== ДЕКОР (только десктоп) ====== */
+.lead-form__deco{
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,.25));
+}
+
+.lead-form__deco--balloon{
+  width: var(--lf-balloon-w);
+  height: var(--lf-balloon-h);
+  right: var(--lf-balloon-right);
+  bottom: var(--lf-balloon-bottom);
+  transform: rotate(var(--lf-balloon-rot));
+  background-image: url("../img/move/deco-balloon-right.png");
+}
+
+.lead-form__deco--ribbon{
+  width: var(--lf-ribbon-w);
+  height: var(--lf-ribbon-h);
+  left: var(--lf-ribbon-left);
+  bottom: var(--lf-ribbon-bottom);
+  transform: rotate(var(--lf-ribbon-rot));
+  background-image: url("../img/move/len1t.webp");
+}
+
+/* ====== АДАПТИВЫ ====== */
+@media (max-width: 1024px){
+  .lead-form__grid{ grid-template-columns: 1fr; }
+  .lead-form__right{ justify-content: stretch; }
+  .lead-form__form{ width: 100%; }
+
+  .lead-form__deco{ display:none; }
+
+  .lead-form__title{ text-align: center; }
+  .lead-form__text{
+    text-align: center;
+    margin-inline: auto;
+  }
+
+  .lead-form__box::before{ background-attachment: scroll, scroll, scroll; }
+  .lead-form__box::after{ background-attachment: scroll; }
+}
+
+@media (max-width: 520px){
+  .lead-form__box{
+    padding: 14px;
+    border-radius: 24px;
+  }
+
+  .lead-form__left{
+    padding: 6px;
+  }
+
+  .lead-form__title{
+    font-size: clamp(26px, 9vw, 44px);
+    margin-bottom: 10px;
+  }
+  .lead-form__text{
+    margin: 12px 0 0;
+    font-size: 14px;
+    line-height: 1.25;
+  }
+
+  .lead-form__form{ gap: 14px; }
+
+  .lf-field__input{
+    height: 60px;
+    font-size: 15px;
+    padding: 0 16px;
+    border-radius: 14px;
+  }
+
+  .lf-field__textarea{
+    min-height: 104px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
+
+  .lf-consent{ gap: 10px; }
+  .lf-consent__box{ width: 20px; height: 20px; }
+  .lf-consent__text{ font-size: 14px; }
+
+  .lf-submit{
+    height: 74px;
+    border-radius: 20px;
+    font-size: 18px;
+  }
+
+  .lf-messengers{ gap: 18px; }
+  .lf-ms{ gap: 12px; }
+
+  .lf-ms__icon{
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+  }
+
+  .lf-ms__top{ font-size: 14px; }
+  .lf-ms__bot{ font-size: 15px; }
+}
+
+@media (max-width: 380px){
+  .lead-form__box{
+    padding: 12px;
+    border-radius: 22px;
+  }
+
+  .lead-form__title{ font-size: 24px; }
+
+  .lf-field__input{
+    height: 56px;
+    font-size: 14px;
+  }
+
+  .lf-submit{
+    height: 70px;
+    font-size: 17px;
+  }
+
+  .lf-ms__icon{
+    width: 56px;
+    height: 56px;
+  }
+
+  .lf-ms__bot{ font-size: 16px; }
+}

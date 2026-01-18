@@ -1,0 +1,18 @@
+[build]
+  # Фронт без сборки: публикуем как есть из /public
+  publish = "public"
+  functions = "netlify/functions"
+  # Нужен только install для функций (nodemailer)
+  command = "npm ci"
+
+[[redirects]]
+  # Чтобы твой фронт продолжал слать на /api/lead
+  from = "/api/lead"
+  to = "/.netlify/functions/lead"
+  status = 200
+
+[[redirects]]
+  # Красивый URL для privacy
+  from = "/privacy"
+  to = "/privacy/"
+  status = 301

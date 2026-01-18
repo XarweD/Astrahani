@@ -1,0 +1,106 @@
+<header class="site-header" id="siteHeader">
+
+  <div class="site-header__inner container">
+    <!-- Left -->
+    <div class="brand" aria-label="Бренд">
+
+      <!-- ЛОГО: показываем на десктопе, и в sticky на мобилке -->
+      <a class="brand__logo brand__logo--img" href="#top" aria-label="На главную"></a>
+
+      <!-- НОМЕР слева: показываем на мобилке/планшете (НО НЕ в sticky) -->
+      <a class="brand__phone" href="tel:+79170855501" aria-label="Позвонить">
+        8 (917) 085-55-01
+      </a>
+
+      <!-- Текст бренда: только десктоп -->
+      <a class="brand__text" href="#top" aria-label="На главную">
+        <span class="brand__line">
+          Организация детских<br>
+          праздников в <b>Астрахани</b>
+        </span>
+        <span class="brand__since">с 2008 года</span>
+      </a>
+
+    </div>
+
+    <!-- Right -->
+    <div class="site-header__right">
+      <div class="social" aria-label="Социальные сети">
+        <a class="social__item social__item--max" href="https://max.ru/u/f9LHodD0cOIII4r9WSdMN6BhRPjQ7_R0TTnBOW-IQmWUKEOEHOUds3tlavc" aria-label="MAX"></a>
+        <a class="social__item social__item--tg" href="https://t.me/enotclub" aria-label="Telegram"></a>
+        <a class="social__item social__item--wa" href="https://wa.me/79378225558" aria-label="WhatsApp"></a>
+      </div>
+
+      <!-- НОМЕР справа для sticky на мобилке/планшете -->
+      <a class="phone phone--sticky" href="tel:+79170855501" aria-label="Позвонить">
+        8 (917) 085-55-01
+      </a>
+
+      <!-- Десктопный телефон (справа) -->
+      <a class="phone phone--desktop" href="tel:+79170855501" aria-label="Позвонить">
+        8 (917) 085-55-01
+      </a>
+
+      <!-- CTA: открывает попап (универсальный) -->
+      <a
+        class="header-cta"
+        href="#"
+        data-popup-open="universal"
+        data-popup-title="Обсудим праздник"
+        data-popup-sub="Оставьте заявку — мы свяжемся с вами в течение 30 минут и подберём программу под ваш бюджет"
+        data-popup-btn="Подобрать программу"
+        data-popup-tag="header:cta"
+      >
+        Обсудить праздник
+      </a>
+
+      <!-- кнопка меню -->
+      <button class="burger" id="burgerBtn" type="button" aria-label="Открыть меню">
+        <span class="burger__icon" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Overlay (затемнение) -->
+  <div class="menu-overlay" id="menuOverlay" hidden></div>
+
+  <!-- Drawer menu справа -->
+  <aside class="drawer" id="mobileMenu" aria-hidden="true" hidden>
+    <button class="drawer__close" id="menuCloseBtn" type="button" aria-label="Закрыть меню">×</button>
+
+    <div class="drawer__content">
+      <nav class="drawer__nav" aria-label="Навигация">
+        <a class="drawer__link" href="#addons">Собери своё приключение</a>
+        <a class="drawer__link" href="#why-us">Почему мы</a>
+        <a class="drawer__link" href="#program">Программы</a>
+        <a class="drawer__link" href="#services">Всё для атмосферы</a>
+        <a class="drawer__link" href="#kitchen">Еда и кухня</a>
+        <a class="drawer__link" href="#reviews">Отзывы</a>
+        <a class="drawer__link" href="#faq">Частые вопросы</a>
+        <a class="drawer__link" href="#contacts">Контакты</a>
+      </nav>
+
+      <div class="drawer__bottom">
+        <div class="drawer__small">
+          Организация детских<br>
+          праздников в Астрахани
+        </div>
+
+        <a class="drawer__phone" href="tel:+79170855501">8 (917) 085-55-01</a>
+
+        <!-- CTA в меню: тоже открывает попап -->
+        <a
+          class="drawer__cta"
+          href="#"
+          data-popup-open="universal"
+          data-popup-title="Обсудим праздник"
+          data-popup-sub="Оставьте заявку — мы свяжемся с вами в течение 30 минут и подберём программу под ваш бюджет"
+          data-popup-btn="Подобрать программу"
+          data-popup-tag="menu:cta"
+        >
+          Обсудить праздник
+        </a>
+      </div>
+    </div>
+  </aside>
+</header>

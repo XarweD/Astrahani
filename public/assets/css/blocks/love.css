@@ -1,0 +1,266 @@
+/* =========================
+   LOVE (Безусловная любовь)
+   ========================= */
+
+:root{
+  --love-cyan: #37D6FF;
+  --love-purple: #4a0ea6;
+  --love-purple-deep: #1a0636;
+
+  --love-radius: 34px;
+  --love-text-font: "Onest", Arial, sans-serif;
+}
+
+.love{
+  background: #fff;
+}
+
+.love__frame{
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--love-radius);
+  min-height: clamp(620px, 52vw, 820px);
+  background: #150329;
+}
+
+/* BG video */
+.love__video{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.02);
+}
+
+/* Фиолетовое затемнение слева направо */
+.love__shade{
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(26, 6, 54, .92) 0%,
+      rgba(74, 14, 166, .70) 42%,
+      rgba(74, 14, 166, .28) 70%,
+      rgba(74, 14, 166, 0) 100%
+    );
+}
+
+/* Контент поверх видео */
+.love__content{
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  min-height: inherit;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: clamp(26px, 3.2vw, 52px);
+}
+
+/* ---------- Top text ---------- */
+.love__top{
+  max-width: 660px;
+}
+
+.love__title{
+  margin: 0 0 18px;
+  font-family: var(--u-font);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.03;
+  font-size: clamp(34px, 4.2vw, 72px);
+  color: #fff;
+}
+
+.love__title-line{
+  display: block;
+}
+
+.love__title-accent{
+  color: var(--love-cyan);
+}
+
+.love__sub{
+  margin: 0;
+  font-family: var(--love-text-font);
+  font-weight: 400;
+  line-height: 1.35;
+  font-size: clamp(16px, 1.45vw, 22px);
+  color: rgba(255,255,255,.90);
+  max-width: 560px;
+}
+
+.love__sub strong{
+  font-weight: 700;
+  color: #fff;
+}
+
+/* ---------- Bottom bar ---------- */
+.love__bar{
+  background: rgba(120, 56, 210, .34);
+  border: 1px solid rgba(255,255,255,.10);
+  box-shadow: 0 18px 46px rgba(10, 0, 22, .35);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 26px;
+  padding: clamp(16px, 2.1vw, 22px);
+}
+
+.love__list{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.love__item{
+  display: grid;
+  grid-template-rows: auto 1fr;
+  align-content: start;
+  gap: 10px;
+  padding: 6px 12px;
+  position: relative;
+}
+
+/* вертикальные разделители */
+.love__item:not(:first-child)::before{
+  content: "";
+  position: absolute;
+  left: -9px;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: rgba(255,255,255,.16);
+}
+
+.love__icon{
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: rgba(0,0,0,.12);
+}
+
+.love__icon img{
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+.love__text{
+  margin: 0;
+  font-family: var(--love-text-font);
+  font-size: 14px;
+  line-height: 1.35;
+  color: rgba(255,255,255,.92);
+}
+
+.love__text strong{
+  font-weight: 700;
+  color: #fff;
+}
+
+/* =========================
+   iPad (включая iPad Pro)
+   ========================= */
+@media (max-width: 1024px){
+  .love__frame{
+    min-height: 760px;
+  }
+
+  .love__shade{
+    background:
+      linear-gradient(
+        180deg,
+        rgba(26, 6, 54, .92) 0%,
+        rgba(74, 14, 166, .55) 56%,
+        rgba(74, 14, 166, .20) 100%
+      );
+  }
+
+  /* ✅ ЦЕНТРИРУЕМ ТОЛЬКО ТЕКСТ */
+  .love__top{
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .love__sub{
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .love__title{
+    font-size: clamp(34px, 5.4vw, 58px);
+  }
+
+  .love__list{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .love__item:not(:first-child)::before{
+    display: none;
+  }
+
+  .love__item{
+    padding: 10px 10px;
+    border-radius: 18px;
+    background: rgba(0,0,0,.10);
+  }
+}
+
+/* =========================
+   Mobile
+   ========================= */
+@media (max-width: 560px){
+  .love{
+    padding: clamp(34px, 8vw, 56px) 0;
+  }
+
+  .love__frame{
+    border-radius: 28px;
+    min-height: 860px;
+  }
+
+  .love__content{
+    padding: 18px 16px 16px;
+  }
+
+  /* ✅ ЦЕНТР + ЧУТЬ УЖЕ */
+  .love__top{
+    max-width: 92%;
+  }
+
+  .love__title{
+    font-size: clamp(30px, 8.8vw, 44px);
+  }
+
+  .love__sub{
+    font-size: 15px;
+  }
+
+  .love__bar{
+    border-radius: 22px;
+  }
+
+  .love__list{
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .love__item{
+    padding: 12px 12px;
+  }
+
+  .love__text{
+    font-size: 14px;
+  }
+}

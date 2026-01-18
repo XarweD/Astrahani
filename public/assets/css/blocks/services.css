@@ -1,0 +1,616 @@
+/* =========================
+   SERVICES (Готовые программы) — /partials/services.html
+   ========================= */
+
+:root{
+  --services-title: #ffffff;
+  --services-title-accent: #2ED2F1;
+  --services-sub: rgba(255,255,255,.92);
+
+  --services-stars-opacity: .35;
+
+  --services-radius: 34px;
+  --services-card-radius: 28px;
+
+  --services-btn-bg: #aeff60;
+  --services-btn-tx: #1b1b1b;
+
+  --services-gap: clamp(16px, 2.2vw, 26px);
+  --services-grid-max: 1180px;
+
+  --services-card-w: clamp(310px, 27.2vw, 370px);
+  --services-card-h: 560px;
+
+  --services-li-fs: clamp(12px, 1.95vw, 15px);
+  --services-li-lh: 1.32;
+
+  --services-ico: 18px;
+  --services-ico-gap: 10px;
+
+  /* =========================================
+     “якорь” декора = центр контента
+     ========================================= */
+
+  --svc-e-x: -720px;
+  --svc-e-y: -80px;
+  --svc-e-w: 200px;
+  --svc-e-rot: -20deg;
+
+  --svc-h-x: 560px;
+  --svc-h-y: 90px;
+  --svc-h-w: 200px;
+  --svc-h-rot: 15deg;
+
+  --svc-o-x: -470px;
+  --svc-o-y: 50px;
+  --svc-o-w: 200px;
+  --svc-o-rot: -25deg;
+
+  --svc-lent-x: -780px;
+  --svc-lent-y: -65px;
+  --svc-lent-w: 150px;
+  --svc-lent-rot: 30deg;
+
+  --svc-t-x: 600px;
+  --svc-t-y: -36px;
+  --svc-t-w: 200px;
+  --svc-t-rot: 15deg;
+}
+
+.services{
+  position: relative;
+  isolation: isolate;
+  background: transparent;
+
+  /* ✅ ВАЖНО: padding убрали отсюда, чтобы НЕ появлялась белая зона */
+  padding-top: 10px;
+  padding-bottom: 50px;
+
+  /* ✅ по вертикали пусть декор выходит на соседние блоки */
+  overflow-y: visible;
+
+  /* ✅ по горизонтали не даём лезть за экран */
+  overflow-x: clip;
+}
+
+/* ✅ ДЕКОР СВОБОДНЫЙ: НЕ РЕЖЕТСЯ РАДИУСОМ */
+.services__decor{
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  pointer-events: none;
+  overflow: visible;
+}
+
+/* ✅ ФИОЛЕТОВЫЙ БЛОК — НА ВСЮ ШИРИНУ СЕКЦИИ */
+.services__clip{
+  position: relative;
+  width: 100%;
+  overflow: hidden !important;
+  border-radius: var(--services-radius);
+
+  -webkit-clip-path: inset(0 round var(--services-radius)) !important;
+  clip-path: inset(0 round var(--services-radius)) !important;
+
+  /* ✅ ВОТ ТУТ ТЕПЕРЬ “ВЫСОТА” ФИОЛЕТОВОГО ФОНА */
+  padding-top: clamp(40px, 6vw, 74px);
+  padding-bottom: clamp(70px, 7vw, 140px);
+}
+
+/* bg.jpg */
+.services__clip::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  border-radius: inherit;
+  background-image: url("../../img/services/bg.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+
+  pointer-events: none;
+}
+
+/* stars.svg */
+.services__clip::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  border-radius: inherit;
+  background-image: url("../../img/services/stars.svg");
+  background-repeat: repeat;
+  background-position: center;
+  background-size: 520px auto;
+  background-attachment: fixed;
+
+  opacity: var(--services-stars-opacity);
+  pointer-events: none;
+}
+
+@media (max-width: 1024px){
+  .services__clip::after,
+  .services__clip::before{
+    background-attachment: scroll;
+  }
+}
+
+/* =========================
+   DECOR (якорь по центру)
+   ========================= */
+
+.services__deco{
+  position: absolute;
+  height: auto;
+  display: block;
+
+  transform-origin: center;
+  will-change: transform;
+  user-select: none;
+  -webkit-user-drag: none;
+
+  pointer-events: none;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+
+  max-width: min(420px, 60vw);
+}
+
+.services__deco--e{
+  width: var(--svc-e-w);
+  top: var(--svc-e-y);
+  left: 50%;
+  transform: translateX(var(--svc-e-x)) rotate(var(--svc-e-rot));
+}
+
+.services__deco--h{
+  width: var(--svc-h-w);
+  top: var(--svc-h-y);
+  left: 50%;
+  transform: translateX(var(--svc-h-x)) rotate(var(--svc-h-rot));
+}
+
+/* h под карточками (можешь оставить, но теперь это “под контентом” не будет,
+   так как декор выше. Поэтому делаем ниже контента через z-index.) */
+.services__deco--under-cards{ z-index: 2; }
+
+/* Декор “внизу” */
+.services__deco--o{
+  width: var(--svc-o-w);
+  bottom: var(--svc-o-y);
+  left: 50%;
+  transform: translateX(var(--svc-o-x)) rotate(var(--svc-o-rot));
+  z-index: 4;
+}
+
+.services__deco--lent{
+  width: var(--svc-lent-w);
+  bottom: var(--svc-lent-y);
+  left: 50%;
+  transform: translateX(var(--svc-lent-x)) rotate(var(--svc-lent-rot));
+  z-index: 4;
+}
+
+.services__deco--t{
+  width: var(--svc-t-w);
+  bottom: var(--svc-t-y);
+  left: 50%;
+  transform: translateX(var(--svc-t-x)) rotate(var(--svc-t-rot));
+  z-index: 4;
+}
+
+/* Контент */
+.services__container{
+  position: relative;
+  z-index: 5; /* ✅ контент выше декора, чтобы декор не перекрывал тексты */
+}
+
+/* =========================
+   твой остальной CSS (без изменений)
+   ========================= */
+
+.services__head{
+  text-align: center;
+  margin-bottom: clamp(18px, 3vw, 30px);
+}
+
+.services__title{
+  font-family: var(--u-font);
+  font-weight: 800;
+  letter-spacing: .2px;
+  color: var(--services-title);
+  font-size: clamp(34px, 4.2vw, 60px);
+  line-height: 1.05;
+}
+
+.services__title-accent{
+  color: var(--services-title-accent);
+}
+
+.services__sub{
+  margin: 14px 0 0;
+  color: var(--services-sub);
+  font-weight: 500;
+  font-size: clamp(14px, 1.45vw, 18px);
+  line-height: 1.35;
+  font-family: 'Onest', Arial, sans-serif;
+}
+
+.services__grid{
+  width: min(var(--services-grid-max), 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--services-gap);
+  align-items: start;
+  justify-items: center;
+  padding-top: clamp(10px, 1.2vw, 18px);
+}
+
+.services-card{
+  position: relative;
+  width: min(100%, var(--services-card-w));
+  min-height: var(--services-card-h);
+  border-radius: var(--services-card-radius);
+  padding: 26px 24px 22px;
+  box-shadow: 0 18px 50px rgba(0,0,0,.18);
+  display: flex;
+  flex-direction: column;
+}
+
+.services-card--cream{ background: #FFF6D8; }
+.services-card--lilac{ background: #EBDDFF; }
+.services-card--ice{ background: #E9EEFF; }
+
+.services-card__badge{
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 32px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: #a42bff;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: .2px;
+  box-shadow: 0 10px 24px rgba(0,0,0,.18);
+}
+
+.services-card__badge-ico{
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+.services-card__name{
+  margin: 25px 0 25px;
+  text-align: center;
+  font-family: var(--u-font);
+  font-weight: 800;
+  color: #1B0B3E;
+  font-size: 15px;
+  line-height: 1.15;
+}
+
+.services-card__meta{
+  margin: 0 auto 25px;
+  width: 100%;
+  max-width: 280px;
+  background: rgba(120, 86, 210, .12);
+  border-radius: 14px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  color: #2b1b55;
+  font-weight: 700;
+}
+
+.services-card--cream .services-card__meta{
+  background: rgba(255, 196, 66, .22);
+}
+
+.services-card__meta-label{
+  font-weight: 700;
+  opacity: .92;
+  font-size: 15px;
+  font-family: 'Onest', Arial, sans-serif;
+}
+
+.services-card__meta-value{
+  font-weight: 900;
+  font-size: 16px;
+  font-family: 'Onest', Arial, sans-serif;
+}
+
+.services-card__note{
+  margin: 0 auto 18px;
+  width: 100%;
+  max-width: 100%;
+  text-align: center;
+  color: rgba(27, 11, 62, .85);
+  font-size: 13px;
+  line-height: 1.35;
+  font-family: 'Onest', Arial, sans-serif;
+
+  hyphens: auto;
+  overflow-wrap: anywhere;
+}
+
+.services-card__body{
+  flex: 1;
+  background: rgba(255,255,255,.88);
+  border-radius: 18px;
+  padding: 18px 18px 16px;
+  overflow: hidden;
+}
+
+.services-card__includes{
+  margin: 10px 0 20px;
+  text-align: center;
+  font-family: var(--u-font);
+  font-weight: 900;
+  color: #1B0B3E;
+  font-size: 18px;
+}
+
+.services-card__lead{
+  margin: 0 0 10px;
+  color: rgba(27, 11, 62, .88);
+  font-size: 16px;
+  line-height: 1.35;
+  font-family: 'Onest', Arial, sans-serif;
+
+  hyphens: auto;
+  overflow-wrap: anywhere;
+}
+
+.services-card__list{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+.services-card__item{
+  display: grid;
+  grid-template-columns: var(--services-ico) minmax(0, 1fr);
+  gap: var(--services-ico-gap);
+  align-items: start;
+
+  color: rgba(27, 11, 62, .92);
+  font-size: var(--services-li-fs);
+  line-height: var(--services-li-lh);
+  font-family: 'Onest', Arial, sans-serif;
+
+  hyphens: auto;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+.services-card__item strong{ font-weight: 800; }
+
+.services-card__icon{
+  width: var(--services-ico);
+  height: var(--services-ico);
+  display: block;
+  margin-top: 2px;
+  flex: 0 0 var(--services-ico);
+}
+
+.services-card__divider{
+  height: 1px;
+  background: rgba(27, 11, 62, .14);
+  margin: 14px 0;
+}
+
+.services-card__btn{
+  margin-top: 18px;
+  height: 100px;
+  border: 0;
+  border-radius: 16px;
+  background: var(--services-btn-bg);
+  color: var(--services-btn-tx);
+  font-weight: 900;
+  font-size: 14px;
+  cursor: pointer;
+  transition: transform .18s ease, filter .18s ease;
+  font-family: var(--u-font);
+}
+
+.services-card__btn:hover{
+  transform: translateY(-1px);
+  filter: brightness(1.02);
+  background-color: #8fff24;
+}
+
+.services-card__btn:active{
+  transform: translateY(0px) scale(.99);
+}
+
+@media (max-width: 1024px){
+  :root{
+    --services-card-h: auto;
+    --services-li-fs: clamp(13px, 1.95vw, 15px);
+    --services-li-lh: 1.34;
+
+    --svc-e-x: -420px;
+    --svc-h-x: 420px;
+    --svc-o-x: -560px;
+    --svc-lent-x: -640px;
+    --svc-t-x: 620px;
+  }
+
+  .services__clip{
+    border-radius: 26px;
+    -webkit-clip-path: inset(0 round 26px) !important;
+    clip-path: inset(0 round 26px) !important;
+
+    /* ✅ ВАЖНО: padding на iPad тоже в фиолетовом блоке */
+    padding-top: clamp(34px, 6vw, 60px);
+    padding-bottom: clamp(60px, 7vw, 120px);
+  }
+
+  /* ❌ убрали padding-block с .services (чтобы не было белого низа) */
+  .services__grid{
+    grid-template-columns: 1fr;
+    width: min(760px, 100%);
+    justify-items: center;
+  }
+
+  .services-card{
+    width: min(720px, 100%);
+    padding: 24px 22px 20px;
+  }
+
+  .services-card__body{
+    padding: 18px 18px 18px;
+  }
+}
+
+@media (max-width: 560px){
+  :root{
+    --services-li-fs: clamp(12px, 3.35vw, 15px);
+    --services-li-lh: 1.32;
+    --services-ico: 18px;
+    --services-ico-gap: 10px;
+
+    --svc-e-x: -220px;
+    --svc-h-x: 220px;
+    --svc-o-x: -260px;
+    --svc-lent-x: -280px;
+    --svc-t-x: 260px;
+  }
+
+  .services__clip{
+    border-radius: 22px;
+    -webkit-clip-path: inset(0 round 22px) !important;
+    clip-path: inset(0 round 22px) !important;
+
+    /* ✅ ВАЖНО: padding на мобиле тоже в фиолетовом блоке */
+    padding-top: 34px;
+    padding-bottom: 70px;
+  }
+
+  /* ❌ убрали padding-block с .services (чтобы не было белого низа) */
+  .services__title{ font-size: 34px; }
+  .services__sub{ font-size: 14px; }
+
+  .services-card{
+    width: 100%;
+    border-radius: 22px;
+    padding: 20px 16px 16px;
+  }
+
+  .services-card__name{ font-size: 20px; }
+
+  .services-card__meta{ max-width: 100%; }
+
+  .services-card__body{
+    border-radius: 16px;
+    padding: 16px 14px 14px;
+  }
+
+  .services-card__btn{
+    height: 70px;
+    border-radius: 14px;
+  }
+}
+
+/* =========================
+   МОДАЛКА-ЗАГЛУШКА
+   ========================= */
+
+.services-modal[hidden]{ display: none; }
+
+.services-modal{
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+}
+
+.services-modal__overlay{
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.45);
+}
+
+.services-modal__dialog{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(520px, calc(100% - 28px));
+  background: rgba(255,255,255,.96);
+  border-radius: 18px;
+  padding: 18px 18px 16px;
+  box-shadow: 0 30px 70px rgba(0,0,0,.28);
+}
+
+.services-modal__close{
+  position: absolute;
+  right: 12px;
+  top: 10px;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 10px;
+  background: rgba(0,0,0,.06);
+  cursor: pointer;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.services-modal__title{
+  margin: 4px 0 6px;
+  font-family: var(--u-font);
+  font-weight: 900;
+  color: #1B0B3E;
+}
+
+.services-modal__text{
+  margin: 0 0 14px;
+  color: rgba(27, 11, 62, .78);
+  font-size: 14px;
+}
+
+.services-modal__fake{
+  display: grid;
+  gap: 10px;
+}
+
+.services-modal__input{
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(27, 11, 62, .08);
+}
+
+.services-modal__btn{
+  height: 48px;
+  border-radius: 12px;
+  background: var(--services-btn-bg);
+  box-shadow: 0 10px 22px rgba(0,0,0,.16);
+}
+
+/* =========================
+   HIDE SERVICES DECOR
+   iPad Pro и ниже
+   ========================= */
+
+@media (max-width: 1024px){
+  .services__decor,
+  .services__deco{
+    display: none !important;
+  }
+}

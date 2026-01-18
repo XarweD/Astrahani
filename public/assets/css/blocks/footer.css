@@ -1,0 +1,369 @@
+/* Footer + Map — styles for /partials/footer.html */
+
+:root{
+  /* Можно крутить общую высоту карты */
+  --footer-map-h: clamp(300px, 34vw, 560px);
+
+  /* Фон футера */
+  --footer-bg-url: url("/assets/img/bg/bg.jpg");
+
+  /* Карточки */
+  --footer-card-radius: 28px;
+  --footer-card-pad: clamp(20px, 2.1vw, 28px);
+  --footer-grid-gap: clamp(14px, 2vw, 22px);
+
+  /* Цвета карточек (как на скрине) */
+  --footer-c1: #ECECFF;
+  --footer-c2: #F3E5FE;
+  --footer-c3: #E1F1FF;
+  --footer-c4: #FEF9E5;
+
+  /* Если нужно «подвинуть/крутить» сами карточки (десктоп) */
+  --fc1-x: 0px; --fc1-y: 0px; --fc1-r: 0deg; --fc1-s: 1;
+  --fc2-x: 0px; --fc2-y: 0px; --fc2-r: 0deg; --fc2-s: 1;
+  --fc3-x: 0px; --fc3-y: 0px; --fc3-r: 0deg; --fc3-s: 1;
+  --fc4-x: 0px; --fc4-y: 0px; --fc4-r: 0deg; --fc4-s: 1;
+
+  /* Иконки в левом верхнем углу карточек */
+  --footer-icon-bg: rgba(255,255,255,.95);
+  --footer-icon-box: 56px;
+  --footer-icon-img: 30px;
+
+  /* Отступ сверху под иконку (фикс твоей проблемы) */
+  --footer-icon-gap-under: 14px; /* расстояние между иконкой и текстом */
+
+  /* Логотип слева снизу */
+  --footer-logo-size: 44px;
+  --footer-logo-x: 0px;
+  --footer-logo-y: 0px;
+  --footer-logo-r: 0deg;
+  --footer-logo-s: 1;
+
+  /* Мессенджеры (карточка 3) */
+  --footer-social-size: 44px;
+  --footer-social-gap: 25px;
+  --footer-social-r: 0deg;
+  --footer-social-s: 1;
+
+  /* Если у SVG есть лишние прозрачные поля — можно “подрезать” масштабом */
+  --footer-tg-inner-s: 1.5;
+  --footer-tg-inner-x: 0px;
+  --footer-tg-inner-y: 0px;
+  --footer-wa-inner-s: 1.5;
+  --footer-wa-inner-x: 0px;
+  --footer-wa-inner-y: 0px;
+}
+
+/* =========================
+   MAP (full width)
+   ========================= */
+.footer-map{
+  font-family: Onest, Arial, sans-serif;
+}
+
+/* full-bleed даже если внутри контейнер */
+.footer-map,
+.footer{
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+}
+
+.footer-map__frame{
+  height: var(--footer-map-h);
+  width: 100%;
+  overflow: hidden;
+  border-radius: 0;
+}
+
+.footer-map__iframe{
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* =========================
+   FOOTER
+   ========================= */
+.footer{
+  font-family: Onest, Arial, sans-serif;
+  position: relative;
+  overflow: hidden; /* чтобы всё было строго в блоке */
+  padding: clamp(26px, 3.2vw, 44px) 0 clamp(18px, 2.6vw, 28px);
+  background-image: var(--footer-bg-url);
+  background-size: cover;
+  background-position: center;
+}
+
+/* лёгкое затемнение, чтобы карточки читались (можно убрать) */
+.footer::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,.0) 0%, rgba(0,0,0,.12) 100%);
+  pointer-events: none;
+}
+
+.footer__container{
+  position: relative;
+}
+
+.footer__cards{
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--footer-grid-gap);
+}
+
+.footer-card{
+  position: relative;
+  border-radius: var(--footer-card-radius);
+
+  /* ВАЖНО: теперь карточка — колонка: верх + низ */
+  display: flex;
+  flex-direction: column;
+
+  /* ВАЖНО: фикс, чтобы текст не заходил под иконку */
+  padding:
+    calc(var(--footer-card-pad) + var(--footer-icon-box) + var(--footer-icon-gap-under))
+    var(--footer-card-pad)
+    var(--footer-card-pad);
+
+  min-height: 180px;
+  overflow: hidden;
+}
+
+.footer-card--1{ background: var(--footer-c1); transform: translate(var(--fc1-x), var(--fc1-y)) rotate(var(--fc1-r)) scale(var(--fc1-s)); }
+.footer-card--2{ background: var(--footer-c2); transform: translate(var(--fc2-x), var(--fc2-y)) rotate(var(--fc2-r)) scale(var(--fc2-s)); }
+.footer-card--3{ background: var(--footer-c3); transform: translate(var(--fc3-x), var(--fc3-y)) rotate(var(--fc3-r)) scale(var(--fc3-s)); }
+.footer-card--4{ background: var(--footer-c4); transform: translate(var(--fc4-x), var(--fc4-y)) rotate(var(--fc4-r)) scale(var(--fc4-s)); }
+
+/* ====== настройки (можно двигать/крутить/масштабировать) для иконок ====== */
+.footer-card{
+  --fi-x: 18px;
+  --fi-y: 18px;
+  --fi-box: var(--footer-icon-box);
+  --fi-r: 0deg;
+  --fi-s: 1;
+}
+
+.footer-card--1{ --fi-x: 18px; --fi-y: 18px; }
+.footer-card--2{ --fi-x: 18px; --fi-y: 18px; }
+.footer-card--3{ --fi-x: 18px; --fi-y: 18px; }
+.footer-card--4{ --fi-x: 18px; --fi-y: 18px; }
+
+.footer-card__icon{
+  position: absolute;
+  left: var(--fi-x);
+  top: var(--fi-y);
+  width: var(--fi-box);
+  height: var(--fi-box);
+  border-radius: 16px;
+  background: var(--footer-icon-bg);
+  display: grid;
+  place-items: center;
+  transform: translateZ(0) rotate(var(--fi-r)) scale(var(--fi-s));
+  transform-origin: left top;
+}
+
+.footer-card__icon img{
+  width: var(--footer-icon-img);
+  height: var(--footer-icon-img);
+  object-fit: contain;
+}
+
+/* Верх/низ внутри карточки */
+.footer-card__top{
+  /* просто контейнер */
+}
+
+.footer-card__bottom{
+  margin-top: auto; /* ключевой перенос контента вниз */
+  padding-top: 12px;
+}
+
+.footer-card__kicker{
+  margin: 0 0 12px;
+  line-height: 1.2;
+  font-size: 20px;
+  color: rgba(0,0,0,.75);
+}
+
+.footer-card__title{
+  margin: 0 0 14px;
+  line-height: 1.2;
+  font-size: clamp(16px, 1.2vw, 18px);
+  color: rgba(0,0,0,.86);
+}
+
+.footer-card__title--bottom{
+  margin-bottom: 0; /* чтобы адрес/низ был аккуратнее */
+}
+
+.footer-card__text{
+  margin: 0 0 8px;
+  line-height: 1.2;
+  font-size: 14px;
+}
+
+.muted{
+  opacity: .75;
+}
+
+.footer-card__phones,
+.footer-card__mail{
+  margin: 0;
+}
+
+.footer-card__phone,
+.footer-card__email{
+  color: rgba(0,0,0,.86);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.45;
+}
+
+.footer-card__phone:hover,
+.footer-card__email:hover{
+  text-decoration: underline;
+}
+
+/* =========================
+   Socials (card 3)
+   ========================= */
+.footer-socials{
+  display: flex;
+  align-items: center;
+  gap: var(--footer-social-gap);
+  margin: 0; /* теперь это низ, отступы не нужны */
+}
+
+.footer-social{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--footer-social-size);
+  height: var(--footer-social-size);
+  text-decoration: none;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  transform: rotate(var(--footer-social-r)) scale(var(--footer-social-s));
+  transform-origin: center;
+  transition: transform .18s ease, filter .18s ease;
+}
+
+.footer-social img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: transparent;
+}
+
+/* “Подрезка” прозрачных полей у SVG */
+.footer-social--tg img{
+  transform: translate(var(--footer-tg-inner-x), var(--footer-tg-inner-y)) scale(var(--footer-tg-inner-s));
+  transform-origin: center;
+}
+
+.footer-social--wa img{
+  transform: translate(var(--footer-wa-inner-x), var(--footer-wa-inner-y)) scale(var(--footer-wa-inner-s));
+  transform-origin: center;
+}
+
+.footer-social:hover{
+  transform: rotate(calc(var(--footer-social-r) + 2deg)) scale(calc(var(--footer-social-s) * 1.06));
+  filter: saturate(1.08);
+}
+
+/* =========================
+   Bottom line
+   ========================= */
+.footer__bottom{
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  margin-top: clamp(18px, 2.6vw, 28px);
+  padding-bottom: 8px;
+}
+
+.footer__brand{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.footer__logo{
+  width: var(--footer-logo-size);
+  height: var(--footer-logo-size);
+  object-fit: contain;
+  transform: translate(var(--footer-logo-x), var(--footer-logo-y)) rotate(var(--footer-logo-r)) scale(var(--footer-logo-s));
+  transform-origin: left center;
+}
+
+.footer__brand-text{
+  margin: 0;
+  color: rgba(255,255,255,.92);
+  line-height: 1.2;
+  font-size: 12.5px;
+}
+
+.footer__meta{
+  text-align: center;
+  display: grid;
+  gap: 6px;
+}
+
+.footer__policy{
+  color: rgba(255,255,255,.92);
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.footer__policy:hover{ text-decoration: underline; }
+
+.footer__copy{
+  margin: 0;
+  color: rgba(255,255,255,.84);
+  font-size: 12.5px;
+}
+
+/* =========================
+   Tablet / Mobile
+   ========================= */
+@media (max-width: 1024px){
+  .footer__cards{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer__bottom{
+    align-items: center;
+  }
+}
+
+@media (max-width: 560px){
+  :root{
+    --footer-icon-box: 52px;
+    --footer-icon-img: 28px;
+    --footer-social-size: 42px;
+    --footer-logo-size: 40px;
+  }
+
+  .footer__cards{
+    grid-template-columns: 1fr;
+  }
+
+  .footer-card{
+    min-height: 0;
+  }
+
+  .footer__bottom{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer__meta{
+    text-align: left;
+  }
+}

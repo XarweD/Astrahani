@@ -1,0 +1,361 @@
+/* =========================
+   ADDONS (Щепотка волшебства)
+   ========================= */
+
+:root{
+  --addons-title: #2b0a63;
+  --addons-accent: #2ED2F1;
+
+  --addons-sub: rgba(43, 10, 99, .78);
+
+  --addons-gap: clamp(14px, 2.2vw, 22px);
+  --addons-radius: 24px;
+  --addons-pad: clamp(16px, 2.6vw, 40px);
+
+  --addons-h3: clamp(18px, 1.8vw, 22px);
+  --addons-p: clamp(12.5px, 1.25vw, 14px);
+
+  /* ✅ фикс высоты карточки, чтобы фон НЕ тянется от картинки */
+  --addons-card-h: 420px;        /* DESKTOP */
+  --addons-card-h-tab: 360px;    /* TABLET */
+  --addons-card-h-mob: 180px;    /* MOBILE (в ряд) */
+
+  /* цифры */
+  --addons-num-box: 70px;
+  --addons-num-box-m: 54px;
+  --addons-num-radius: 16px;
+  --addons-num-sz: 52px;
+  --addons-num-sz-m: 46px;
+
+  /* =========================================================
+     НАСТРОЙКИ КАРТИНОК (DESKTOP) — размер + сдвиг X/Y + ВЫСОТА
+     ========================================================= */
+  --a1-w: 100%;  --a1-x: 0px;   --a1-y: 50px;  --a1-mh: 300px;
+  --a2-w: 100%;  --a2-x: 0px;   --a2-y: 140px; --a2-mh: 400px;
+  --a3-w: 100%;  --a3-x: 0px;   --a3-y: 50px;  --a3-mh: 300px;
+  --a4-w: 100%;  --a4-x: 0px;   --a4-y: 50px;  --a4-mh: 300px;
+  --a5-w: 130%;  --a5-x: 0px;   --a5-y: 50px;  --a5-mh: 323px;
+
+  /* =========================================================
+     ✅ DECOR (DESKTOP ONLY) — ПРИВЯЗКА К РЯДУ 4–5
+     ВАЖНО:
+     - X считается от точки между карточками: 50% ± gap/2
+     - поэтому при изменении ширины экрана декор не уезжает к краям
+     ========================================================= */
+
+  /* общая вертикальная привязка относительно ряда 4–5 */
+  --addons-deco-top: 62%;
+
+  /* ЛЕНТА (к карточке #5, слева от неё) */
+    --addons-lent-w: 274px;
+    --addons-lent-h: 230px;
+    --addons-lent-x: -770px;
+    --addons-lent-y: -20px;
+    --addons-lent-rot: -25deg;
+
+  /* КОНФЕТТИ (к карточке #4, справа от неё) */
+    --addons-conf-w: 360px;
+    --addons-conf-h: 150px;
+    --addons-conf-x: 357px;
+    --addons-conf-y: -100px;
+    --addons-conf-rot: 10deg;
+}
+
+.addons{
+  padding-block: var(--section-py);
+  position: relative;
+  overflow: visible;
+}
+
+/* ✅ чтобы декор не перекрывал контент */
+.addons__container{
+  position: relative;
+  z-index: 2;
+}
+
+/* ================= HEAD ================= */
+
+.addons__head{
+  text-align: center;
+  margin-bottom: clamp(16px, 3vw, 26px);
+}
+
+.addons__title{
+  margin: 0 0 10px;
+  font-size: clamp(26px, 4vw, 44px);
+  font-weight: 800;
+  color: var(--addons-title);
+  line-height: 1.08;
+}
+
+.addons__title-accent{ color: var(--addons-accent); }
+
+.addons__sub{
+  max-width: 780px;
+  margin: 0 auto;
+  font-size: clamp(12.5px, 2vw, 19.5px);
+  line-height: 1.45;
+  color: var(--addons-sub);
+  font-family: Onest, Arial, sans-serif;
+}
+
+/* ================= GRID ================= */
+
+.addons-grid{
+  display: grid;
+  gap: var(--addons-gap);
+}
+
+/* ✅ DESKTOP: 1–3 сеткой, 4–5 через flex центр */
+@media (min-width: 901px){
+  .addons-grid{
+    grid-template-columns: repeat(3, 1fr);
+    align-items: stretch;
+  }
+
+  /* обёртка второй строки */
+  .addons-row{
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    gap: var(--addons-gap);
+
+    /* ✅ якорь для декора */
+    position: relative;
+    z-index: 2;
+    overflow: visible;
+  }
+
+  /* чтобы две карточки были РОВНО как ширина одной колонки в 3-col grid */
+  .addons-row .addons-card{
+    flex: 0 0 calc((100% - (var(--addons-gap) * 2)) / 3);
+    max-width: calc((100% - (var(--addons-gap) * 2)) / 3);
+  }
+}
+
+/* TABLET */
+@media (min-width: 521px) and (max-width: 900px){
+  .addons-grid{
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .addons-row{
+    display: contents;
+  }
+
+  :root{
+    --a1-w: 77%;  --a1-x: 0px;  --a1-y: 27px;  --a1-mh: 420px;
+    --a2-w: 76%;  --a2-x: 0px;  --a2-y: 115px; --a2-mh: 420px;
+    --a3-w: 100%; --a3-x: 0px;  --a3-y: 40px;  --a3-mh: 420px;
+    --a4-w: 90%;  --a4-x: 0px;  --a4-y: 50px;  --a4-mh: 420px;
+    --a5-w: 110%; --a5-x: 0px;  --a5-y: 30px;  --a5-mh: 420px;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 520px){
+  .addons-grid{
+    grid-template-columns: 1fr;
+  }
+
+  .addons-row{
+    display: contents;
+  }
+
+  :root{
+    --a1-w: 115%; --a1-x: 0px;  --a1-y: 15px;  --a1-mh: 220px;
+    --a2-w: 111%; --a2-x: 0px;  --a2-y: 47px;  --a2-mh: 230px;
+    --a3-w: 140%; --a3-x: 30px; --a3-y: 17px;  --a3-mh: 220px;
+    --a4-w: 125%; --a4-x: 15px; --a4-y: 25px;  --a4-mh: 220px;
+    --a5-w: 160%; --a5-x: 40px; --a5-y: 15px;  --a5-mh: 220px;
+  }
+}
+
+/* ================= DECOR (привязка к ряду 4–5) ================= */
+
+.addons__deco{
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  display: none; /* default */
+}
+
+/* показываем ТОЛЬКО на десктопе */
+@media (min-width: 901px){
+  .addons__deco{ display: block; }
+}
+
+/*
+  ✅ КЛЮЧ: позиция от точки между карточками
+  - для #4 (левая карточка) её правая грань ≈ 50% - gap/2
+  - для #5 (правая карточка) её левая грань ≈ 50% + gap/2
+*/
+
+/* Лента — рядом с карточкой #5 (слева от неё) */
+.addons__deco--left{
+  width: var(--addons-lent-w);
+  height: var(--addons-lent-h);
+
+  top: var(--addons-deco-top);
+  left: calc(50% + (var(--addons-gap) / 2));
+
+  background-image: url("/assets/img/move/lent.webp");
+
+  transform:
+    translate(var(--addons-lent-x), var(--addons-lent-y))
+    rotate(var(--addons-lent-rot));
+}
+
+/* Конфети — рядом с карточкой #4 (справа от неё) */
+.addons__deco--right{
+  width: var(--addons-conf-w);
+  height: var(--addons-conf-h);
+
+  top: var(--addons-deco-top);
+  left: calc(50% - (var(--addons-gap) / 2));
+
+  background-image: url("/assets/img/move/confeti_1.png");
+
+  transform:
+    translate(var(--addons-conf-x), var(--addons-conf-y))
+    rotate(var(--addons-conf-rot));
+}
+
+/* ================= CARD ================= */
+
+.addons-card{
+  position: relative;
+  height: var(--addons-card-h);
+  padding: var(--addons-pad);
+  border-radius: var(--addons-radius);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow: hidden;
+}
+
+/* tablet высота карточек */
+@media (min-width: 521px) and (max-width: 900px){
+  .addons-card{ height: var(--addons-card-h-tab); }
+}
+
+/* фоны */
+.addons-card--1{ background:#F3E5FE; }
+.addons-card--2{ background:#EAE8FF; }
+.addons-card--3{ background:#FEF9E5; }
+.addons-card--4{ background:#FCF3ED; }
+.addons-card--5{ background:#E1F1FF; }
+
+.addons-card__title{
+  margin: 0 0 8px;
+  font-size: var(--addons-h3);
+  font-weight: 800;
+  color:#2b0a63;
+}
+
+.addons-card__desc{
+  margin: 0;
+  max-width: 36ch;
+  font-size: var(--addons-p);
+  line-height: 1.45;
+  color: rgba(43,10,99,.78);
+}
+
+/* media */
+.addons-card__media{
+  margin-top: auto;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  min-height: 0;
+  padding-bottom: 8px;
+}
+
+.addons-card__img{
+  height: var(--a-mh, 260px);
+  width: auto;
+  max-width: var(--a-w, 86%);
+  object-fit: contain;
+  object-position: center bottom;
+  user-select: none;
+  pointer-events: none;
+  transform: translate(var(--a-x, 0px), var(--a-y, 0px));
+  will-change: transform;
+}
+
+/* привязка переменных к каждой карточке */
+.addons-card--1 .addons-card__img{ --a-w: var(--a1-w); --a-x: var(--a1-x); --a-y: var(--a1-y); --a-mh: var(--a1-mh); }
+.addons-card--2 .addons-card__img{ --a-w: var(--a2-w); --a-x: var(--a2-x); --a-y: var(--a2-y); --a-mh: var(--a2-mh); }
+.addons-card--3 .addons-card__img{ --a-w: var(--a3-w); --a-x: var(--a3-x); --a-y: var(--a3-y); --a-mh: var(--a3-mh); }
+.addons-card--4 .addons-card__img{ --a-w: var(--a4-w); --a-x: var(--a4-x); --a-y: var(--a4-y); --a-mh: var(--a4-mh); }
+.addons-card--5 .addons-card__img{ --a-w: var(--a5-w); --a-x: var(--a5-x); --a-y: var(--a5-y); --a-mh: var(--a5-mh); }
+
+/* FIX (ТОЛЬКО карточка #5) */
+.addons-card--5 .addons-card__img{
+  width: var(--a5-w);
+  max-width: none;
+  height: var(--a5-mh);
+}
+
+/* цифра */
+.addons-card__num{
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  width: var(--addons-num-box);
+  height: var(--addons-num-box);
+  background:#fff;
+  border-radius: var(--addons-num-radius);
+  box-shadow: 0 8px 18px rgba(43,10,99,.12);
+  display: grid;
+  place-items: center;
+  user-select: none;
+  pointer-events: none;
+}
+
+.addons-card__num img{
+  width: var(--addons-num-sz);
+  height: var(--addons-num-sz);
+  object-fit: contain;
+  display: block;
+}
+
+/* MOBILE layout */
+@media (max-width: 520px){
+  .addons-card{
+    flex-direction: row;
+    gap: 14px;
+    height: var(--addons-card-h-mob);
+  }
+
+  .addons-card__media{
+    margin-top: 0;
+    flex: 0 0 44%;
+    justify-content: flex-end;
+    padding-bottom: 0;
+  }
+
+  .addons-card__img{
+    object-position: right bottom;
+  }
+
+  .addons-card__num{
+    left: auto;
+    right: 10px;
+    bottom: 10px;
+    width: var(--addons-num-box-m);
+    height: var(--addons-num-box-m);
+  }
+
+  .addons-card__num img{
+    width: var(--addons-num-sz-m);
+    height: var(--addons-num-sz-m);
+  }
+}

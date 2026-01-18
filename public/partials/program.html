@@ -1,0 +1,174 @@
+<section class="section program" id="program">
+  <!-- декор (заглушки — заменишь на свои картинки) -->
+  <div class="program__deco program__deco--left js-move" data-move="12" aria-hidden="true"></div>
+  <div class="program__deco program__deco--right js-move" data-move="14" aria-hidden="true"></div>
+
+  <!-- ✅ добавили 3 декора (итого 5) -->
+  <div class="program__deco program__deco--bottom-left js-move" data-move="16" aria-hidden="true"></div>
+  <div class="program__deco program__deco--bottom-right js-move" data-move="16" aria-hidden="true"></div>
+  <div class="program__deco program__deco--bottom-mid js-move" data-move="18" aria-hidden="true"></div>
+
+  <div class="container program__container">
+    <header class="program__head">
+      <h2 class="program__title">
+        <span class="program__title-main">Что входит в</span><br>
+        <span class="program__title-accent">программу</span>
+      </h2>
+
+      <p class="program__sub">
+        Выберите то, что <strong>нравится вашему ребёнку&nbsp;—</strong> мы&nbsp;превратим это
+        в&nbsp;праздник с&nbsp;играми, смехом и&nbsp;настоящими эмоциями
+      </p>
+    </header>
+
+    <div class="program-grid" aria-label="Программы">
+      <!-- 1) видео -->
+      <article class="program-card program-card--video">
+        <div class="program-card__media">
+          <video class="program-card__video" muted playsinline loop autoplay preload="metadata" poster="" aria-label="Лазертаг-лабиринт">
+            <source src="assets\img\video\video_lazertag.mp4" type="video/mp4">
+          </video>
+          <div class="program-card__shade" aria-hidden="true"></div>
+        </div>
+
+        <div class="program-card__text">
+          <h3 class="program-card__name">Лазертаг-лабиринт</h3>
+          <p class="program-card__desc">
+            Дети вооружаются лазерными бластерами и делятся на команды. Внутри — тёмный лабиринт, укрытия и задания ведущего.
+            Они бегут, прячутся, смеются и спорят, кто быстрее попадёт в цель. Всё это безопасно, но эмоции — как в настоящем приключении
+          </p>
+        </div>
+      </article>
+
+      <!-- 2) картинка + hover картинка -->
+      <article class="program-card program-card--swap">
+        <div class="program-card__media">
+          <img class="program-card__img program-card__img--base" src="\assets\img\program\neon_1.jpg" alt="">
+          <img class="program-card__img program-card__img--hover" src="\assets\img\program\neon_2.jpg" alt="" aria-hidden="true">
+          <div class="program-card__shade" aria-hidden="true"></div>
+        </div>
+
+        <div class="program-card__text">
+          <h3 class="program-card__name">Неоновая лаборатория</h3>
+          <p class="program-card__desc">
+            В темноте оживают флуоресцентные элементы и светящиеся жидкости. Дети рисуют на доске, в лампе «горит» настоящий свет.
+            Делают «тату» флуоресцентной краской и с восторгом наблюдают, как знакомые предметы превращаются в магические
+          </p>
+        </div>
+      </article>
+
+      <!-- 3) картинка -->
+      <article class="program-card">
+        <div class="program-card__media">
+          <img class="program-card__img program-card__img--base" src="\assets\img\program\lazer_1.jpg" alt="">
+          <div class="program-card__shade" aria-hidden="true"></div>
+        </div>
+
+        <div class="program-card__text">
+          <h3 class="program-card__name">Лазерная паутина</h3>
+          <p class="program-card__desc">
+            Комната наполнена дымом, пространство прорезают десятки лазерных лучей. Ребята пробираются туда и обратно на время,
+            стараясь не задеть ни одной нити. Кто-то ползёт, кто-то перепрыгивает, и каждый выход сопровождается бурей аплодисментов
+          </p>
+        </div>
+      </article>
+
+      <!-- 4) видео -->
+      <article class="program-card program-card--video">
+        <div class="program-card__media">
+          <video class="program-card__video" muted playsinline loop autoplay preload="metadata" poster="" aria-label="Серебряный шторм">
+            <source src="\assets\img\video\video_serebr.mp4" type="video/mp4">
+          </video>
+          <div class="program-card__shade" aria-hidden="true"></div>
+        </div>
+
+        <div class="program-card__text">
+          <h3 class="program-card__name">«Серебряный шторм»</h3>
+          <p class="program-card__desc">
+            Дети ныряют в бассейны с серебряной бумагой, кидаются ею друг в друга и танцуют под музыку.
+            Смех, хаос и десятки смешных кадров — для детей это чистое безумное веселье, для родителей — готовый альбом живых фото и видео
+          </p>
+        </div>
+      </article>
+
+      <!-- 5) картинка + hover картинка -->
+      <article class="program-card program-card--swap">
+        <div class="program-card__media">
+          <img class="program-card__img program-card__img--base" src="\assets\img\program\him_1.jpg" alt="">
+          <img class="program-card__img program-card__img--hover" src="\assets\img\program\him_2.jpg" alt="" aria-hidden="true">
+          <div class="program-card__shade" aria-hidden="true"></div>
+        </div>
+
+        <div class="program-card__text">
+          <h3 class="program-card__name">Хим-лаборатория</h3>
+          <p class="program-card__desc">
+            На глазах у детей из колбы вырывается столб пены, жидкости меняют цвет, а ведущий демонстрирует безопасный огненный трюк.
+            Ребята смеются, удивляются и пробуют себя в маленьких экспериментах, ощущая, что стали частью настоящей лаборатории
+          </p>
+        </div>
+      </article>
+
+      <!-- 6) картинка + hover картинка -->
+      <article class="program-card program-card--swap">
+        <div class="program-card__media">
+          <img class="program-card__img program-card__img--base" src="\assets\img\program\black_1.jpg" alt="">
+          <img class="program-card__img program-card__img--hover" src="\assets\img\program\black_2.jpg" alt="" aria-hidden="true">
+          <div class="program-card__shade" aria-hidden="true"></div>
+        </div>
+
+        <div class="program-card__text">
+          <h3 class="program-card__name">Чёрный ящик</h3>
+          <p class="program-card__desc">
+            Внутри что-то неожиданное: мягкое, хрустящее или колючее. Ребёнок угадывает на ощупь, друзья подсказывают и смеются —
+            простой челлендж, который одинаково заходит и младшим, и подросткам
+          </p>
+        </div>
+      </article>
+    </div>
+
+    <!-- HELP / CTA -->
+    <div class="program-choice" aria-label="Помочь с выбором">
+      <div class="program-choice__deco program-choice__deco--tl" aria-hidden="true"></div>
+      <div class="program-choice__deco program-choice__deco--br" aria-hidden="true"></div>
+
+      <div class="program-choice__inner">
+        <div class="program-choice__left">
+          <h3 class="program-choice__title">
+            <span class="program-choice__title-accent">Помочь</span>&nbsp;<span class="program-choice__title-main">с выбором?</span>
+          </h3>
+
+          <p class="program-choice__text">
+            Хотите, чтобы всё сошлось <strong>по&nbsp;настроению и&nbsp;бюджету?</strong><br>
+            Давайте подберем решение вместе
+          </p>
+        </div>
+
+        <div class="program-choice__right">
+          <a
+            class="program-choice__btn"
+            href="#"
+            data-popup-open="universal"
+            data-popup-title="Помочь с выбором"
+            data-popup-sub="Оставьте заявку — мы уточним детали и подберём программу под настроение и бюджет"
+            data-popup-btn="Подобрать программу"
+            data-popup-tag="program:choice"
+          >Подобрать программу</a>
+
+          <!-- ✅ как на картинке: иконка + текст в 2 строки -->
+          <div class="program-choice__messengers" aria-label="Связаться">
+            <a class="program-choice__ms program-choice__ms--tg" href="https://t.me/enotclub" aria-label="Связаться в Telegram">
+              <img class="program-choice__ms-icon" src="assets/img/social/tg.svg" alt="" aria-hidden="true">
+              <span class="program-choice__ms-text">Связаться<br>в Telegram</span>
+            </a>
+
+            <a class="program-choice__ms program-choice__ms--wa" href="https://wa.me/79378225558" aria-label="Связаться в WhatsApp">
+              <img class="program-choice__ms-icon" src="assets/img/social/wa.svg" alt="" aria-hidden="true">
+              <span class="program-choice__ms-text">Связаться<br>в WhatsApp</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

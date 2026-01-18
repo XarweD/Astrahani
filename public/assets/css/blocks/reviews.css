@@ -1,0 +1,338 @@
+/* =========================
+   REVIEWS (Отзывы) — /partials/reviews.html
+   ========================= */
+
+:root{
+  --reviews-title: #1a093c;
+  --reviews-accent: #2ed2f1;
+  --reviews-text: #1a093c;
+
+  --reviews-card-radius: 22px;
+  --reviews-card-pad: 22px;
+
+  /* количество карточек в видимой области (desktop/tablet/mobile задаются медиа-правилами ниже) */
+  --reviews-per-view: 3;
+  --reviews-gap: clamp(14px, 1.6vw, 26px);
+
+  /* кнопки навигации */
+  --reviews-nav-size: 52px;
+  --reviews-nav-bg: #b7ff4a;
+  --reviews-nav-fg: #1a093c;
+
+  /* ✅ сдвиг стрелок (крути тут) */
+  --reviews-nav-offset: 22px;  /* больше = дальше от карточки */
+  --reviews-nav-inset: -10px;  /* если хочешь чуть внутрь/наружу */
+
+  /* ширина фиолетовой плашки Яндекс */
+  --reviews-yandex-max: 756px;
+
+  /* =========================
+     ✅ НАСТРОЙКИ ЛОГО ЯНДЕКС (твои ручки)
+     ========================= */
+  --ya-box-w: 220px;
+  --ya-box-h: 72px;
+  --ya-zoom: 1;
+  --ya-x: 0px;
+  --ya-y: 0px;
+}
+
+.reviews{
+  padding: var(--section-py) 0;
+  background: #fff;
+}
+
+.reviews__container{ position: relative; }
+
+.reviews__head{
+  text-align: center;
+  margin-bottom: clamp(18px, 3vw, 34px);
+}
+
+.reviews__title{
+  margin: 0;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  font-size: clamp(34px, 4.6vw, 64px);
+  color: var(--reviews-title);
+}
+
+.reviews__title-main{ font-weight: 900; }
+.reviews__title-accent{ font-weight: 900; color: var(--reviews-accent); }
+
+.reviews__sub{
+  margin: clamp(10px, 1.6vw, 16px) auto 0;
+  max-width: 780px;
+  color: rgba(26, 9, 60, 0.86);
+  font-family: "Onest", Arial, sans-serif;
+  font-size: clamp(14px, 1.35vw, 18px);
+  line-height: 1.45;
+}
+
+/* ---------- slider ---------- */
+
+.reviews__slider{
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  margin-top: clamp(18px, 3vw, 30px);
+
+  /* ✅ даём место под кнопки снаружи, чтобы они не перекрывали карточки */
+  padding-inline: calc(var(--reviews-nav-size) + var(--reviews-nav-offset));
+}
+
+.reviews__viewport{
+  overflow: hidden;
+  border-radius: 28px;
+  padding: 0;
+
+  /* свайп приятнее */
+  touch-action: pan-y;
+}
+
+.reviews__track{
+  display: flex;
+  gap: var(--reviews-gap);
+  will-change: transform;
+  transition: transform .45s ease;
+  padding: 0;
+}
+
+.review-card{
+  flex: 0 0 calc((100% - (var(--reviews-gap) * (var(--reviews-per-view) - 1))) / var(--reviews-per-view));
+  background: var(--card-bg, #f3e5fe);
+  border-radius: var(--reviews-card-radius);
+  padding: var(--reviews-card-pad);
+  box-shadow: 0 16px 40px rgba(26, 9, 60, .08);
+  color: var(--reviews-text);
+  display: flex;
+  flex-direction: column;
+  min-height: 420px;
+}
+
+.review-card__head{
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.review-card__ava{
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: #fff;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 10px 20px rgba(26, 9, 60, .10);
+}
+
+.review-card__ava img{
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
+
+.review-card__name{
+  margin: 0;
+  font-weight: 900;
+  font-size: 18px;
+}
+
+.review-card__stars{
+  width: 88px;
+  height: auto;
+}
+
+.review-card__text{
+  font-size: 14px;
+  line-height: 1.52;
+  color: rgba(26, 9, 60, .92);
+}
+
+.review-card__text strong{
+  font-weight: 800;
+}
+
+.review-card__media{
+  margin: 14px 0 0;
+  border-radius: 18px;
+  overflow: hidden;
+  background: rgba(255,255,255,.55);
+  box-shadow: 0 12px 24px rgba(26, 9, 60, .10);
+}
+
+.review-card__media img{
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+/* ---------- nav arrows ---------- */
+
+.reviews__nav{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: var(--reviews-nav-size);
+  height: var(--reviews-nav-size);
+  border: 0;
+  border-radius: 16px;
+  background: var(--reviews-nav-bg);
+  color: var(--reviews-nav-fg);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 18px 36px rgba(26, 9, 60, .14);
+  transition: transform .2s ease, filter .2s ease;
+  z-index: 2;
+}
+
+.reviews__nav span{
+  font-size: 30px;
+  line-height: 1;
+  margin-top: -2px;
+}
+
+.reviews__nav:hover{ filter: brightness(0.98); }
+.reviews__nav:active{ transform: translateY(-50%) scale(0.98); }
+
+/* ✅ двигаем кнопки наружу — больше не перекрывают отзыв */
+.reviews__nav--prev{ left: calc(var(--reviews-nav-inset)); }
+.reviews__nav--next{ right: calc(var(--reviews-nav-inset)); }
+
+/* ---------- yandex bar ---------- */
+
+.reviews__yandex{
+  margin: clamp(18px, 3vw, 28px) auto 0;
+  max-width: min(var(--reviews-yandex-max), 100%);
+  border-radius: 22px;
+  padding: clamp(14px, 2.2vw, 20px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  background: linear-gradient(90deg, #6d21ff 0%, #8a34ff 38%, #a348ff 62%, #6d21ff 100%);
+  color: #fff;
+  box-shadow: 0 18px 42px rgba(26, 9, 60, .16);
+}
+
+.reviews__yandex-left{
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 2.2vw, 22px);
+  min-width: 0;
+}
+
+.reviews__yandex-title{
+  font-weight: 900;
+  font-size: clamp(16px, 2.2vw, 22px);
+  line-height: 1.15;
+}
+
+/* прозрачный кроп */
+.reviews__ya-crop{
+  width: var(--ya-box-w);
+  height: var(--ya-box-h);
+  overflow: hidden;
+  border-radius: 12px;
+  background: transparent;
+  display: grid;
+  place-items: center;
+}
+
+.reviews__yandex-logo{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  transform: translate(var(--ya-x), var(--ya-y)) scale(var(--ya-zoom));
+  transform-origin: center;
+  will-change: transform;
+}
+
+.reviews__yandex-btn{
+  flex: 0 0 auto;
+  text-decoration: none;
+  padding: 20px 40px;
+  border-radius: 10px;
+  background: #b7ff4a;
+  color: #1a093c;
+  font-weight: 500;
+  box-shadow: 0 14px 30px rgba(0,0,0,.18);
+  transition: transform .2s ease, filter .2s ease;
+}
+
+.reviews__yandex-btn:hover{ filter: brightness(0.98); }
+.reviews__yandex-btn:active{ transform: scale(0.98); }
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 1200px){
+  :root{ --reviews-nav-size: 46px; }
+  .reviews__slider{
+    padding-inline: calc(var(--reviews-nav-size) + 14px);
+  }
+}
+
+/* ✅ iPad Pro и ниже: скрываем кнопки, свайпом */
+@media (max-width: 1024px){
+  :root{ --reviews-per-view: 2; }
+
+  .reviews__viewport{ border-radius: 24px; }
+  .review-card{ min-height: 410px; }
+  .reviews__yandex{ max-width: 100%; }
+
+  .reviews__nav{ display: none; }        /* ✅ убрать кнопки */
+  .reviews__slider{ padding-inline: 0; } /* ✅ вернуть на всю ширину */
+}
+
+/* ✅ mobile */
+@media (max-width: 620px){
+  :root{
+    --reviews-per-view: 1;
+    --reviews-card-pad: 18px;
+
+    --ya-box-w: 280px;
+    --ya-box-h: 92px;
+    --ya-zoom: 1;
+    --ya-x: 0px;
+    --ya-y: 0px;
+  }
+
+  .review-card__media img{ height: 200px; }
+
+  .reviews__yandex{
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    padding: 18px 16px 16px;
+    border-radius: 20px;
+  }
+
+  .reviews__yandex-left{
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .reviews__yandex-title{
+    font-size: 18px;
+    line-height: 1.1;
+  }
+
+  .reviews__ya-crop{
+    margin: 0 auto;
+    border-radius: 14px;
+  }
+
+  .reviews__yandex-btn{
+    width: 100%;
+    text-align: center;
+    padding: 18px 18px;
+    border-radius: 14px;
+    font-size: 18px;
+    font-weight: 800;
+  }
+}

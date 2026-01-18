@@ -1,0 +1,277 @@
+/* =========================
+   GALLERY (Посмотрите как зажигательно проходят наши праздники)
+   ========================= */
+
+:root{
+  --gallery-accent: rgb(46, 210, 241);
+  --gallery-title: #1a093c;
+
+  /* ✅ ОТСТУП МЕЖДУ ЗАГОЛОВКОМ И ГАЛЕРЕЕЙ (подбирай тут) */
+  --gallery-head-gap: clamp(1px, 5vw, 150px);
+
+  /* ✅ ДОП. ОТСТУП СВЕРХУ ТОЛЬКО ДЛЯ DESKTOP (подбирай тут)
+     Примеры:
+     - аккуратно: clamp(24px, 3vw, 56px)
+     - заметно:   clamp(44px, 5vw, 90px)
+     - сильно:    clamp(70px, 7vw, 140px)
+  */
+  --gallery-top-gap-desktop: clamp(44px, 5vw, 400px);
+
+  /* базовые */
+  --gallery-gap: clamp(12px, 2.2vw, 26px);
+  --gallery-radius: clamp(16px, 2vw, 28px);
+
+  /* высоты рядов */
+  --gallery-row: clamp(170px, 16vw, 250px);
+  --gallery-row-t: clamp(180px, 20vw, 270px);
+  --gallery-row-m: clamp(170px, 44vw, 260px);
+}
+
+/* секция */
+.gallery{
+  padding-top: calc(var(--section-py) + clamp(18px, 3.2vw, 44px));
+  padding-bottom: var(--section-py);
+}
+
+.gallery__container{
+  position: relative;
+}
+
+/* ✅ чтобы декор НЕ перекрывал текст */
+.gallery__head{
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  margin-bottom: var(--gallery-head-gap);
+}
+
+.gallery__title{
+  margin: 0;
+  line-height: 1.02;
+  font-weight: 500;
+  font-size: 45px;
+  letter-spacing: -0.02em;
+  color: var(--gallery-title);
+  font-family: var(--u-font);
+}
+
+.gallery__title-accent{
+  color: var(--gallery-accent);
+}
+
+/* заголовок на адаптиве (как было) */
+@media (max-width: 900px){
+  .gallery__title{
+    font-size: clamp(30px, 5.2vw, 45px);
+  }
+}
+@media (max-width: 520px){
+  .gallery__title{
+    font-size: clamp(26px, 8.2vw, 34px);
+  }
+}
+
+/* =========================
+   Общие стили карточек
+   ========================= */
+
+.gallery-item{
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--gallery-radius);
+  background: transparent;
+}
+
+.gallery-item img,
+.gallery-item video{
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.22);
+}
+
+.gallery-item video{
+  background: transparent;
+  transform: scale(1.3);
+}
+
+/* =========================
+   DESKTOP GRID (>= 901px)
+   ========================= */
+
+.gallery-grid{
+  display: none;
+}
+
+.gallery-grid--desktop{
+  display: grid;
+  gap: var(--gallery-gap);
+
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, var(--gallery-row));
+
+  grid-template-areas:
+    "g1 g2 g2 g3"
+    "g4 g4 g5 g5"
+    "g6 g6 g7 g8"
+    "g9 g10 g10 g11";
+}
+
+/* areas */
+.gallery-grid--desktop .g1 { grid-area: g1; }
+.gallery-grid--desktop .g2 { grid-area: g2; }
+.gallery-grid--desktop .g3 { grid-area: g3; }
+.gallery-grid--desktop .g4 { grid-area: g4; }
+.gallery-grid--desktop .g5 { grid-area: g5; }
+.gallery-grid--desktop .g6 { grid-area: g6; }
+.gallery-grid--desktop .g7 { grid-area: g7; }
+.gallery-grid--desktop .g8 { grid-area: g8; }
+.gallery-grid--desktop .g9 { grid-area: g9; }
+.gallery-grid--desktop .g10{ grid-area: g10; }
+.gallery-grid--desktop .g11{ grid-area: g11; }
+
+/* =========================
+   TABLET (<=900px)
+   ========================= */
+
+@media (max-width: 900px){
+  .gallery-grid--desktop{ display: none; }
+
+  .gallery-grid--tablet{
+    display: grid;
+    gap: var(--gallery-gap);
+
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, var(--gallery-row-t));
+
+    grid-template-areas:
+      "t1 t2"
+      "t3 t4"
+      "t5 t6"
+      "t7 t8";
+  }
+
+  .gallery-grid--tablet .t1 { grid-area: t1; }
+  .gallery-grid--tablet .t2 { grid-area: t2; }
+  .gallery-grid--tablet .t3 { grid-area: t3; }
+  .gallery-grid--tablet .t4 { grid-area: t4; }
+  .gallery-grid--tablet .t5 { grid-area: t5; }
+  .gallery-grid--tablet .t6 { grid-area: t6; }
+  .gallery-grid--tablet .t7 { grid-area: t7; }
+  .gallery-grid--tablet .t8 { grid-area: t8; }
+}
+
+@media (min-width: 521px) and (max-width: 900px){
+  :root{
+    --gallery-gap: 18px;
+    --gallery-row-t: clamp(220px, 28vw, 360px);
+  }
+
+  .gallery-grid--tablet .gallery-item{
+    margin: -4px;
+  }
+
+  .gallery-grid--tablet .gallery-item video{
+    transform: scale(1.15);
+  }
+}
+
+/* =========================
+   MOBILE (<= 520px)
+   ========================= */
+
+@media (max-width: 520px){
+  .gallery-grid--tablet{ display: none; }
+
+  .gallery-grid--mobile{
+    display: grid;
+    gap: var(--gallery-gap);
+
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows:
+      var(--gallery-row-m)
+      var(--gallery-row-m)
+      var(--gallery-row-m)
+      var(--gallery-row-m)
+      calc(var(--gallery-row-m) + 26px);
+
+    grid-template-areas:
+      "m1 m2"
+      "m3 m3"
+      "m4 m5"
+      "m6 m7"
+      "m8 m8";
+  }
+
+  .gallery-grid--mobile .m1 { grid-area: m1; }
+  .gallery-grid--mobile .m2 { grid-area: m2; }
+  .gallery-grid--mobile .m3 { grid-area: m3; }
+  .gallery-grid--mobile .m4 { grid-area: m4; }
+  .gallery-grid--mobile .m5 { grid-area: m5; }
+  .gallery-grid--mobile .m6 { grid-area: m6; }
+  .gallery-grid--mobile .m7 { grid-area: m7; }
+  .gallery-grid--mobile .m8 { grid-area: m8; }
+}
+
+@media (max-width: 520px){
+  :root{
+    --gallery-gap: 10px;
+    --gallery-row-m: clamp(190px, 52vw, 300px);
+  }
+
+  .gallery-grid--mobile .gallery-item{
+    margin: -2px;
+  }
+
+  .gallery-grid--mobile img{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    object-fit: cover;
+    object-position: center 20%;
+  }
+
+  .gallery-grid--mobile video{
+    transform: scale(1.06);
+  }
+}
+
+@media (max-width: 420px){
+  :root{
+    --gallery-gap: 12px;
+  }
+}
+
+/* =========================
+   ✅ DESKTOP OVERRIDES — В САМОМ КОНЦЕ (чтобы ТОЧНО сработало)
+   ========================= */
+@media (min-width: 901px){
+  :root{
+    --gallery-gap: 14px;
+    --gallery-row: clamp(210px, 30vw, 600px);
+  }
+
+  /* ✅ вот этот отступ решает проблему "декор задевает текст" */
+  .gallery{
+    padding-top: calc(
+      var(--section-py) + clamp(18px, 3.2vw, 44px) + var(--gallery-top-gap-desktop)
+    );
+  }
+
+  .gallery-grid--desktop .gallery-item{
+    transform: none;
+    margin: 5px;
+  }
+}
+@media (min-width: 901px){
+  :root{
+    /* ⬅️ КРУТИ ТУТ (увеличивай/уменьшай) */
+    --gallery-prev-overlap-gap: clamp(40px, 2vw, 120px);
+  }
+
+  .gallery{
+    margin-top: var(--gallery-prev-overlap-gap);
+  }
+}

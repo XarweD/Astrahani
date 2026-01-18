@@ -1,0 +1,217 @@
+/* =========================
+   KITCHEN (Своя кухня и бар) — /partials/kitchen.html
+   ========================= */
+
+:root{
+  --kitchen-title: #1a093c;
+  --kitchen-accent: #37D6FF; /* как в макете (голубой) */
+  --kitchen-ink: #1a093c;
+  --kitchen-muted: rgba(26, 9, 60, .8);
+
+  --kitchen-tag-bg: #AEFF60;
+
+  /* размеры карточек */
+  --kitchen-radius: 26px;
+  --kitchen-gap: clamp(14px, 2.2vw, 26px);
+  --kitchen-card-h: clamp(190px, 16vw, 260px);
+
+  /* насколько плашка "вылезает" */
+  --kitchen-tag-out: 18px;
+}
+
+.kitchen{
+  padding-block: var(--section-py);
+  background: #fff;
+}
+
+.kitchen__head{
+  text-align: center;
+  margin-bottom: clamp(18px, 3.2vw, 34px);
+}
+
+.kitchen__title{
+  margin: 0;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  font-size: clamp(30px, 4.2vw, 72px);
+}
+
+.kitchen__title-main{
+  color: var(--kitchen-title);
+}
+
+.kitchen__title-accent{
+  color: var(--kitchen-accent);
+}
+
+.kitchen__sub{
+  margin: clamp(10px, 1.4vw, 16px) auto 0;
+  max-width: 920px;
+  font-family: Onest, Arial, sans-serif;
+  color: var(--kitchen-muted);
+  font-size: clamp(14px, 1.35vw, 20px);
+  line-height: 1.45;
+}
+
+.kitchen__sub strong{
+  color: var(--kitchen-ink);
+  font-weight: 700;
+}
+
+/* GRID */
+.kitchen__grid{
+  display: grid;
+  gap: var(--kitchen-gap);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: stretch;
+}
+
+/* CARD */
+.kitchen-card{
+  position: relative;
+  min-height: var(--kitchen-card-h);
+  border-radius: var(--kitchen-radius);
+  overflow: visible; /* ✅ важно: плашка может выходить за карточку */
+  transform: translateZ(0);
+  background: #eee;
+}
+
+.kitchen-card__media{
+  position: absolute;
+  inset: 0;
+
+  /* ✅ обрезаем только картинку, а не плашку */
+  overflow: hidden;
+  border-radius: var(--kitchen-radius);
+}
+
+.kitchen-card__img{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity .28s ease, transform .55s ease;
+}
+
+.kitchen-card__img--hover{
+  opacity: 0;
+}
+
+/* hover swap */
+.kitchen-card:hover .kitchen-card__img--hover{
+  opacity: 1;
+}
+
+.kitchen-card:hover .kitchen-card__img:not(.kitchen-card__img--hover){
+  opacity: 0;
+}
+
+/* лёгкий “живой” эффект — как в макете */
+.kitchen-card:hover .kitchen-card__img{
+  transform: scale(1.02);
+}
+
+/* TAG (зелёная плашка) */
+.kitchen-card__tag{
+  position: absolute;
+  left: 50%;
+  z-index: 3;
+  transform: translateX(-50%) rotate(-4deg);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 16px 18px;
+  border-radius: 12px;
+  background: var(--kitchen-tag-bg);
+  color: #0a0a0a;
+  box-shadow: 0 14px 28px rgba(0,0,0,.18);
+
+  font-family: var(--u-font);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: clamp(12px, 1.05vw, 16px);
+  line-height: 1;
+  white-space: nowrap;
+
+  pointer-events: none; /* чтобы не мешало hover по карточке */
+}
+
+/* ✅ вылезает наружу как на скрине */
+.kitchen-card__tag--top{ top: calc(var(--kitchen-tag-out) * -1); }
+.kitchen-card__tag--bottom{ bottom: calc(var(--kitchen-tag-out) * -1); }
+
+/* индивидуальные “чуть-чуть” повороты */
+.kitchen-card--1 .kitchen-card__tag{ transform: translateX(-50%) rotate(-6deg); }
+.kitchen-card--2 .kitchen-card__tag{ transform: translateX(-50%) rotate(-6deg); }
+.kitchen-card--3 .kitchen-card__tag{ transform: translateX(-50%) rotate(-6deg); }
+.kitchen-card--4 .kitchen-card__tag{ transform: translateX(-50%) rotate(-6deg); }
+
+/* =========================
+   TABLET (iPad / iPad Pro и ниже) — 2x2
+   ========================= */
+@media (max-width: 1024px){
+  :root{
+    --kitchen-card-h: clamp(170px, 24vw, 240px);
+    --kitchen-tag-out: 16px;
+  }
+
+  .kitchen__grid{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .kitchen__title{
+    font-size: clamp(28px, 6vw, 54px);
+  }
+
+  /* ✅ FIX: на iPad "Пицца и роллы" + "Фирменные напитки" тоже сверху */
+  .kitchen-card--2 .kitchen-card__tag--bottom,
+  .kitchen-card--4 .kitchen-card__tag--bottom{
+    bottom: auto; /* отключаем низ */
+    top: calc(var(--kitchen-tag-out) * -1); /* включаем верх */
+  }
+}
+
+/* =========================
+   MOBILE — одна колонка
+   ========================= */
+@media (max-width: 560px){
+  :root{
+    --kitchen-tag-out: 14px;
+  }
+
+  .kitchen__grid{
+    grid-template-columns: 1fr;
+  }
+
+  .kitchen-card{
+    min-height: clamp(190px, 62vw, 300px);
+    border-radius: 22px;
+  }
+
+  .kitchen-card__media{
+    border-radius: 22px;
+  }
+
+  .kitchen-card__tag{
+    padding: 10px 16px;
+    border-radius: 12px;
+    font-size: 13px;
+  }
+
+  /* ✅ FIX: на мобиле тоже сверху */
+  .kitchen-card--2 .kitchen-card__tag--bottom,
+  .kitchen-card--4 .kitchen-card__tag--bottom{
+    bottom: auto;
+    top: calc(var(--kitchen-tag-out) * -1);
+  }
+}
+
+/* На устройствах без hover (тач) — не дёргаем масштаб */
+@media (hover: none){
+  .kitchen-card:hover .kitchen-card__img{
+    transform: none;
+  }
+}

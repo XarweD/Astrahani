@@ -1,0 +1,604 @@
+/* =========================
+   HEADER + Drawer menu
+   ========================= */
+
+:root{
+  --u-font: "Unbounded", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --menu-purple: #5a18b6;
+}
+
+/* базовая обёртка */
+.container{
+  width: min(1180px, 92%);
+  margin: 0 auto;
+}
+
+.site-header{
+  position: absolute;
+  left: 0; right: 0; top: 0;
+  z-index: 50;
+  padding: 18px 0;
+  transition: background .25s ease, box-shadow .25s ease, padding .25s ease;
+  font-family: var(--u-font);
+}
+
+.site-header__inner{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.brand{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #fff;
+  text-decoration: none;
+  min-width: 320px;
+}
+
+/* НОМЕР слева (для мобилки/планшета) */
+.brand__phone{
+  display: none; /* по умолчанию скрыт на десктопе */
+  align-items: center;
+  justify-content: center;
+  height: 54px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.10);
+  border: 1px solid rgba(255,255,255,.18);
+  font-weight: 800;
+  letter-spacing: .2px;
+  white-space: nowrap;
+  line-height: 1;
+  font-family: 'Onest', Arial, sans-serif;
+
+  /* если это <a> — фикс стилей ссылки */
+  color: #fff !important;
+  text-decoration: none !important;
+  -webkit-tap-highlight-color: transparent;
+}
+.brand__phone:visited{ color:#fff !important; }
+.brand__phone:hover{ color:#fff !important; text-decoration:none !important; }
+.brand__phone:active{ color:#fff !important; }
+.brand__phone:focus{ outline: none; }
+
+.brand__logo{
+  width: 54px;
+  height: 54px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+/* логотип как слой */
+.brand__logo--img::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image: url("/assets/img/logo.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 78%;
+  transform: scale(2.15);
+  transform-origin: center;
+}
+
+.brand__logo img{ display:none; }
+
+.brand__text{
+  display: grid;
+  gap: 6px;
+  line-height: 1.15;
+  color: inherit;
+  text-decoration: none;
+}
+
+.brand__line{
+  font-size: 14px;
+  font-weight: 500;
+  opacity: .95;
+}
+
+.brand__line b{ font-weight: 800; }
+
+.brand__since{
+  font-size: 13px;
+  opacity: .85;
+}
+
+.site-header__right{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.social{
+  display: flex;
+  align-items: center;
+}
+
+/* соц-иконки чистые */
+.social__item{
+  width: 50px;
+  height: 50px;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+
+  transition: transform .16s ease, filter .16s ease;
+  transform: translateZ(0);
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+
+.social__item::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size: 76%;
+  transform-origin: center;
+}
+
+/* пути */
+.social__item--max::before{
+  background-image: url("/assets/img/social/max.svg");
+  transform: scale(1.10);
+}
+.social__item--tg::before{
+  background-image: url("/assets/img/social/tg.svg");
+  transform: scale(1.35);
+}
+.social__item--wa::before{
+  background-image: url("/assets/img/social/wa.svg");
+  transform: scale(1.35);
+}
+
+/* hover + click effect */
+.social__item:hover{ transform: scale(1.06); }
+.social__item:active{ transform: scale(0.94); filter: brightness(0.92); }
+
+.phone{
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: .2px;
+  font-size: 18px;
+  white-space: nowrap;
+  font-family: 'Onest', Arial, sans-serif;
+  transition: transform .16s ease, opacity .16s ease, filter .16s ease;
+  transform: translateZ(0);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.phone:hover{ transform: scale(1.03); }
+.phone:active{ transform: scale(0.97); filter: brightness(0.90); }
+
+/* по умолчанию sticky-phone скрыт */
+.phone--sticky{ display:none; }
+
+.header-cta{
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 10px;
+  padding: 20px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,.35);
+  background: rgba(0,0,0,.08);
+  backdrop-filter: blur(2px);
+  white-space: nowrap;
+
+  transition:
+  background-color .35s cubic-bezier(.4,0,.2,1),
+  color .35s cubic-bezier(.4,0,.2,1),
+  border-color .35s cubic-bezier(.4,0,.2,1),
+  transform .16s ease,
+  filter .16s ease;
+  transform: translateZ(0);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.header-cta:hover{
+  background: #fff;
+  color: #150134;
+  border-color: rgba(255,255,255,.65);
+}
+
+.header-cta:active{
+  transform: scale(0.97);
+  filter: brightness(0.92);
+}
+
+/* ====== Burger button ====== */
+.burger{
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  margin: 0;
+
+  background: transparent;
+  border: none;
+  border-radius: 0;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  position: relative;
+  overflow: visible;
+
+  transition: transform .16s ease, filter .16s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.burger::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: url("/assets/img/menu.svg") center/40px 40px no-repeat;
+  transform: scale(1.35);
+  transform-origin: center;
+  transition: transform .16s ease, filter .16s ease, opacity .16s ease, background-image .12s ease;
+  pointer-events: none;
+}
+
+.burger:hover::before{
+  background-image: url("/assets/img/menu_hover.svg");
+  transform: scale(1.42);
+}
+
+.burger:active::before{
+  transform: scale(1.25);
+  filter: brightness(0.92);
+}
+
+.burger:hover{ transform: scale(1.04); }
+.burger:active{ transform: scale(0.96); filter: brightness(0.92); }
+
+/* скрываем старую “гамбургер” полоску */
+.burger__icon{ display:none; }
+
+/* sticky */
+.site-header.is-sticky{
+  position: fixed;
+  background: rgba(255,255,255,.92);
+  box-shadow: 0 10px 30px rgba(0,0,0,.15);
+  padding: 10px 0;
+}
+
+.site-header.is-sticky .header-cta{
+  background: #ffffff;              /* чистый белый */
+  color: #1a093c;                   /* читаемый текст */
+  border-color: #1a093c;
+
+  box-shadow: 0 8px 22px rgba(0,0,0,.12);
+  backdrop-filter: none;            /* 🔴 важно */
+}
+
+/* hover только для sticky */
+.site-header.is-sticky .header-cta:hover{
+  background: #580c9b;
+  color: #ffffff;
+  border-color: rgba(0,0,0,.28);
+}
+
+.site-header.is-sticky .brand,
+.site-header.is-sticky .phone{
+  color: #141414;
+}
+
+/* =========================
+   Drawer menu
+   ========================= */
+
+.menu-overlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.55);
+  z-index: 80;
+}
+
+.drawer{
+  position: fixed;
+  top: 0;
+  right: 0;
+
+  /* ✅ ФИКС: на мобилках учитываем нижнюю панель браузера */
+  height: 100vh;    /* fallback */
+  height: 100dvh;   /* modern */
+
+  width: min(360px, 86vw);
+  background: #580c9b;
+  z-index: 90;
+  transform: translateX(100%);
+  transition: transform .25s ease;
+  font-family: var(--u-font);
+
+  /* ✅ чтобы контент не "вылезал" за экран, скролл контролируем внутри */
+  overflow: hidden;
+}
+
+.drawer.is-open{
+  transform: translateX(0);
+}
+
+.drawer__close{
+  position: absolute;
+  top: -2px;
+  right: 23px;
+  width: 20px;
+  height: 37px;
+  border: none;
+  background: transparent;
+  color: #fff;
+  font-size: 50px;
+  line-height: 1;
+  cursor: pointer;
+
+  transition: transform .16s ease, opacity .16s ease, filter .16s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.drawer__close:hover{ transform: scale(1.05); opacity: .95; }
+.drawer__close:active{ transform: scale(0.95); filter: brightness(.9); }
+
+.drawer__content{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  /* ✅ ФИКС: добавляем safe-area снизу, чтобы телефон/кнопка не попадали под панель */
+  padding: 48px 40px calc(38px + env(safe-area-inset-bottom)) 40px;
+
+  gap: 26px;
+}
+
+.drawer__nav{
+  display: grid;
+  gap: 16px;
+
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-right: 6px;
+}
+
+/* =========================
+   FIX: hover больше не режет справа
+   ========================= */
+.drawer__link{
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: .1px;
+
+  display: inline-block;           /* ✅ transform без глюков */
+  transform-origin: left center;   /* ✅ не "раздувает" вправо */
+  padding-right: 14px;             /* ✅ запас справа */
+
+  transition: transform .16s ease, color .16s ease, filter .16s ease;
+  transform: translateZ(0);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.drawer__link:hover{
+  color: #eae8ff;
+  transform: translateX(6px);      /* ✅ вместо scale — ширина не меняется */
+}
+
+.drawer__link:active{
+  transform: translateX(4px);
+  filter: brightness(.92);
+}
+
+.drawer__bottom{
+  margin-top: auto;
+  display: grid;
+  gap: 25px;
+  padding-top: 18px;
+}
+
+.drawer__small{
+  color: rgba(255,255,255,.90);
+  font-size: 18px;
+  line-height: 1.35;
+  font-weight: 500;
+  font-family: 'Onest';
+}
+
+.drawer__phone{
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 800;
+  font-family: 'Onest';
+
+  transition: transform .16s ease, filter .16s ease, opacity .16s ease;
+  transform: translateZ(0);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.drawer__phone:hover{ transform: scale(1.03); opacity: .98; }
+.drawer__phone:active{ transform: scale(0.97); filter: brightness(.90); }
+
+.drawer__cta{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 13px;
+  padding: 13px 25px;
+  border-radius: 8px;
+  border: 1px solid #ffffff !important;
+  width: fit-content;
+
+  position: relative;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+
+  transition: transform .16s ease, filter .16s ease, background-color .16s ease;
+  transform: translateZ(0);
+}
+
+.drawer__cta:hover{ transform: scale(1.03); }
+.drawer__cta:active{ transform: scale(0.97); filter: brightness(.92); }
+
+.drawer__cta::before{
+  content:"";
+  position:absolute;
+  top: -35%;
+  bottom: -35%;
+  width: 55%;
+  right: -70%;
+  background: linear-gradient(
+    110deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,.22) 45%,
+    rgba(255,255,255,.10) 55%,
+    rgba(255,255,255,0) 100%
+  );
+  transform: skewX(-18deg);
+  opacity: .9;
+  animation: ctaShine 3.6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes ctaShine{
+  0%   { right: -70%; opacity: 0; }
+  10%  { opacity: .75; }
+  40%  { right: 120%; opacity: 0; }
+  100% { right: 120%; opacity: 0; }
+}
+
+body.menu-open{
+  overflow: hidden;
+}
+
+/* =========================
+   RESPONSIVE (десктоп не трогаем)
+   ========================= */
+
+/* ВЕСЬ АДАПТИВ: делаем только HEADER "на всю ширину" и даём аккуратные отступы */
+@media (max-width: 1180px){
+
+  /* ВАЖНО: это реальный контейнер в header (site-header__inner container) */
+  .site-header__inner.container{
+    width: 100%;
+    margin: 0;
+    /* маленький отступ слева чтобы номер не прилипал */
+    padding-left: 12px;
+    /* справа чуть больше под иконки */
+    padding-right: 16px;
+  }
+}
+
+@media (max-width: 980px){
+  /* прячем десктопный телефон и CTA */
+  .phone--desktop, .header-cta{ display:none; }
+
+  /* слева: номер (до скролла) */
+  .brand__phone{ display:inline-flex; }
+
+  /* текст бренда убираем */
+  .brand__text{ display:none; }
+
+  /* лого на мобилке по умолчанию скрыто */
+  .brand__logo{ display:none; }
+
+  .brand{ min-width: auto; gap: 10px; }
+  .site-header{ padding: 12px 0; }
+  .site-header__inner{ gap: 12px; }
+  .site-header__right{ gap: 10px; }
+  .social__item{ width: 44px; height: 44px; }
+
+  /* sticky: убираем левый блок brand */
+  .site-header.is-sticky .brand{ display: none; }
+
+  /* правый блок занимает всю ширину */
+  .site-header.is-sticky .site-header__right{
+    width: 100%;
+    flex: 1 1 auto;
+    justify-content: flex-start;
+  }
+
+  .site-header.is-sticky .brand__logo{ display:none !important; }
+  .site-header.is-sticky .brand__phone{ display:none; }
+
+  /* номер sticky — у левого края (с учётом padding-left у header container) */
+  .site-header.is-sticky .phone--sticky{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    height: 34px;
+    padding: 0 10px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: .2px;
+    white-space: nowrap;
+    background: rgba(0,0,0,.04);
+    border: 1px solid rgba(0,0,0,.14);
+    color: #141414;
+
+    margin-right: auto;
+    order: 1;
+
+    text-decoration: none !important;
+  }
+  .site-header.is-sticky .phone--sticky:visited{ color:#141414 !important; }
+  .site-header.is-sticky .phone--sticky:hover{ color:#141414 !important; text-decoration:none !important; }
+  .site-header.is-sticky .phone--sticky:active{ color:#141414 !important; }
+
+  .site-header.is-sticky .social{ order: 2; }
+  .site-header.is-sticky .burger{ order: 3; }
+}
+
+@media (max-width: 560px){
+  /* чуть меньше правый отступ */
+  .site-header__inner.container{
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .brand__phone{
+    height: 42px;
+    padding: 0 12px;
+    font-size: 14px;
+  }
+
+  .social__item{ width: 40px; height: 40px; }
+  .burger{ width: 38px; height: 38px; }
+  .burger::before{ background-size: 38px 38px; }
+
+  /* ✅ чуть больше низа на маленьких экранах + safe-area */
+  .drawer__content{
+    padding: 86px 28px calc(28px + env(safe-area-inset-bottom)) 28px;
+  }
+
+  .drawer__link{ font-size: 20px; }
+}
+
+@media (max-width: 360px){
+  .brand__phone{
+    font-size: 13px;
+    padding: 0 10px;
+    height: 40px;
+  }
+  .site-header.is-sticky .phone--sticky{
+    font-size: 12px;
+    padding: 0 8px;
+  }
+}
+
+html, body{
+  overflow-x: hidden;
+}

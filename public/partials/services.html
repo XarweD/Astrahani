@@ -1,0 +1,264 @@
+<section class="section services" id="services" aria-labelledby="servicesTitle">
+
+  <!-- ✅ DECOR ВНЕ services__clip — чтобы не обрезался и мог выходить на другие блоки -->
+  <div class="services__decor services__decor--free" aria-hidden="true">
+    <!-- 1) e.webp — top-left -->
+    <img class="services__deco services__deco--e js-move"
+         data-move="12"
+         src="assets/img/move/e.webp" alt="" aria-hidden="true">
+
+    <!-- 2) h.webp — top-right, UNDER cards -->
+    <img class="services__deco services__deco--h services__deco--under-cards js-move"
+         data-move="10"
+         src="assets/img/move/h.webp" alt="" aria-hidden="true">
+
+    <!-- 3) o.webp — bottom-left -->
+    <img class="services__deco services__deco--o js-move"
+         data-move="12"
+         src="assets/img/move/o.webp" alt="" aria-hidden="true">
+
+    <!-- 4) lent1.webp — bottom-left -->
+    <img class="services__deco services__deco--lent js-move"
+         data-move="14"
+         src="assets/img/move/lent1.webp" alt="" aria-hidden="true">
+
+    <!-- 5) t.webp — bottom-right -->
+    <img class="services__deco services__deco--t js-move"
+         data-move="14"
+         src="assets/img/move/t.webp" alt="" aria-hidden="true">
+  </div>
+
+  <!-- Всё, что должно обрезаться по радиусу и быть “привязано” к фиолетовому блоку — внутри services__clip -->
+  <div class="services__clip">
+    <div class="container services__container">
+      <header class="services__head">
+        <h2 class="services__title" id="servicesTitle">
+          Готовые <span class="services__title-accent">программы</span>
+        </h2>
+
+        <p class="services__sub">
+          <strong>До 10 детей включено.</strong><br>
+          Дети до 5 лет — бесплатно
+        </p>
+      </header>
+
+      <div class="services__grid" role="list" aria-label="Готовые программы">
+        <!-- CARD 1 -->
+        <article class="services-card services-card--cream" role="listitem">
+          <h3 class="services-card__name">Маленькое чудо</h3>
+
+          <div class="services-card__meta" aria-label="Продолжительность">
+            <span class="services-card__meta-label">Продолжительность</span>
+            <span class="services-card__meta-value">1,5 часа</span>
+          </div>
+
+          <div class="services-card__body">
+            <h4 class="services-card__includes">Что входит:</h4>
+
+            <ul class="services-card__list">
+              <li class="services-card__item">
+                <img class="services-card__icon" src="assets/img/services/gal.svg" alt="" aria-hidden="true">
+                <span class="services-card__txt">Профессиональный <strong>ведущий</strong></span>
+              </li>
+              <li class="services-card__item">
+                <img class="services-card__icon" src="assets/img/services/gal.svg" alt="" aria-hidden="true">
+                <span class="services-card__txt"><strong>Лазертаг-лабиринт: 1</strong> большой раунд</span>
+              </li>
+              <li class="services-card__item">
+                <img class="services-card__icon" src="assets/img/services/gal.svg" alt="" aria-hidden="true">
+                <span class="services-card__txt"><strong>Поздравление</strong> с друзьями именинника</span>
+              </li>
+              <li class="services-card__item">
+                <img class="services-card__icon" src="assets/img/services/gal.svg" alt="" aria-hidden="true">
+                <span class="services-card__txt">Торжественный <strong>вынос торта и свечей</strong></span>
+              </li>
+              <li class="services-card__item">
+                <img class="services-card__icon" src="assets/img/services/gal.svg" alt="" aria-hidden="true">
+                <span class="services-card__txt"><strong>Зона отдыха</strong> и сервировка стола</span>
+              </li>
+            </ul>
+          </div>
+
+          <button
+            class="services-card__btn"
+            type="button"
+            data-popup-open="service-1"
+            data-popup-title="Заказать праздник «Маленькое чудо»"
+            data-popup-sub="Оставьте заявку — уточним детали и посчитаем стоимость программы «Маленькое чудо»"
+            data-popup-btn="Заказать праздник"
+            data-popup-tag="services:little-magic"
+          >
+            Заказать праздник
+          </button>
+        </article>
+
+        <!-- CARD 2 (POPULAR) -->
+        <article class="services-card services-card--lilac" role="listitem">
+          <div class="services-card__badge" aria-label="Популярный">
+            <img class="services-card__badge-ico" src="assets/img/services/fire.svg" alt="" aria-hidden="true">
+            популярный
+          </div>
+
+          <h3 class="services-card__name">Классический праздник</h3>
+
+          <div class="services-card__meta" aria-label="Продолжительность">
+            <span class="services-card__meta-label">Продолжительность</span>
+            <span class="services-card__meta-value">2–2,5 часа</span>
+          </div>
+
+          <div class="services-card__body">
+            <h4 class="services-card__includes">Что входит:</h4>
+
+            <ul class="services-card__list">
+              <li class="services-card__item">
+                <img class="services-card__icon" src="assets/img/services/gal.svg" alt="" aria-hidden="true">
+                <span class="services-card__txt">Профессиональный <strong>ведущий</strong></span>
+              </li>
+
+              <li class="services-card__item">
+                <img class="services-card__icon" src="assets/img/services/gal.svg" alt="" aria-hidden="true">
+                <span class="services-card__txt"><strong>Лабиринт-лазертаг</strong> (включая ознакомительный/игровые раунды)</span>
+              </li>
+
+              <li class="services-card__item">
+                <img class="services-card__icon" src="assets/img/services/gal.svg" alt="" aria-hidden="true">
+                <span class="services-card__txt"><strong>Тик-ток комната</strong> (яркая бумага + поролоновые кубики)</span>
+              </li>
+
+              <li class="services-card__item">
+                <img class="services-card__icon" src="assets/img/services/gal.svg" alt="" aria-hidden="true">
+                <span class="services-card__txt">Лазерная <strong>паутина</strong></span>
+              </li>
+
+              <li class="services-card__item">
+                <img class="services-card__icon" src="assets/img/services/gal.svg" alt="" aria-hidden="true">
+                <span class="services-card__txt"><strong>Интерактив</strong> «Угадай мелодию по смайлику»</span>
+              </li>
+
+              <li class="services-card__item">
+                <img class="services-card__icon" src="assets/img/services/gal.svg" alt="" aria-hidden="true">
+                <span class="services-card__txt"><strong>Игровая консоль</strong> нового формата</span>
+              </li>
+
+              <li class="services-card__item">
+                <img class="services-card__icon" src="assets/img/services/gal.svg" alt="" aria-hidden="true">
+                <span class="services-card__txt"><strong>Пенная</strong> вечеринка</span>
+              </li>
+
+              <li class="services-card__item">
+                <img class="services-card__icon" src="assets/img/services/gal.svg" alt="" aria-hidden="true">
+                <span class="services-card__txt"><strong>Поздравление</strong> с друзьями именинника</span>
+              </li>
+
+              <li class="services-card__item">
+                <img class="services-card__icon" src="assets/img/services/gal.svg" alt="" aria-hidden="true">
+                <span class="services-card__txt">Торжественный <strong>вынос торта и свечей</strong></span>
+              </li>
+
+              <li class="services-card__item">
+                <img class="services-card__icon" src="assets/img/services/gal.svg" alt="" aria-hidden="true">
+                <span class="services-card__txt"><strong>Зона отдыха</strong> и сервировка стола</span>
+              </li>
+            </ul>
+          </div>
+
+          <button
+            class="services-card__btn"
+            type="button"
+            data-popup-open="service-2"
+            data-popup-title="Заказать праздник «Классический праздник»"
+            data-popup-sub="Оставьте заявку — мы перезвоним и рассчитаем стоимость «Классического праздника»"
+            data-popup-btn="Заказать праздник"
+            data-popup-tag="services:classic"
+          >
+            Заказать праздник
+          </button>
+        </article>
+
+        <!-- CARD 3 -->
+        <article class="services-card services-card--ice" role="listitem">
+          <h3 class="services-card__name">История с героями</h3>
+
+          <div class="services-card__meta" aria-label="Продолжительность">
+            <span class="services-card__meta-label">Продолжительность</span>
+            <span class="services-card__meta-value">2,5 часа</span>
+          </div>
+
+          <p class="services-card__note">
+            Тот же насыщенный праздник, но в <strong>любимой теме именинника</strong> —
+            ведущий в образе, музыка/реплики и мини-сюжет
+          </p>
+
+          <div class="services-card__body">
+            <h4 class="services-card__includes">Что входит:</h4>
+
+            <p class="services-card__lead">
+              <strong>Всё из «Классического праздника», плюс:</strong>
+            </p>
+
+            <ul class="services-card__list">
+              <li class="services-card__item">
+                <img class="services-card__icon" src="assets/img/services/gal.svg" alt="" aria-hidden="true">
+                <span class="services-card__txt"><strong>Тема на выбор:</strong> Неоновое пати/Киберпанк/Игра в кальмара</span>
+              </li>
+              <li class="services-card__item">
+                <img class="services-card__icon" src="assets/img/services/gal.svg" alt="" aria-hidden="true">
+                <span class="services-card__txt"><strong>Подача в образе:</strong> костюм ведущего, реплики/музыка, мини-сюжет</span>
+              </li>
+            </ul>
+
+            <div class="services-card__divider" aria-hidden="true"></div>
+
+            <p class="services-card__lead">
+              <strong>Сюжетная фишка (входит, на выбор):</strong>
+            </p>
+
+            <ul class="services-card__list">
+              <li class="services-card__item">
+                <img class="services-card__icon" src="assets/img/services/gal.svg" alt="" aria-hidden="true">
+                <span class="services-card__txt"><strong>Неоновое пати</strong> — научное шоу, шоу в темноте, неоновый мини-квест</span>
+              </li>
+              <li class="services-card__item">
+                <img class="services-card__icon" src="assets/img/services/gal.svg" alt="" aria-hidden="true">
+                <span class="services-card__txt"><strong>Киберпанк</strong> — квест «спасение с планеты Киберпанка»</span>
+              </li>
+              <li class="services-card__item">
+                <img class="services-card__icon" src="assets/img/services/gal.svg" alt="" aria-hidden="true">
+                <span class="services-card__txt"><strong>Игра в кальмара</strong> — безопасные испытания и «охота на охранника»</span>
+              </li>
+            </ul>
+          </div>
+
+          <button
+            class="services-card__btn"
+            type="button"
+            data-popup-open="service-3"
+            data-popup-title="Заказать праздник «История с героями»"
+            data-popup-sub="Оставьте заявку — уточним детали и посчитаем стоимость программы в теме именинника"
+            data-popup-btn="Заказать праздник"
+            data-popup-tag="services:heroes"
+          >
+            Заказать праздник
+          </button>
+        </article>
+      </div>
+
+      <!-- Заглушка под одну общую форму -->
+      <div class="services-modal" hidden aria-hidden="true">
+        <div class="services-modal__overlay" data-service-close></div>
+        <div class="services-modal__dialog" role="dialog" aria-modal="true" aria-label="Форма заявки">
+          <button class="services-modal__close" type="button" aria-label="Закрыть" data-service-close>×</button>
+
+          <h3 class="services-modal__title">Заявка</h3>
+          <p class="services-modal__text">Здесь будет форма. (Пока заглушка)</p>
+
+          <div class="services-modal__fake">
+            <div class="services-modal__input"></div>
+            <div class="services-modal__input"></div>
+            <div class="services-modal__btn"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

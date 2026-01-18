@@ -1,0 +1,563 @@
+/* =========================
+   HERO (как на скрине)
+   ========================= */
+
+:root{
+  --u-font: "Unbounded", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --hero-cyan: #37D6FF;
+  --hero-purple: #2c0a6e;
+
+  /* базовый цвет как у тебя */
+  --hero-green: #B6FF41;
+
+  /* для ховера "Заказать праздник" — более зелёный */
+  --hero-green-hover: #8DFF3A;
+
+  /* WhatsApp */
+  --wa-green: #25D366;
+}
+
+.hero{
+  position: relative;
+  min-height: 860px;
+  padding-top: 110px; /* место под header */
+  overflow: hidden;
+  color: #fff;
+  font-family: var(--u-font);
+
+  /* стабильные позиции декора */
+  --starTop-w: clamp(210px, 24vw, 280px);
+  --starTop-top: clamp(-70px, -6vw, -40px);
+
+  --smile-top: clamp(112px, 12vw, 150px);
+  --smile-right: clamp(18px, 7vw, 210px);
+  --smile-w: clamp(50px, 5.4vw, 62px);
+
+  --starSmall-top: clamp(240px, 24vw, 300px);
+  --starSmall-left: clamp(16px, 20vw, 320px);
+  --starSmall-w: clamp(42px, 5vw, 54px);
+
+  --conf1-top: clamp(220px, 22vw, 275px);
+  --conf1-left: clamp(12px, 10vw, 160px);
+  --conf1-w: clamp(54px, 6.2vw, 70px);
+
+  --conf2-top: clamp(380px, 38vw, 470px);
+  --conf2-right: clamp(16px, 7vw, 220px);
+  --conf2-w: clamp(54px, 6.2vw, 70px);
+
+  --balloonR-top: clamp(310px, 34vw, 380px);
+  --balloonR-right: clamp(-30px, 3vw, 60px);
+  --balloonR-w: clamp(170px, 22vw, 240px);
+
+  --balloonL-bottom: clamp(90px, 12vw, 130px);
+  --balloonL-left: clamp(-18px, 3vw, 34px);
+  --balloonL-w: clamp(160px, 20vw, 220px);
+}
+
+/* фон */
+.hero__bg{
+  position: absolute;
+  inset: 0;
+  background: url("/assets/img/hero/hero-bg.jpg") center/cover no-repeat;
+  filter: saturate(1.05);
+  transform: scale(1.02);
+}
+
+/* звёзды поверх */
+.hero__stars{
+  position: absolute;
+  inset: 0;
+  background: url("/assets/img/hero/hero-stars.svg") center/cover no-repeat;
+  opacity: .2;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+/* общий фиолетовый "дым" */
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(80% 70% at 50% 40%, rgba(168,72,255,.22), rgba(0,0,0,0) 60%),
+    radial-gradient(70% 65% at 70% 30%, rgba(0,214,255,.10), rgba(0,0,0,0) 55%),
+    linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.18));
+  pointer-events:none;
+}
+
+/* контент */
+.hero__inner{
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+}
+
+.hero__content{
+  max-width: 980px;
+  width: 100%;
+  text-align: center;
+  padding-inline: clamp(10px, 2.2vw, 18px);
+}
+
+.hero__title{
+  margin: 0;
+  font-weight: 500;
+  letter-spacing: .2px;
+  line-height: 1.25;
+  color: rgb(46, 210, 241);
+  font-size: clamp(26px, 3.2vw, 37px);
+}
+
+/* подчёркивание по тексту */
+.hero__titleWhite{
+  color: #fff;
+  position: relative;
+  padding-bottom: 8px;
+  display: inline-block;
+}
+
+.hero__titleWhite::after{
+  content:"";
+  position:absolute;
+  left: 0;
+  right: 0;
+  bottom: 2px;
+  height: 1px;
+  background: rgba(255,255,255,.75);
+  border-radius: 999px;
+}
+
+.hero__sub{
+  margin: clamp(16px, 2vw, 22px) auto 0;
+  max-width: 820px;
+  font-size: clamp(15px, 1.8vw, 20px);
+  line-height: 1.6;
+  opacity: .92;
+  font-weight: 500;
+  font-family: 'Onest', Arial, sans-serif;
+}
+
+.hero__actions{
+  margin-top: clamp(26px, 4vw, 60px);
+  display: flex;
+  justify-content: center;
+  gap: clamp(12px, 2vw, 22px);
+  flex-wrap: wrap;
+}
+
+/* =========================
+   BUTTONS (десктоп)
+   ========================= */
+
+.btn{
+  font-family: var(--u-font);
+  text-decoration: none;
+
+  height: 85px;
+  min-width: 300px;
+  padding: 0 44px;
+
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 12px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  transition:
+    transform .18s ease,
+    background-color .18s ease,
+    border-color .18s ease,
+    color .18s ease,
+    box-shadow .18s ease,
+    filter .18s ease;
+
+  will-change: transform;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.btn:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(55,214,255,.22), 0 18px 45px rgba(0,0,0,.25);
+}
+
+.btn--primary{
+  background: var(--hero-green);
+  color: #141414;
+  border: none;
+  box-shadow: 0 16px 34px rgba(0,0,0,.18);
+}
+
+@media (hover:hover) and (pointer:fine){
+  .btn--primary:hover{
+    transform: translateY(-1px) scale(1.03);
+    background: var(--hero-green-hover);
+    filter: saturate(1.05);
+    box-shadow: 0 18px 40px rgba(0,0,0,.22);
+  }
+}
+
+.btn--primary:active{
+  transform: translateY(0) scale(.985);
+  box-shadow: 0 12px 26px rgba(0,0,0,.18);
+}
+
+.btn--outline{
+  background: rgba(255,255,255,.02);
+  color: #fff;
+  border: 2px solid rgb(255 255 255);
+}
+
+@media (hover:hover) and (pointer:fine){
+  .btn--outline.btn--whatsapp:hover{
+    color: var(--wa-green);
+    border-color: var(--wa-green);
+    background: rgba(37,211,102,.08);
+    transform: translateY(-1px);
+  }
+}
+
+.btn--outline.btn--whatsapp:active{
+  transform: translateY(0) scale(.985);
+  background: rgba(37,211,102,.12);
+}
+
+/* декор-картинки */
+.hero__deco{
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+  user-select: none;
+  filter: drop-shadow(0 18px 30px rgba(0,0,0,.25));
+}
+
+.hero__deco--starTop{
+  top: -13%;
+  left: 34%;
+  width: var(--starTop-w);
+  opacity: .95;
+  /* rotate: убрали, чтобы не было конфликтов */
+  transform: translateX(-10%) rotate(19deg);
+}
+
+.hero__deco--smile{
+  top: var(--smile-top);
+  right: var(--smile-right);
+  width: var(--smile-w);
+  opacity: .95;
+}
+
+.hero__deco--starSmall{
+  top: var(--starSmall-top);
+  left: var(--starSmall-left);
+  width: var(--starSmall-w);
+  opacity: .9;
+  transform: rotate(20deg);
+}
+
+.hero__deco--confetti1{
+  opacity: 1;
+  top: 25%;
+  left: 10%;
+  width: 80px;
+  transform: rotate(-28deg);
+}
+
+.hero__deco--confetti2{
+  opacity: 1;
+  top: 19%;
+  right: 10%;
+  width: 80px;
+  transform: rotate(210deg);
+}
+
+.hero__deco--balloonRight{
+  opacity: 1;
+  right: 1%;
+  top: 37%;
+  width: 274px;
+  transform: rotate(32deg);
+}
+
+.hero__deco--balloonLeft{
+  opacity: .95;
+  top: 42%;
+  left: 10%;
+  width: 200px;
+  /* rotate: убрали, поворот делаем в desktop-fix */
+}
+
+/* =========================
+   DESKTOP FIX (не трогаем адаптив)
+   Декоры фиксируем от центра, чтобы не разъезжались на широких мониторах
+   ========================= */
+@media (min-width: 981px){
+
+  /* ✅ тут ты меняешь ТОЛЬКО числа, и они не будут "откатываться" */
+  :root{
+    --starTop-x: -120px;
+    --conf1-x:  -500px;
+    --conf2-x:   530px;
+    --balloonR-x: 500px;
+    --balloonL-x: -440px; /* <- ВОТ ГДЕ ТЕПЕРЬ balloonLeft, меняй тут */
+  }
+
+  .hero__deco--starTop{
+    left: 50%;
+    right: auto;
+    transform: translateX(calc(-50% + var(--starTop-x))) rotate(19deg);
+  }
+
+  .hero__deco--confetti1{
+    left: 50%;
+    right: auto;
+    transform: translateX(calc(-50% + var(--conf1-x))) rotate(-28deg);
+  }
+
+  .hero__deco--confetti2{
+    left: 50%;
+    right: auto;
+    transform: translateX(calc(-50% + var(--conf2-x))) rotate(210deg);
+  }
+
+  .hero__deco--balloonRight{
+    left: 50%;
+    right: auto;
+    transform: translateX(calc(-50% + var(--balloonR-x))) rotate(32deg);
+  }
+
+  .hero__deco--balloonLeft{
+    left: 50%;
+    right: auto;
+    transform: translateX(calc(-50% + var(--balloonL-x))) rotate(-20deg);
+  }
+}
+
+/* Лента */
+.hero-strip{
+  position: absolute;
+  left: 0; right: 0;
+  bottom: 0;
+  z-index: 3;
+  padding: 22px 0 28px;
+}
+
+.hero-strip__mask{
+  overflow: hidden;
+  border-radius: 26px;
+}
+
+.hero-strip__track{
+  display: flex;
+  gap: 18px;
+  width: max-content;
+  animation: heroMarquee 28s linear infinite;
+  will-change: transform;
+}
+
+.hero-strip__item{
+  width: 320px;
+  height: 220px;
+  border-radius: 22px;
+  overflow: hidden;
+  background: rgba(255,255,255,.06);
+  box-shadow: 0 18px 45px rgba(0,0,0,.25);
+  flex: 0 0 auto;
+}
+
+.hero-strip__item img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@keyframes heroMarquee{
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* =========================
+   Адаптив (весь адаптив, кроме десктопа)
+   ========================= */
+
+@media (max-width: 980px){
+  .hero{
+    min-height: auto;
+    height: auto;
+    overflow: visible;
+    padding-bottom: 230px;
+  }
+
+  /* скрыть смайлик на адаптиве */
+  .hero__icon--smile{
+    display: none !important;
+  }
+
+  /* скрываем крупный декор на адаптиве */
+  .hero__deco--starTop,
+  .hero__deco--confetti1,
+  .hero__deco--confetti2,
+  .hero__deco--balloonRight,
+  .hero__deco--balloonLeft{
+    display: none !important;
+  }
+
+  .hero__actions{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(12px, 2vw, 22px);
+    width: 100%;
+    max-width: min(820px, 100%);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .btn{
+    width: 100%;
+    min-width: 0;
+    height: clamp(66px, 9vw, 85px);
+    padding: 0 clamp(18px, 4.5vw, 44px);
+    font-size: clamp(12px, 1.6vw, 14px);
+    white-space: nowrap;
+  }
+
+  .hero__sub{
+    position: relative;
+    max-width: 820px;
+
+    --sub-fs: clamp(13px, 1.55vw + 8px, 19px);
+    --sub-lh: 1.55;
+
+    font-size: var(--sub-fs);
+    line-height: var(--sub-lh);
+
+    color: transparent;
+    white-space: nowrap;
+    overflow: hidden;
+
+    min-height: calc(var(--sub-fs) * var(--sub-lh) * 4);
+  }
+
+  .hero__sub br{ display: none; }
+
+  .hero__sub::before{
+    content:
+      "С 2008 года провели 3000+ праздников:\A"
+      "лазертаг, квесты, шоу.\A"
+      "Для Нового года — отдельные программы с\A"
+      "ведущими, залами,едой и подарками.";
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+
+    text-align: center;
+    color: rgba(255,255,255,.92);
+
+    font-size: inherit;
+    line-height: inherit;
+    font-weight: 500;
+    font-family: 'Onest', Arial, sans-serif;
+
+    white-space: pre;
+    z-index: 1;
+    pointer-events: none;
+  }
+}
+
+/* ✅ ДОБАВЛЕНО: фикс для iPad mini / iPad Air (планшеты 561–980px)
+   Увеличиваем место под ленту, чтобы она не лезла на кнопки.
+   НИЧЕГО больше не трогаем. */
+@media (max-width: 980px) and (min-width: 561px){
+  .hero{
+    padding-bottom: 320px;
+  }
+}
+
+/* мобилка */
+@media (max-width: 560px){
+  .hero{
+    padding-top: 96px;
+    min-height: auto;
+    height: auto;
+    overflow: visible;
+    padding-bottom: 200px;
+  }
+
+  .hero-strip__item{ width: 240px; height: 140px; }
+
+  .hero__actions{
+    grid-template-columns: 1fr;
+    gap: clamp(12px, 3vw, 18px);
+  }
+
+  .btn{
+    width: 100%;
+    min-width: 0;
+    height: clamp(64px, 14vw, 78px);
+    padding: 0 clamp(18px, 6vw, 34px);
+    font-size: clamp(13px, 3.6vw, 15px);
+    white-space: nowrap;
+    line-height: 1.15;
+  }
+
+  .hero__title{
+    font-size: clamp(22px, 6.2vw, 30px);
+    line-height: 1.18;
+  }
+
+  .hero__title .hero__titleCyan:first-child{
+    display: block;
+    max-width: 16ch;
+    margin: 0 auto;
+    white-space: normal;
+  }
+
+  .hero__title .hero__titleCyan:nth-of-type(2){
+    display: block;
+    white-space: nowrap;
+    margin: 0 auto;
+    font-size: clamp(22px, 5.7vw, 26px);
+    line-height: 1.12;
+  }
+
+  .hero__titleWhite{
+    display: inline-block;
+    white-space: nowrap;
+    margin-top: 0px;
+    padding-bottom: 8px;
+  }
+
+  .hero__titleWhite::after{
+    left: 0;
+    right: 0;
+  }
+}
+
+/* очень узкие */
+@media (max-width: 390px){
+  .hero__title .hero__titleCyan:first-child{
+    max-width: 15ch;
+  }
+
+  .hero__title .hero__titleCyan:nth-of-type(2){
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 360px){
+  .hero__title{
+    font-size: 22px;
+  }
+
+  .hero__title .hero__titleCyan:nth-of-type(2){
+    font-size: 17px;
+  }
+}
