@@ -1,7 +1,11 @@
-// Netlify Function: POST /api/lead -> /.netlify/functions/lead
-// Работает без Express.
-
 import nodemailer from "nodemailer";
+
+/** ---------------- Helpers ---------------- */
+
+function digitsOnly(s) {
+  return String(s || "").replace(/\D/g, "");
+}
+
 function getServiceTitle(lead) {
   const id = String(lead.popup_id || "").trim();
   const tag = String(lead.tag || "").trim();
@@ -21,14 +25,9 @@ function getServiceTitle(lead) {
   return mapByPopupId[id] || mapByTag[tag] || "";
 }
 
-function digitsOnly(s) {
-  return String(s || "").replace(/\D/g, "");
-}
-
 function formatPrettyDate(iso) {
   const d = iso ? new Date(iso) : new Date();
   if (Number.isNaN(d.getTime())) return "";
-  // Без timeZone — максимально совместимо на Windows
   return d.toLocaleString("ru-RU", {
     year: "numeric",
     month: "2-digit",
@@ -47,6 +46,28 @@ function escapeHtml(str) {
     .replaceAll("'", "&#039;");
 }
 
+function json(statusCode, obj, extraHeaders = {}) {
+  return {
+    statusCode,
+    headers: {
+      "Content-Type": "application/json; charset=utf-8",
+      ...extraHeaders
+    },
+    body: JSON.stringify(obj)
+  };
+}
+
+function corsHeaders() {
+  // Можно ограничить доменом, но пока пусть будет так (быстрее запустить)
+  return {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "POST,OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type"
+  };
+}
+
+/** ---------------- Telegram ---------------- */
+
 async function sendTelegramLead(lead) {
   const token = process.env.TELEGRAM_BOT_TOKEN?.trim();
   const chatId = process.env.TELEGRAM_CHAT_ID?.trim();
@@ -57,7 +78,6 @@ async function sendTelegramLead(lead) {
 
   const phoneRaw = String(lead.phone || "").trim();
   const phoneDigits = digitsOnly(phoneRaw);
-
   const telHref = phoneDigits ? `tel:+${phoneDigits}` : "";
   const phoneHtml = telHref
     ? `<a href="${telHref}">${escapeHtml(phoneRaw)}</a>`
@@ -90,7 +110,9 @@ ${wish ? `📝 <b>Пожелания:</b> ${escapeHtml(wish)}\n` : ""}${prettyDa
   }
 }
 
-function isConfigured() {
+/** ---------------- Email (SMTP) ---------------- */
+
+function mailConfigured() {
   return (
     process.env.SMTP_HOST &&
     process.env.SMTP_PORT &&
@@ -101,53 +123,8 @@ function isConfigured() {
   );
 }
 
-function getServiceTitle(lead) {
-  const id = String(lead.popup_id || "").trim();
-  const tag = String(lead.tag || "").trim();
-
-  const mapByPopupId = {
-    "service-1": "Маленькое чудо",
-    "service-2": "Классический праздник",
-    "service-3": "История с героями"
-  };
-
-  const mapByTag = {
-    "services-small": "Маленькое чудо",
-    "services-classic": "Классический праздник",
-    "services-heroes": "История с героями"
-  };
-
-  return mapByPopupId[id] || mapByTag[tag] || "";
-}
-
-function digitsOnly(s) {
-  return String(s || "").replace(/\D/g, "");
-}
-
-function formatPrettyDate(iso) {
-  const d = iso ? new Date(iso) : new Date();
-  if (Number.isNaN(d.getTime())) return "";
-  // Без timeZone — максимально совместимо на Windows
-  return d.toLocaleString("ru-RU", {
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-    hour: "2-digit",
-    minute: "2-digit"
-  });
-}
-
-function escapeHtml(str) {
-  return String(str || "")
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
-}
-
 async function sendEmailLead(lead) {
-  if (!isConfigured()) return;
+  if (!mailConfigured()) return;
 
   const host = process.env.SMTP_HOST.trim();
   const port = Number(process.env.SMTP_PORT);
@@ -173,7 +150,8 @@ async function sendEmailLead(lead) {
 
   const wish = String(lead.wish || lead.comment || "").trim();
 
-  const subject = `Новая заявка${serviceTitle ? `: ${serviceTitle}` : ""} — ${lead.name || "без имени"} (${lead.phone || "без телефона"})`;
+  const subject =
+    `Новая заявка${serviceTitle ? `: ${serviceTitle}` : ""} — ${lead.name || "без имени"} (${lead.phone || "без телефона"})`;
 
   const html = `
     <h2>Новая заявка</h2>
@@ -198,92 +176,54 @@ async function sendEmailLead(lead) {
   });
 }
 
-function json(statusCode, obj, extraHeaders = {}) {
-  return {
-    statusCode,
-    headers: {
-      "Content-Type": "application/json; charset=utf-8",
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "POST,OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type",
-      ...extraHeaders
-    },
-    body: JSON.stringify(obj)
-  };
-}
+/** ---------------- Handler ---------------- */
 
 export async function handler(event) {
   if (event.httpMethod === "OPTIONS") {
-    return {
-      statusCode: 204,
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "POST,OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type"
-      },
-      body: ""
-    };
+    return { statusCode: 204, headers: corsHeaders(), body: "" };
   }
 
   if (event.httpMethod !== "POST") {
-    return json(405, { ok: false });
+    return json(405, { ok: false }, corsHeaders());
   }
 
   let b = {};
   try {
     b = JSON.parse(event.body || "{}");
   } catch {
-    return json(400, { ok: false, error: "Bad JSON" });
+    return json(400, { ok: false, error: "Bad JSON" }, corsHeaders());
   }
 
-  const popup_id = String(b.popup_id || "").trim();
-  const tag = String(b.tag || "").trim();
-  const name = String(b.name || "").trim();
-  const phone = String(b.phone || "").trim();
-  const page = String(b.page || "").trim();
-  const ua = String(b.ua || "").trim();
-  const wish = String(b.wish || b.comment || "").trim();
+  const lead = {
+    popup_id: String(b.popup_id || "").trim(),
+    tag: String(b.tag || "").trim(),
+    name: String(b.name || "").trim(),
+    phone: String(b.phone || "").trim(),
+    page: String(b.page || "").trim(),
+    ua: String(b.ua || "").trim(),
+    wish: String(b.wish || b.comment || "").trim(),
+    createdAt: new Date().toISOString()
+  };
 
-  // honeypot
+  // Honeypot (антиспам)
   const hpField = String(process.env.HONEYPOT_FIELD || "company").trim();
   const hpValue = String(b[hpField] || "").trim();
   const honeypotTriggered = hpValue.length > 0;
 
   if (!honeypotTriggered) {
-    if (name.length < 2) {
-      return json(400, { ok: false, error: "Bad name" });
-    }
-    const phoneDigits = digitsOnly(phone);
-    if (phoneDigits.length < 10) {
-      return json(400, { ok: false, error: "Bad phone" });
-    }
-  }
-
-  const lead = {
-    popup_id,
-    tag,
-    name,
-    phone,
-    page,
-    ua,
-    wish,
-    createdAt: new Date().toISOString(),
-    _honeypotTriggered: honeypotTriggered
-  };
-
-  // honeypot triggered => молча "успех", но ничего не делаем
-  if (lead._honeypotTriggered) {
-    return json(200, { ok: true });
+    if (lead.name.length < 2) return json(400, { ok: false, error: "Bad name" }, corsHeaders());
+    const phoneDigits = digitsOnly(lead.phone);
+    if (phoneDigits.length < 10) return json(400, { ok: false, error: "Bad phone" }, corsHeaders());
+  } else {
+    // спам — делаем вид, что всё ок
+    return json(200, { ok: true }, corsHeaders());
   }
 
   try {
-    await Promise.all([
-      sendTelegramLead(lead),
-      sendEmailLead(lead)
-    ]);
-    return json(200, { ok: true });
-  } catch (err) {
-    console.error("❌ Lead send error:", err);
-    return json(500, { ok: false });
+    await Promise.all([sendTelegramLead(lead), sendEmailLead(lead)]);
+    return json(200, { ok: true }, corsHeaders());
+  } catch (e) {
+    console.error("Lead error:", e);
+    return json(500, { ok: false }, corsHeaders());
   }
 }
