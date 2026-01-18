@@ -1,26 +1,8 @@
-// Loads HTML partials into placeholders like <div data-include="/partials/header.html"></div>
-// Note: locally run via `npm run dev` (Vite), so fetch works.
+// Boot script for production:
+// HTML is already present in the page (no runtime partial loading).
+// We just attach per-block scripts.
 
-async function includePartials() {
-  const nodes = document.querySelectorAll("[data-include]");
-  for (const node of nodes) {
-    const path = node.getAttribute("data-include");
-    try {
-      const res = await fetch(path);
-      if (!res.ok) throw new Error(`HTTP ${res.status} for ${path}`);
-      const html = await res.text();
-      node.outerHTML = html;
-    } catch (e) {
-      console.error(e);
-      node.outerHTML = `<div style="padding:16px;color:#ff3b3b;background:#1a1a1a;border-radius:12px;margin:12px;">
-        Не удалось загрузить partial: <b>${path}</b>
-      </div>`;
-    }
-  }
-}
-
-// Optional: load per-block JS after HTML is injected
-async function loadBlockScripts() {
+function loadBlockScripts() {
   const scripts = [
     "/assets/js/blocks/header.js",
     "/assets/js/blocks/hero.js",
@@ -48,7 +30,8 @@ async function loadBlockScripts() {
   }
 }
 
-(async function boot() {
-  await includePartials();
-  await loadBlockScripts();
-})();
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', loadBlockScripts);
+} else {
+  loadBlockScripts();
+}

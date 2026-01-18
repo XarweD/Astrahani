@@ -71,25 +71,1963 @@
 <body id="top">
   <!-- Partials will be injected here -->
   <div id="app">
-    <div data-include="/partials/header.html"></div>
-    <div data-include="/partials/hero.html"></div>
+    <header class="site-header" id="siteHeader">
+
+  <div class="site-header__inner container">
+    <!-- Left -->
+    <div class="brand" aria-label="Бренд">
+
+      <!-- ЛОГО: показываем на десктопе, и в sticky на мобилке -->
+      <a class="brand__logo brand__logo--img" href="#top" aria-label="На главную"></a>
+
+      <!-- НОМЕР слева: показываем на мобилке/планшете (НО НЕ в sticky) -->
+      <a class="brand__phone" href="tel:+79170855501" aria-label="Позвонить">
+        8 (917) 085-55-01
+      </a>
+
+      <!-- Текст бренда: только десктоп -->
+      <a class="brand__text" href="#top" aria-label="На главную">
+        <span class="brand__line">
+          Организация детских<br>
+          праздников в <b>Астрахани</b>
+        </span>
+        <span class="brand__since">с 2008 года</span>
+      </a>
+
+    </div>
+
+    <!-- Right -->
+    <div class="site-header__right">
+      <div class="social" aria-label="Социальные сети">
+        <a class="social__item social__item--max" href="https://max.ru/u/f9LHodD0cOIII4r9WSdMN6BhRPjQ7_R0TTnBOW-IQmWUKEOEHOUds3tlavc" aria-label="MAX"></a>
+        <a class="social__item social__item--tg" href="https://t.me/enotclub" aria-label="Telegram"></a>
+        <a class="social__item social__item--wa" href="https://wa.me/79378225558" aria-label="WhatsApp"></a>
+      </div>
+
+      <!-- НОМЕР справа для sticky на мобилке/планшете -->
+      <a class="phone phone--sticky" href="tel:+79170855501" aria-label="Позвонить">
+        8 (917) 085-55-01
+      </a>
+
+      <!-- Десктопный телефон (справа) -->
+      <a class="phone phone--desktop" href="tel:+79170855501" aria-label="Позвонить">
+        8 (917) 085-55-01
+      </a>
+
+      <!-- CTA: открывает попап (универсальный) -->
+      <a
+        class="header-cta"
+        href="#"
+        data-popup-open="universal"
+        data-popup-title="Обсудим праздник"
+        data-popup-sub="Оставьте заявку — мы свяжемся с вами в течение 30 минут и подберём программу под ваш бюджет"
+        data-popup-btn="Подобрать программу"
+        data-popup-tag="header:cta"
+      >
+        Обсудить праздник
+      </a>
+
+      <!-- кнопка меню -->
+      <button class="burger" id="burgerBtn" type="button" aria-label="Открыть меню">
+        <span class="burger__icon" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Overlay (затемнение) -->
+  <div class="menu-overlay" id="menuOverlay" hidden></div>
+
+  <!-- Drawer menu справа -->
+  <aside class="drawer" id="mobileMenu" aria-hidden="true" hidden>
+    <button class="drawer__close" id="menuCloseBtn" type="button" aria-label="Закрыть меню">×</button>
+
+    <div class="drawer__content">
+      <nav class="drawer__nav" aria-label="Навигация">
+        <a class="drawer__link" href="#addons">Собери своё приключение</a>
+        <a class="drawer__link" href="#why-us">Почему мы</a>
+        <a class="drawer__link" href="#program">Программы</a>
+        <a class="drawer__link" href="#services">Всё для атмосферы</a>
+        <a class="drawer__link" href="#kitchen">Еда и кухня</a>
+        <a class="drawer__link" href="#reviews">Отзывы</a>
+        <a class="drawer__link" href="#faq">Частые вопросы</a>
+        <a class="drawer__link" href="#contacts">Контакты</a>
+      </nav>
+
+      <div class="drawer__bottom">
+        <div class="drawer__small">
+          Организация детских<br>
+          праздников в Астрахани
+        </div>
+
+        <a class="drawer__phone" href="tel:+79170855501">8 (917) 085-55-01</a>
+
+        <!-- CTA в меню: тоже открывает попап -->
+        <a
+          class="drawer__cta"
+          href="#"
+          data-popup-open="universal"
+          data-popup-title="Обсудим праздник"
+          data-popup-sub="Оставьте заявку — мы свяжемся с вами в течение 30 минут и подберём программу под ваш бюджет"
+          data-popup-btn="Подобрать программу"
+          data-popup-tag="menu:cta"
+        >
+          Обсудить праздник
+        </a>
+      </div>
+    </div>
+  </aside>
+</header>
+    <section class="hero" id="top">
+  <!-- фон -->
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="hero__stars" aria-hidden="true"></div>
+
+  <!-- крупные декоры -->
+  <img class="hero__deco hero__deco--starTop js-move" data-move="10" src="/assets/img/move/deco-star-top.webp" alt="" aria-hidden="true">
+  <img class="hero__deco hero__deco--confetti1 js-move" data-move="14" src="/assets/img/move/deco-confetti-1.webp" alt="" aria-hidden="true">
+  <img class="hero__deco hero__deco--confetti2 js-move" data-move="14" src="/assets/img/move/deco-confetti-2.png" alt="" aria-hidden="true">
+  <img class="hero__deco hero__deco--balloonRight js-move" data-move="18" src="/assets/img/move/deco-balloon-right.png" alt="" aria-hidden="true">
+  <img class="hero__deco hero__deco--balloonLeft js-move" data-move="18" src="/assets/img/move/deco-balloon-left.webp" alt="" aria-hidden="true">
+
+  <div class="hero__inner container">
+    <div class="hero__content">
+
+      <div class="hero__headline">
+        <img class="hero__icon hero__icon--smile" src="/assets/img/smail.svg" alt="" aria-hidden="true">
+
+<h1 class="hero__title hero__title--fixed3">
+  <span class="hero__titleLine hero__titleCyan">Новый год и детские</span>
+  <span class="hero__titleLine hero__titleCyan">праздники в Астрахани</span>
+  <span class="hero__titleLine hero__titleWhite">от 5 000 ₽ под ключ</span>
+</h1>
+      </div>
+
+      <p class="hero__sub">
+        С 2008 года провели 3000+ праздников: лазертаг, квесты, шоу.<br>
+        Для Нового года - отдельные программы с ведущими, залами,<br>
+        едой и подарками.
+      </p>
+
+      <div class="hero__actions">
+        <a
+          class="btn btn--primary"
+          href="#"
+          data-popup-open="universal"
+          data-popup-title="Заказать праздник"
+          data-popup-sub="Оставьте заявку — мы свяжемся с вами в течение 30 минут и рассчитаем стоимость праздника"
+          data-popup-btn="Заказать праздник"
+          data-popup-tag="hero:price"
+        >Заказать праздник</a>
+
+        <a class="btn btn--outline btn--whatsapp" href="https://wa.me/79378225558" aria-label="Задать вопрос в WhatsApp">
+          Задать вопрос в WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-strip" aria-label="Галерея">
+    <div class="hero-strip__mask container">
+      <div class="hero-strip__track">
+        <div class="hero-strip__item"><img src="/assets/img/hero/1.jpg" alt=""></div>
+        <div class="hero-strip__item"><img src="/assets/img/hero/2.jpg" alt=""></div>
+        <div class="hero-strip__item"><img src="/assets/img/hero/3.jpg" alt=""></div>
+        <div class="hero-strip__item"><img src="/assets/img/hero/4.jpg" alt=""></div>
+        <div class="hero-strip__item"><img src="/assets/img/hero/5.jpg" alt=""></div>
+        <div class="hero-strip__item"><img src="/assets/img/hero/6.jpg" alt=""></div>
+
+        <div class="hero-strip__item"><img src="/assets/img/hero/1.jpg" alt=""></div>
+        <div class="hero-strip__item"><img src="/assets/img/hero/2.jpg" alt=""></div>
+        <div class="hero-strip__item"><img src="/assets/img/hero/3.jpg" alt=""></div>
+        <div class="hero-strip__item"><img src="/assets/img/hero/4.jpg" alt=""></div>
+        <div class="hero-strip__item"><img src="/assets/img/hero/5.jpg" alt=""></div>
+        <div class="hero-strip__item"><img src="/assets/img/hero/6.jpg" alt=""></div>
+      </div>
+    </div>
+  </div>
+</section>
 
     <main>
-      <div data-include="/partials/program.html"></div>
-      <div data-include="/partials/gallery.html"></div>
-      <div data-include="/partials/services.html"></div>
-      <div data-include="/partials/addons.html"></div>
-      <div data-include="/partials/why-us.html"></div>
-      <div data-include="/partials/love.html"></div>
-      <div data-include="/partials/kitchen.html"></div>
-      <div data-include="/partials/reviews.html"></div>
-      <div data-include="/partials/faq.html"></div>
-      <div data-include="/partials/lead-form.html"></div>
+      <section class="section program" id="program">
+  <!-- декор (заглушки — заменишь на свои картинки) -->
+  <div class="program__deco program__deco--left js-move" data-move="12" aria-hidden="true"></div>
+  <div class="program__deco program__deco--right js-move" data-move="14" aria-hidden="true"></div>
+
+  <!-- ✅ добавили 3 декора (итого 5) -->
+  <div class="program__deco program__deco--bottom-left js-move" data-move="16" aria-hidden="true"></div>
+  <div class="program__deco program__deco--bottom-right js-move" data-move="16" aria-hidden="true"></div>
+  <div class="program__deco program__deco--bottom-mid js-move" data-move="18" aria-hidden="true"></div>
+
+  <div class="container program__container">
+    <header class="program__head">
+      <h2 class="program__title">
+        <span class="program__title-main">Что входит в</span><br>
+        <span class="program__title-accent">программу</span>
+      </h2>
+
+      <p class="program__sub">
+        Выберите то, что <strong>нравится вашему ребёнку&nbsp;—</strong> мы&nbsp;превратим это
+        в&nbsp;праздник с&nbsp;играми, смехом и&nbsp;настоящими эмоциями
+      </p>
+    </header>
+
+    <div class="program-grid" aria-label="Программы">
+      <!-- 1) видео -->
+      <article class="program-card program-card--video">
+        <div class="program-card__media">
+          <video class="program-card__video" muted playsinline loop autoplay preload="metadata" poster="" aria-label="Лазертаг-лабиринт">
+            <source src="assets\img\video\video_lazertag.mp4" type="video/mp4">
+          </video>
+          <div class="program-card__shade" aria-hidden="true"></div>
+        </div>
+
+        <div class="program-card__text">
+          <h3 class="program-card__name">Лазертаг-лабиринт</h3>
+          <p class="program-card__desc">
+            Дети вооружаются лазерными бластерами и делятся на команды. Внутри — тёмный лабиринт, укрытия и задания ведущего.
+            Они бегут, прячутся, смеются и спорят, кто быстрее попадёт в цель. Всё это безопасно, но эмоции — как в настоящем приключении
+          </p>
+        </div>
+      </article>
+
+      <!-- 2) картинка + hover картинка -->
+      <article class="program-card program-card--swap">
+        <div class="program-card__media">
+          <img class="program-card__img program-card__img--base" src="\assets\img\program\neon_1.jpg" alt="">
+          <img class="program-card__img program-card__img--hover" src="\assets\img\program\neon_2.jpg" alt="" aria-hidden="true">
+          <div class="program-card__shade" aria-hidden="true"></div>
+        </div>
+
+        <div class="program-card__text">
+          <h3 class="program-card__name">Неоновая лаборатория</h3>
+          <p class="program-card__desc">
+            В темноте оживают флуоресцентные элементы и светящиеся жидкости. Дети рисуют на доске, в лампе «горит» настоящий свет.
+            Делают «тату» флуоресцентной краской и с восторгом наблюдают, как знакомые предметы превращаются в магические
+          </p>
+        </div>
+      </article>
+
+      <!-- 3) картинка -->
+      <article class="program-card">
+        <div class="program-card__media">
+          <img class="program-card__img program-card__img--base" src="\assets\img\program\lazer_1.jpg" alt="">
+          <div class="program-card__shade" aria-hidden="true"></div>
+        </div>
+
+        <div class="program-card__text">
+          <h3 class="program-card__name">Лазерная паутина</h3>
+          <p class="program-card__desc">
+            Комната наполнена дымом, пространство прорезают десятки лазерных лучей. Ребята пробираются туда и обратно на время,
+            стараясь не задеть ни одной нити. Кто-то ползёт, кто-то перепрыгивает, и каждый выход сопровождается бурей аплодисментов
+          </p>
+        </div>
+      </article>
+
+      <!-- 4) видео -->
+      <article class="program-card program-card--video">
+        <div class="program-card__media">
+          <video class="program-card__video" muted playsinline loop autoplay preload="metadata" poster="" aria-label="Серебряный шторм">
+            <source src="\assets\img\video\video_serebr.mp4" type="video/mp4">
+          </video>
+          <div class="program-card__shade" aria-hidden="true"></div>
+        </div>
+
+        <div class="program-card__text">
+          <h3 class="program-card__name">«Серебряный шторм»</h3>
+          <p class="program-card__desc">
+            Дети ныряют в бассейны с серебряной бумагой, кидаются ею друг в друга и танцуют под музыку.
+            Смех, хаос и десятки смешных кадров — для детей это чистое безумное веселье, для родителей — готовый альбом живых фото и видео
+          </p>
+        </div>
+      </article>
+
+      <!-- 5) картинка + hover картинка -->
+      <article class="program-card program-card--swap">
+        <div class="program-card__media">
+          <img class="program-card__img program-card__img--base" src="\assets\img\program\him_1.jpg" alt="">
+          <img class="program-card__img program-card__img--hover" src="\assets\img\program\him_2.jpg" alt="" aria-hidden="true">
+          <div class="program-card__shade" aria-hidden="true"></div>
+        </div>
+
+        <div class="program-card__text">
+          <h3 class="program-card__name">Хим-лаборатория</h3>
+          <p class="program-card__desc">
+            На глазах у детей из колбы вырывается столб пены, жидкости меняют цвет, а ведущий демонстрирует безопасный огненный трюк.
+            Ребята смеются, удивляются и пробуют себя в маленьких экспериментах, ощущая, что стали частью настоящей лаборатории
+          </p>
+        </div>
+      </article>
+
+      <!-- 6) картинка + hover картинка -->
+      <article class="program-card program-card--swap">
+        <div class="program-card__media">
+          <img class="program-card__img program-card__img--base" src="\assets\img\program\black_1.jpg" alt="">
+          <img class="program-card__img program-card__img--hover" src="\assets\img\program\black_2.jpg" alt="" aria-hidden="true">
+          <div class="program-card__shade" aria-hidden="true"></div>
+        </div>
+
+        <div class="program-card__text">
+          <h3 class="program-card__name">Чёрный ящик</h3>
+          <p class="program-card__desc">
+            Внутри что-то неожиданное: мягкое, хрустящее или колючее. Ребёнок угадывает на ощупь, друзья подсказывают и смеются —
+            простой челлендж, который одинаково заходит и младшим, и подросткам
+          </p>
+        </div>
+      </article>
+    </div>
+
+    <!-- HELP / CTA -->
+    <div class="program-choice" aria-label="Помочь с выбором">
+      <div class="program-choice__deco program-choice__deco--tl" aria-hidden="true"></div>
+      <div class="program-choice__deco program-choice__deco--br" aria-hidden="true"></div>
+
+      <div class="program-choice__inner">
+        <div class="program-choice__left">
+          <h3 class="program-choice__title">
+            <span class="program-choice__title-accent">Помочь</span>&nbsp;<span class="program-choice__title-main">с выбором?</span>
+          </h3>
+
+          <p class="program-choice__text">
+            Хотите, чтобы всё сошлось <strong>по&nbsp;настроению и&nbsp;бюджету?</strong><br>
+            Давайте подберем решение вместе
+          </p>
+        </div>
+
+        <div class="program-choice__right">
+          <a
+            class="program-choice__btn"
+            href="#"
+            data-popup-open="universal"
+            data-popup-title="Помочь с выбором"
+            data-popup-sub="Оставьте заявку — мы уточним детали и подберём программу под настроение и бюджет"
+            data-popup-btn="Подобрать программу"
+            data-popup-tag="program:choice"
+          >Подобрать программу</a>
+
+          <!-- ✅ как на картинке: иконка + текст в 2 строки -->
+          <div class="program-choice__messengers" aria-label="Связаться">
+            <a class="program-choice__ms program-choice__ms--tg" href="https://t.me/enotclub" aria-label="Связаться в Telegram">
+              <img class="program-choice__ms-icon" src="assets/img/social/tg.svg" alt="" aria-hidden="true">
+              <span class="program-choice__ms-text">Связаться<br>в Telegram</span>
+            </a>
+
+            <a class="program-choice__ms program-choice__ms--wa" href="https://wa.me/79378225558" aria-label="Связаться в WhatsApp">
+              <img class="program-choice__ms-icon" src="assets/img/social/wa.svg" alt="" aria-hidden="true">
+              <span class="program-choice__ms-text">Связаться<br>в WhatsApp</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+      <section class="section gallery" id="gallery">
+  <div class="container gallery__container">
+    <header class="gallery__head">
+      <h2 class="gallery__title">
+        Посмотрите как <span class="gallery__title-accent">зажигательно</span> проходят наши праздники
+      </h2>
+    </header>
+
+    <!-- =========================
+         DESKTOP (>= 901px)
+         Порядок:
+         1.jpg,2.jpg,3.png,4.mp4,5.jpg,6.jpg,7.jpg,8.jpg,9.jpg,10.mp4,11.jpg
+         ========================= -->
+    <div class="gallery-grid gallery-grid--desktop" aria-label="Галерея (desktop)">
+      <figure class="gallery-item g1">
+        <img src="/assets/img/gallery/1.jpg" alt="Фото с праздника" loading="lazy">
+      </figure>
+
+      <figure class="gallery-item g2">
+        <img src="/assets/img/gallery/2.jpg" alt="Фото с праздника" loading="lazy">
+      </figure>
+
+      <figure class="gallery-item g3">
+        <img src="/assets/img/gallery/3.png" alt="Фото с праздника" loading="lazy">
+      </figure>
+
+      <figure class="gallery-item gallery-item--video g4">
+        <video
+          src="/assets/img/gallery/4.mp4"
+          autoplay
+          loop
+          muted
+          playsinline
+          preload="metadata"
+        ></video>
+      </figure>
+
+      <figure class="gallery-item g5">
+        <img src="/assets/img/gallery/5.jpg" alt="Фото с праздника" loading="lazy">
+      </figure>
+
+      <figure class="gallery-item g6">
+        <img src="/assets/img/gallery/6.jpg" alt="Фото с праздника" loading="lazy">
+      </figure>
+
+      <figure class="gallery-item g7">
+        <img src="/assets/img/gallery/7.jpg" alt="Фото с праздника" loading="lazy">
+      </figure>
+
+      <figure class="gallery-item g8">
+        <img src="/assets/img/gallery/8.jpg" alt="Фото с праздника" loading="lazy">
+      </figure>
+
+      <figure class="gallery-item g9">
+        <img src="/assets/img/gallery/9.jpg" alt="Фото с праздника" loading="lazy">
+      </figure>
+
+      <figure class="gallery-item gallery-item--video g10">
+        <video
+          src="/assets/img/gallery/10.mp4"
+          autoplay
+          loop
+          muted
+          playsinline
+          preload="metadata"
+        ></video>
+      </figure>
+
+      <figure class="gallery-item g11">
+        <img src="/assets/img/gallery/11.jpg" alt="Фото с праздника" loading="lazy">
+      </figure>
+    </div>
+
+    <!-- =========================
+         iPAD / TABLET (521px..900px)
+         Порядок:
+         1.jpg,2.jpg,4.mp4,8.jpg,7.jpg,6.jpg,11.jpg,5.jpg
+         ========================= -->
+    <div class="gallery-grid gallery-grid--tablet" aria-label="Галерея (tablet)">
+      <figure class="gallery-item t1">
+        <img src="/assets/img/gallery/1.jpg" alt="Фото с праздника" loading="lazy">
+      </figure>
+
+      <figure class="gallery-item t2">
+        <img src="/assets/img/gallery/2.jpg" alt="Фото с праздника" loading="lazy">
+      </figure>
+
+      <figure class="gallery-item gallery-item--video t3">
+        <video
+          src="/assets/img/gallery/4.mp4"
+          autoplay
+          loop
+          muted
+          playsinline
+          preload="metadata"
+        ></video>
+      </figure>
+
+      <figure class="gallery-item t4">
+        <img src="/assets/img/gallery/8.jpg" alt="Фото с праздника" loading="lazy">
+      </figure>
+
+      <figure class="gallery-item t5">
+        <img src="/assets/img/gallery/7.jpg" alt="Фото с праздника" loading="lazy">
+      </figure>
+
+      <figure class="gallery-item t6">
+        <img src="/assets/img/gallery/6.jpg" alt="Фото с праздника" loading="lazy">
+      </figure>
+
+      <figure class="gallery-item t7">
+        <img src="/assets/img/gallery/11.jpg" alt="Фото с праздника" loading="lazy">
+      </figure>
+
+      <figure class="gallery-item t8">
+        <img src="/assets/img/gallery/5.jpg" alt="Фото с праздника" loading="lazy">
+      </figure>
+    </div>
+
+    <!-- =========================
+         MOBILE (<= 520px)
+         Порядок:
+         1.jpg,2.jpg,4.mp4,7.jpg,8.jpg,11.jpg,3.png,5.jpg
+         ========================= -->
+    <div class="gallery-grid gallery-grid--mobile" aria-label="Галерея (mobile)">
+      <figure class="gallery-item m1">
+        <img src="/assets/img/gallery/1.jpg" alt="Фото с праздника" loading="lazy">
+      </figure>
+
+      <figure class="gallery-item m2">
+        <img src="/assets/img/gallery/2.jpg" alt="Фото с праздника" loading="lazy">
+      </figure>
+
+      <figure class="gallery-item gallery-item--video m3">
+        <video
+          src="/assets/img/gallery/4.mp4"
+          autoplay
+          loop
+          muted
+          playsinline
+          preload="metadata"
+        ></video>
+      </figure>
+
+      <figure class="gallery-item m4">
+        <img src="/assets/img/gallery/7.jpg" alt="Фото с праздника" loading="lazy">
+      </figure>
+
+      <figure class="gallery-item m5">
+        <img src="/assets/img/gallery/8.jpg" alt="Фото с праздника" loading="lazy">
+      </figure>
+
+      <figure class="gallery-item m6">
+        <img src="/assets/img/gallery/11.jpg" alt="Фото с праздника" loading="lazy">
+      </figure>
+
+      <figure class="gallery-item m7">
+        <img src="/assets/img/gallery/3.png" alt="Фото с праздника" loading="lazy">
+      </figure>
+
+      <figure class="gallery-item m8">
+        <img src="/assets/img/gallery/5.jpg" alt="Фото с праздника" loading="lazy">
+      </figure>
+    </div>
+
+  </div>
+</section>
+      <section class="section services" id="services" aria-labelledby="servicesTitle">
+
+  <!-- ✅ DECOR ВНЕ services__clip — чтобы не обрезался и мог выходить на другие блоки -->
+  <div class="services__decor services__decor--free" aria-hidden="true">
+    <!-- 1) e.webp — top-left -->
+    <img class="services__deco services__deco--e js-move"
+         data-move="12"
+         src="assets/img/move/e.webp" alt="" aria-hidden="true">
+
+    <!-- 2) h.webp — top-right, UNDER cards -->
+    <img class="services__deco services__deco--h services__deco--under-cards js-move"
+         data-move="10"
+         src="assets/img/move/h.webp" alt="" aria-hidden="true">
+
+    <!-- 3) o.webp — bottom-left -->
+    <img class="services__deco services__deco--o js-move"
+         data-move="12"
+         src="assets/img/move/o.webp" alt="" aria-hidden="true">
+
+    <!-- 4) lent1.webp — bottom-left -->
+    <img class="services__deco services__deco--lent js-move"
+         data-move="14"
+         src="assets/img/move/lent1.webp" alt="" aria-hidden="true">
+
+    <!-- 5) t.webp — bottom-right -->
+    <img class="services__deco services__deco--t js-move"
+         data-move="14"
+         src="assets/img/move/t.webp" alt="" aria-hidden="true">
+  </div>
+
+  <!-- Всё, что должно обрезаться по радиусу и быть “привязано” к фиолетовому блоку — внутри services__clip -->
+  <div class="services__clip">
+    <div class="container services__container">
+      <header class="services__head">
+        <h2 class="services__title" id="servicesTitle">
+          Готовые <span class="services__title-accent">программы</span>
+        </h2>
+
+        <p class="services__sub">
+          <strong>До 10 детей включено.</strong><br>
+          Дети до 5 лет — бесплатно
+        </p>
+      </header>
+
+      <div class="services__grid" role="list" aria-label="Готовые программы">
+        <!-- CARD 1 -->
+        <article class="services-card services-card--cream" role="listitem">
+          <h3 class="services-card__name">Маленькое чудо</h3>
+
+          <div class="services-card__meta" aria-label="Продолжительность">
+            <span class="services-card__meta-label">Продолжительность</span>
+            <span class="services-card__meta-value">1,5 часа</span>
+          </div>
+
+          <div class="services-card__body">
+            <h4 class="services-card__includes">Что входит:</h4>
+
+            <ul class="services-card__list">
+              <li class="services-card__item">
+                <img class="services-card__icon" src="assets/img/services/gal.svg" alt="" aria-hidden="true">
+                <span class="services-card__txt">Профессиональный <strong>ведущий</strong></span>
+              </li>
+              <li class="services-card__item">
+                <img class="services-card__icon" src="assets/img/services/gal.svg" alt="" aria-hidden="true">
+                <span class="services-card__txt"><strong>Лазертаг-лабиринт: 1</strong> большой раунд</span>
+              </li>
+              <li class="services-card__item">
+                <img class="services-card__icon" src="assets/img/services/gal.svg" alt="" aria-hidden="true">
+                <span class="services-card__txt"><strong>Поздравление</strong> с друзьями именинника</span>
+              </li>
+              <li class="services-card__item">
+                <img class="services-card__icon" src="assets/img/services/gal.svg" alt="" aria-hidden="true">
+                <span class="services-card__txt">Торжественный <strong>вынос торта и свечей</strong></span>
+              </li>
+              <li class="services-card__item">
+                <img class="services-card__icon" src="assets/img/services/gal.svg" alt="" aria-hidden="true">
+                <span class="services-card__txt"><strong>Зона отдыха</strong> и сервировка стола</span>
+              </li>
+            </ul>
+          </div>
+
+          <button
+            class="services-card__btn"
+            type="button"
+            data-popup-open="service-1"
+            data-popup-title="Заказать праздник «Маленькое чудо»"
+            data-popup-sub="Оставьте заявку — уточним детали и посчитаем стоимость программы «Маленькое чудо»"
+            data-popup-btn="Заказать праздник"
+            data-popup-tag="services:little-magic"
+          >
+            Заказать праздник
+          </button>
+        </article>
+
+        <!-- CARD 2 (POPULAR) -->
+        <article class="services-card services-card--lilac" role="listitem">
+          <div class="services-card__badge" aria-label="Популярный">
+            <img class="services-card__badge-ico" src="assets/img/services/fire.svg" alt="" aria-hidden="true">
+            популярный
+          </div>
+
+          <h3 class="services-card__name">Классический праздник</h3>
+
+          <div class="services-card__meta" aria-label="Продолжительность">
+            <span class="services-card__meta-label">Продолжительность</span>
+            <span class="services-card__meta-value">2–2,5 часа</span>
+          </div>
+
+          <div class="services-card__body">
+            <h4 class="services-card__includes">Что входит:</h4>
+
+            <ul class="services-card__list">
+              <li class="services-card__item">
+                <img class="services-card__icon" src="assets/img/services/gal.svg" alt="" aria-hidden="true">
+                <span class="services-card__txt">Профессиональный <strong>ведущий</strong></span>
+              </li>
+
+              <li class="services-card__item">
+                <img class="services-card__icon" src="assets/img/services/gal.svg" alt="" aria-hidden="true">
+                <span class="services-card__txt"><strong>Лабиринт-лазертаг</strong> (включая ознакомительный/игровые раунды)</span>
+              </li>
+
+              <li class="services-card__item">
+                <img class="services-card__icon" src="assets/img/services/gal.svg" alt="" aria-hidden="true">
+                <span class="services-card__txt"><strong>Тик-ток комната</strong> (яркая бумага + поролоновые кубики)</span>
+              </li>
+
+              <li class="services-card__item">
+                <img class="services-card__icon" src="assets/img/services/gal.svg" alt="" aria-hidden="true">
+                <span class="services-card__txt">Лазерная <strong>паутина</strong></span>
+              </li>
+
+              <li class="services-card__item">
+                <img class="services-card__icon" src="assets/img/services/gal.svg" alt="" aria-hidden="true">
+                <span class="services-card__txt"><strong>Интерактив</strong> «Угадай мелодию по смайлику»</span>
+              </li>
+
+              <li class="services-card__item">
+                <img class="services-card__icon" src="assets/img/services/gal.svg" alt="" aria-hidden="true">
+                <span class="services-card__txt"><strong>Игровая консоль</strong> нового формата</span>
+              </li>
+
+              <li class="services-card__item">
+                <img class="services-card__icon" src="assets/img/services/gal.svg" alt="" aria-hidden="true">
+                <span class="services-card__txt"><strong>Пенная</strong> вечеринка</span>
+              </li>
+
+              <li class="services-card__item">
+                <img class="services-card__icon" src="assets/img/services/gal.svg" alt="" aria-hidden="true">
+                <span class="services-card__txt"><strong>Поздравление</strong> с друзьями именинника</span>
+              </li>
+
+              <li class="services-card__item">
+                <img class="services-card__icon" src="assets/img/services/gal.svg" alt="" aria-hidden="true">
+                <span class="services-card__txt">Торжественный <strong>вынос торта и свечей</strong></span>
+              </li>
+
+              <li class="services-card__item">
+                <img class="services-card__icon" src="assets/img/services/gal.svg" alt="" aria-hidden="true">
+                <span class="services-card__txt"><strong>Зона отдыха</strong> и сервировка стола</span>
+              </li>
+            </ul>
+          </div>
+
+          <button
+            class="services-card__btn"
+            type="button"
+            data-popup-open="service-2"
+            data-popup-title="Заказать праздник «Классический праздник»"
+            data-popup-sub="Оставьте заявку — мы перезвоним и рассчитаем стоимость «Классического праздника»"
+            data-popup-btn="Заказать праздник"
+            data-popup-tag="services:classic"
+          >
+            Заказать праздник
+          </button>
+        </article>
+
+        <!-- CARD 3 -->
+        <article class="services-card services-card--ice" role="listitem">
+          <h3 class="services-card__name">История с героями</h3>
+
+          <div class="services-card__meta" aria-label="Продолжительность">
+            <span class="services-card__meta-label">Продолжительность</span>
+            <span class="services-card__meta-value">2,5 часа</span>
+          </div>
+
+          <p class="services-card__note">
+            Тот же насыщенный праздник, но в <strong>любимой теме именинника</strong> —
+            ведущий в образе, музыка/реплики и мини-сюжет
+          </p>
+
+          <div class="services-card__body">
+            <h4 class="services-card__includes">Что входит:</h4>
+
+            <p class="services-card__lead">
+              <strong>Всё из «Классического праздника», плюс:</strong>
+            </p>
+
+            <ul class="services-card__list">
+              <li class="services-card__item">
+                <img class="services-card__icon" src="assets/img/services/gal.svg" alt="" aria-hidden="true">
+                <span class="services-card__txt"><strong>Тема на выбор:</strong> Неоновое пати/Киберпанк/Игра в кальмара</span>
+              </li>
+              <li class="services-card__item">
+                <img class="services-card__icon" src="assets/img/services/gal.svg" alt="" aria-hidden="true">
+                <span class="services-card__txt"><strong>Подача в образе:</strong> костюм ведущего, реплики/музыка, мини-сюжет</span>
+              </li>
+            </ul>
+
+            <div class="services-card__divider" aria-hidden="true"></div>
+
+            <p class="services-card__lead">
+              <strong>Сюжетная фишка (входит, на выбор):</strong>
+            </p>
+
+            <ul class="services-card__list">
+              <li class="services-card__item">
+                <img class="services-card__icon" src="assets/img/services/gal.svg" alt="" aria-hidden="true">
+                <span class="services-card__txt"><strong>Неоновое пати</strong> — научное шоу, шоу в темноте, неоновый мини-квест</span>
+              </li>
+              <li class="services-card__item">
+                <img class="services-card__icon" src="assets/img/services/gal.svg" alt="" aria-hidden="true">
+                <span class="services-card__txt"><strong>Киберпанк</strong> — квест «спасение с планеты Киберпанка»</span>
+              </li>
+              <li class="services-card__item">
+                <img class="services-card__icon" src="assets/img/services/gal.svg" alt="" aria-hidden="true">
+                <span class="services-card__txt"><strong>Игра в кальмара</strong> — безопасные испытания и «охота на охранника»</span>
+              </li>
+            </ul>
+          </div>
+
+          <button
+            class="services-card__btn"
+            type="button"
+            data-popup-open="service-3"
+            data-popup-title="Заказать праздник «История с героями»"
+            data-popup-sub="Оставьте заявку — уточним детали и посчитаем стоимость программы в теме именинника"
+            data-popup-btn="Заказать праздник"
+            data-popup-tag="services:heroes"
+          >
+            Заказать праздник
+          </button>
+        </article>
+      </div>
+
+      <!-- Заглушка под одну общую форму -->
+      <div class="services-modal" hidden aria-hidden="true">
+        <div class="services-modal__overlay" data-service-close></div>
+        <div class="services-modal__dialog" role="dialog" aria-modal="true" aria-label="Форма заявки">
+          <button class="services-modal__close" type="button" aria-label="Закрыть" data-service-close>×</button>
+
+          <h3 class="services-modal__title">Заявка</h3>
+          <p class="services-modal__text">Здесь будет форма. (Пока заглушка)</p>
+
+          <div class="services-modal__fake">
+            <div class="services-modal__input"></div>
+            <div class="services-modal__input"></div>
+            <div class="services-modal__btn"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+      <section class="section addons" id="addons">
+  <div class="container addons__container">
+    <header class="addons__head">
+      <h2 class="addons__title">
+        Щепотка <span class="addons__title-accent">волшебства</span><br>
+        в придачу
+      </h2>
+
+      <p class="addons__sub">
+        Хочется, чтобы праздник запомнился еще ярче? У нас есть маленькие штрихи,
+        которые превращают обычный день рождения в настоящее событие
+      </p>
+    </header>
+
+    <div class="addons-grid" aria-label="Дополнения к празднику">
+      <!-- 1 -->
+      <article class="addons-card addons-card--1">
+        <div class="addons-card__text">
+          <h3 class="addons-card__title">Фотограф</h3>
+          <p class="addons-card__desc">
+            ловит эмоции детей и родителей, чтобы у вас остались живые кадры,
+            а не только воспоминания
+          </p>
+        </div>
+
+        <div class="addons-card__media" aria-hidden="true">
+          <img class="addons-card__img" src="/assets/img/addons/1.1.webp" alt="" loading="lazy">
+          <span class="addons-card__num" aria-hidden="true">
+            <img src="/assets/img/addons/1.webp" alt="" loading="lazy">
+          </span>
+        </div>
+      </article>
+
+      <!-- 2 -->
+      <article class="addons-card addons-card--2">
+        <div class="addons-card__text">
+          <h3 class="addons-card__title">Видеоролик</h3>
+          <p class="addons-card__desc">
+            короткий клип о празднике, который приятно пересматривать
+            и показывать близким
+          </p>
+        </div>
+
+        <div class="addons-card__media" aria-hidden="true">
+          <img class="addons-card__img" src="/assets/img/addons/2.2.webp" alt="" loading="lazy">
+          <span class="addons-card__num" aria-hidden="true">
+            <img src="/assets/img/addons/2.webp" alt="" loading="lazy">
+          </span>
+        </div>
+      </article>
+
+      <!-- 3 -->
+      <article class="addons-card addons-card--3">
+        <div class="addons-card__text">
+          <h3 class="addons-card__title">Медведь-поздравитель</h3>
+          <p class="addons-card__desc">
+            огромный гость, который появляется неожиданно
+            и вызывает бурю эмоций у ваших детей
+          </p>
+        </div>
+
+        <div class="addons-card__media" aria-hidden="true">
+          <img class="addons-card__img" src="/assets/img/addons/3.3.webp" alt="" loading="lazy">
+          <span class="addons-card__num" aria-hidden="true">
+            <img src="/assets/img/addons/3.webp" alt="" loading="lazy">
+          </span>
+        </div>
+      </article>
+
+      <!-- 4–5 (обёртка для центрирования на DESKTOP) -->
+      <div class="addons-row">
+        <!-- ✅ DECOR (DESKTOP only) — привязано к ряду 4–5 -->
+        <div class="addons__deco addons__deco--left js-move" data-move="14" aria-hidden="true"></div>
+        <div class="addons__deco addons__deco--right js-move" data-move="14" aria-hidden="true"></div>
+
+        <!-- 4 -->
+        <article class="addons-card addons-card--4">
+          <div class="addons-card__text">
+            <h3 class="addons-card__title">Оформление шарами</h3>
+            <p class="addons-card__desc">
+              зал превращается в сказочное пространство,
+              куда дети заходят с восторгом
+            </p>
+          </div>
+
+          <div class="addons-card__media" aria-hidden="true">
+            <img class="addons-card__img" src="/assets/img/addons/4.4.webp" alt="" loading="lazy">
+            <span class="addons-card__num" aria-hidden="true">
+              <img src="/assets/img/addons/4.webp" alt="" loading="lazy">
+            </span>
+          </div>
+        </article>
+
+        <!-- 5 -->
+        <article class="addons-card addons-card--5">
+          <div class="addons-card__text">
+            <h3 class="addons-card__title">Детский торт</h3>
+            <p class="addons-card__desc">
+              финальный акцент праздника: свечи, улыбки
+              и долгожданное заветное желание
+            </p>
+          </div>
+
+          <div class="addons-card__media" aria-hidden="true">
+            <img class="addons-card__img" src="/assets/img/addons/5.5.webp" alt="" loading="lazy">
+            <span class="addons-card__num" aria-hidden="true">
+              <img src="/assets/img/addons/5.webp" alt="" loading="lazy">
+            </span>
+          </div>
+        </article>
+      </div>
+      <!-- /addons-row -->
+    </div>
+  </div>
+</section>
+      <section class="section why-us" id="why-us">
+  <div class="container">
+    <!-- iPad + mobile title -->
+    <header class="why-us__head" aria-label="Почему выбирают нас">
+      <h2 class="why-us__title">
+        <span class="why-us__title-top">Почему</span>
+        <span class="why-us__title-bottom">выбирают нас:</span>
+      </h2>
+    </header>
+
+    <div class="why-us__layout">
+      <!-- Desktop left column -->
+      <aside class="why-us__side" aria-hidden="true">
+        <!-- title that moves with scroll (JS controls translateY) -->
+        <div class="why-us__move" data-whyus-move>
+          <h2 class="why-us__title why-us__title--sticky">
+            <span class="why-us__title-top">Почему</span>
+            <span class="why-us__title-bottom">выбирают нас:</span>
+          </h2>
+        </div>
+
+        <!-- balloon (desktop only) -->
+        <div class="why-us__balloon-space" aria-hidden="true">
+          <!-- ✅ stop marker moved INSIDE balloon space (this is the "finish line") -->
+          <div class="why-us__stop" data-whyus-stop aria-hidden="true"></div>
+
+          <img class="why-us__balloon" src="/assets/img/whyus/6.webp" alt="" loading="lazy" />
+        </div>
+      </aside>
+
+      <!-- Cards -->
+      <div class="why-us__grid" aria-label="Преимущества">
+        <article class="whyus-card whyus-card--p1">
+          <div class="whyus-card__icon" aria-hidden="true">
+            <img src="/assets/img/whyus/1.webp" alt="" loading="lazy" />
+          </div>
+          <h3 class="whyus-card__title">Дети в полном<br/>восторге</h3>
+          <p class="whyus-card__text">
+            С первой минуты ребята оказываются в игре: лазерный лабиринт, неон,
+            «снежная дискотека». Смех, драйв и ощущение приключения — день рождения
+            превращается в историю, которую ребёнок будет пересказывать всем подряд.
+          </p>
+        </article>
+
+        <article class="whyus-card whyus-card--p2">
+          <div class="whyus-card__icon" aria-hidden="true">
+            <img src="/assets/img/whyus/2.webp" alt="" loading="lazy" />
+          </div>
+          <h3 class="whyus-card__title">Родители спокойно<br/>наслаждаются моментом</h3>
+          <p class="whyus-card__text">
+            Вместо беготни и нервов — организаторы берут всё на себя: сценарий,
+            ведущие, еда, вынос торта. Вы отдыхаете и ловите счастливые кадры на
+            камеру, а не следите за часами.
+          </p>
+        </article>
+
+        <article class="whyus-card whyus-card--p3">
+          <div class="whyus-card__icon" aria-hidden="true">
+            <img src="/assets/img/whyus/3.webp" alt="" loading="lazy" />
+          </div>
+          <div class="whyus-card__media" aria-hidden="true"></div>
+
+          <div class="whyus-card__content">
+            <h3 class="whyus-card__title">Праздник<br/>под вашего ребёнка</h3>
+            <p class="whyus-card__text">
+              Малышам — тихие игры, подросткам — драйв и челленджи. Атмосфера
+              и программа подстраиваются так, чтобы именинник почувствовал: это его
+              день, созданный именно под его мечту.
+            </p>
+          </div>
+        </article>
+
+        <article class="whyus-card whyus-card--p4">
+          <div class="whyus-card__icon" aria-hidden="true">
+            <img src="/assets/img/whyus/4.webp" alt="" loading="lazy" />
+          </div>
+          <h3 class="whyus-card__title">Честно<br/>и понятно</h3>
+          <p class="whyus-card__text">
+            Праздник длится 2–2,5 часа. Всё расписано по минутам и смете.
+            Вы заранее знаете, что входит в пакет — без сюрпризов.
+          </p>
+        </article>
+
+        <article class="whyus-card whyus-card--p5">
+          <div class="whyus-card__icon" aria-hidden="true">
+            <img src="/assets/img/whyus/5.webp" alt="" loading="lazy" />
+          </div>
+          <h3 class="whyus-card__title">Красиво<br/>и безопасно</h3>
+          <p class="whyus-card__text">
+            Нескользкие покрытия и никаких острых углов. Всё продумано и контролируется,
+            остаётся только то, что дарит радость.
+          </p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+      <section class="section love" id="love" aria-label="Любовь к тому, что делаем">
+  <div class="container">
+    <div class="love__frame">
+      <!-- BG video (замени путь на свой файл) -->
+      <video class="love__video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+        <!-- пример: /assets/video/love.mp4 -->
+        <source src="/assets/img/love/why.mp4" type="video/mp4" />
+      </video>
+
+      <!-- Левое → правое затемнение (фиолетовый градиент как на скрине) -->
+      <div class="love__shade" aria-hidden="true"></div>
+
+      <div class="love__content">
+        <!-- TOP text -->
+        <div class="love__top">
+          <h2 class="love__title">
+            <span class="love__title-line">Безусловная</span>
+            <span class="love__title-line">
+              <span class="love__title-accent">любовь</span> к тому,
+            </span>
+            <span class="love__title-line">что делаем</span>
+          </h2>
+
+          <p class="love__sub">
+            Мы создаем атмосферу, в которой дети
+            <strong>искренне счастливы</strong>, а родители спокойны
+          </p>
+        </div>
+
+        <!-- BOTTOM bar -->
+        <div class="love__bar" aria-label="Наши преимущества">
+          <ul class="love__list">
+            <li class="love__item">
+              <div class="love__icon" aria-hidden="true">
+                <img src="/assets/img/love/1.svg" alt="" loading="lazy" />
+              </div>
+              <p class="love__text">
+                На нашей площадке нет зрителей — каждый ребёнок становится
+                <strong>участником игры</strong>
+              </p>
+            </li>
+
+            <li class="love__item">
+              <div class="love__icon" aria-hidden="true">
+                <img src="/assets/img/love/2.svg" alt="" loading="lazy" />
+              </div>
+              <p class="love__text">
+                Всё прозрачно: тайминг, программа, стоимость —
+                <strong>без скрытых оплат</strong>
+              </p>
+            </li>
+
+            <li class="love__item">
+              <div class="love__icon" aria-hidden="true">
+                <img src="/assets/img/love/3.svg" alt="" loading="lazy" />
+              </div>
+              <p class="love__text">
+                Мы заранее думаем о красивых кадрах для семьи, потому что именно
+                они остаются на годы
+              </p>
+            </li>
+
+            <li class="love__item">
+              <div class="love__icon" aria-hidden="true">
+                <img src="/assets/img/love/4.svg" alt="" loading="lazy" />
+              </div>
+              <p class="love__text">
+                Ведущие подстраиваются под возраст и характер детей, слышат и
+                поддерживают каждого
+              </p>
+            </li>
+
+            <li class="love__item">
+              <div class="love__icon" aria-hidden="true">
+                <img src="/assets/img/love/5.svg" alt="" loading="lazy" />
+              </div>
+              <p class="love__text">
+                Для взрослых — своя зона отдыха, еда и возможность быть рядом,
+                наслаждаясь моментом
+              </p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+      <section class="section kitchen" id="kitchen" aria-labelledby="kitchenTitle">
+  <div class="container kitchen__container">
+    <header class="kitchen__head">
+      <h2 class="kitchen__title" id="kitchenTitle">
+        <span class="kitchen__title-main">Своя</span>
+        <span class="kitchen__title-accent">кухня и бар</span>
+      </h2>
+
+      <p class="kitchen__sub">
+        <strong>Горячее и напитки прямо на площадке</strong> — без доставок<br>
+        и&nbsp;лишней суеты. Дети сыты, взрослые спокойны
+      </p>
+    </header>
+
+    <div class="kitchen__grid" role="list" aria-label="Своя кухня и бар">
+      <!-- 1 -->
+      <article class="kitchen-card kitchen-card--1" role="listitem">
+        <div class="kitchen-card__media" aria-label="Десерты">
+          <img class="kitchen-card__img" src="assets/img/kitchen/1.jpg" alt="Десерты">
+          <img class="kitchen-card__img kitchen-card__img--hover" src="assets/img/kitchen/1.1.jpg" alt="" aria-hidden="true">
+        </div>
+        <span class="kitchen-card__tag kitchen-card__tag--top">Десерты</span>
+      </article>
+
+      <!-- 2 -->
+      <article class="kitchen-card kitchen-card--2" role="listitem">
+        <div class="kitchen-card__media" aria-label="Пицца и роллы">
+          <img class="kitchen-card__img" src="assets/img/kitchen/2.jpg" alt="Пицца и роллы">
+          <img class="kitchen-card__img kitchen-card__img--hover" src="assets/img/kitchen/2.2.jpg" alt="" aria-hidden="true">
+        </div>
+        <span class="kitchen-card__tag kitchen-card__tag--bottom">Пицца и роллы</span>
+      </article>
+
+      <!-- 3 -->
+      <article class="kitchen-card kitchen-card--3" role="listitem">
+        <div class="kitchen-card__media" aria-label="Любимые закуски">
+          <img class="kitchen-card__img" src="assets/img/kitchen/3.jpg" alt="Любимые закуски">
+          <img class="kitchen-card__img kitchen-card__img--hover" src="assets/img/kitchen/3.3.jpg" alt="" aria-hidden="true">
+        </div>
+        <span class="kitchen-card__tag kitchen-card__tag--top">Любимые закуски</span>
+      </article>
+
+      <!-- 4 -->
+      <article class="kitchen-card kitchen-card--4" role="listitem">
+        <div class="kitchen-card__media" aria-label="Фирменные напитки">
+          <img class="kitchen-card__img" src="assets/img/kitchen/4.jpg" alt="Фирменные напитки">
+          <img class="kitchen-card__img kitchen-card__img--hover" src="assets/img/kitchen/4.4.jpg" alt="" aria-hidden="true">
+        </div>
+        <span class="kitchen-card__tag kitchen-card__tag--bottom">Фирменные напитки</span>
+      </article>
+    </div>
+  </div>
+</section>
+      <section class="section reviews" id="reviews">
+  <div class="container reviews__container">
+    <header class="reviews__head">
+      <h2 class="reviews__title">
+        <span class="reviews__title-main">Исполняем</span>
+        <span class="reviews__title-accent">мечты</span>
+      </h2>
+
+      <p class="reviews__sub">
+        Сотни семей уже отмечали у нас дни рождения детей —
+        <strong>их отзывы лучше любых слов</strong>
+      </p>
+    </header>
+
+    <div class="reviews__slider" data-reviews>
+      <button class="reviews__nav reviews__nav--prev" type="button" aria-label="Предыдущий отзыв" data-reviews-prev>
+        <span aria-hidden="true">‹</span>
+      </button>
+
+      <div class="reviews__viewport" aria-label="Отзывы">
+        <div class="reviews__track" data-reviews-track>
+          <!-- 1 -->
+          <article class="review-card" style="--card-bg:#F3E5FE" data-review>
+            <header class="review-card__head">
+              <span class="review-card__ava" aria-hidden="true">
+                <img src="/assets/img/review/woman.png" alt="" />
+              </span>
+
+              <h3 class="review-card__name">Анастасия Р.</h3>
+
+              <img class="review-card__stars" src="/assets/img/review/stars.svg" alt="★★★★★" />
+            </header>
+
+            <div class="review-card__text" style="font-family: Onest, Arial, sans-serif;">
+              Очень суперское место!!! Дети в&nbsp;восторге, родители довольны:)
+              <strong>Ведущие приятные, </strong>организованные, вежливые.
+              Встретили, всё объяснили.
+              <strong>Кухня очень вкусная,</strong> очень рада, что заказала всё в&nbsp;Еноте.
+              По&nbsp;лимонадам, нам посоветовали фирменный «Енот», он&nbsp;очень вкусный,
+              мне напомнил тропический вкус, в&nbsp;меру сладкий.
+              В&nbsp;общем, если хотите провести день рождения ребёнка, то&nbsp;<strong>рекомендую Енот</strong>
+            </div>
+
+            <figure class="review-card__media" aria-hidden="true">
+              <img src="/assets/img/review/1.jpg" alt="" loading="lazy" />
+            </figure>
+          </article>
+
+          <!-- 2 -->
+          <article class="review-card" style="--card-bg:#FEF9E5" data-review>
+            <header class="review-card__head">
+              <span class="review-card__ava" aria-hidden="true">
+                <img src="/assets/img/review/man.png" alt="" />
+              </span>
+              <h3 class="review-card__name">Валерий Б.</h3>
+              <img class="review-card__stars" src="/assets/img/review/stars.svg" alt="★★★★★" />
+            </header>
+
+            <div class="review-card__text" style="font-family: Onest, Arial, sans-serif;">
+              Встречают на&nbsp;входе, провожают, есть куда верхние вещи повесить,
+              <strong>есть фото зона, кухня хорошая, пицца наивкуснейшая тонкая, </strong>
+              чай фруктовый просто супер, игровые зоны, мыльная вечеринка, конкурсы,
+              лазерная комната, есть где попрыгать побегать <strong>мой ребёнок в&nbsp;восторге.</strong>
+              Чисто уютно. весело самое главное
+            </div>
+
+            <figure class="review-card__media" aria-hidden="true">
+              <img src="/assets/img/review/2.jpg" alt="" loading="lazy" />
+            </figure>
+          </article>
+
+          <!-- 3 -->
+          <article class="review-card" style="--card-bg:#EEECFF" data-review>
+            <header class="review-card__head">
+              <span class="review-card__ava" aria-hidden="true">
+                <img src="/assets/img/review/woman.png" alt="" />
+              </span>
+              <h3 class="review-card__name">Наталья</h3>
+              <img class="review-card__stars" src="/assets/img/review/stars.svg" alt="★★★★★" />
+            </header>
+
+            <div class="review-card__text" style="font-family: Onest, Arial, sans-serif;">
+              Хорошее место для детских праздников. Возраст 10−13 лет самый подходящий, как мне показалось.
+              Им&nbsp;было наиболее <strong>интересно на&nbsp;протяжении всего времени. </strong>
+              Кухня тоже неплохая, вкусный лимонад.
+              <strong>Особого внимания заслуживает ведущий👍</strong>Рекомендую!!!
+            </div>
+
+            <figure class="review-card__media" aria-hidden="true">
+              <img src="/assets/img/review/3.jpg" alt="" loading="lazy" />
+            </figure>
+          </article>
+
+          <!-- 4 -->
+          <article class="review-card" style="--card-bg:#E1F1FF" data-review>
+            <header class="review-card__head">
+              <span class="review-card__ava" aria-hidden="true">
+                <img src="/assets/img/review/woman.png" alt="" />
+              </span>
+              <h3 class="review-card__name">Алина Р.</h3>
+              <img class="review-card__stars" src="/assets/img/review/stars.svg" alt="★★★★★" />
+            </header>
+
+            <div class="review-card__text" style="font-family: Onest, Arial, sans-serif;">
+              <strong>Классное место, для детских праздников! </strong>
+              Не&nbsp;видела ещё такого. Очень все понравилось, и&nbsp;персонал вежливый,
+              еда вкусная, очень стильный интерьер, лабиринт вообще бомба, самой было по&nbsp;началу страшно.
+              В&nbsp;общем, ребята <strong>молодцы🥰</strong>
+            </div>
+
+            <figure class="review-card__media" aria-hidden="true">
+              <img src="/assets/img/review/4.jpg" alt="" loading="lazy" />
+            </figure>
+          </article>
+
+          <!-- 5 -->
+          <article class="review-card" style="--card-bg:#EEECFF" data-review>
+            <header class="review-card__head">
+              <span class="review-card__ava" aria-hidden="true">
+                <img src="/assets/img/review/woman.png" alt="" />
+              </span>
+              <h3 class="review-card__name">Алёна Б.</h3>
+              <img class="review-card__stars" src="/assets/img/review/stars.svg" alt="★★★★★" />
+            </header>
+
+            <div class="review-card__text" style="font-family: Onest, Arial, sans-serif;">
+              <strong>Суперское заведение</strong> для детей и&nbsp;взрослых 👍 были там на&nbsp;празднование дня рождения
+              подружки нашей дочери, все очень понравилось, девочки администраторы и&nbsp;ведущие большие умнички 🫶🏻
+              <strong>дети просто в&nbsp;восторге 👍 спасибо вам большое !</strong>
+            </div>
+
+            <figure class="review-card__media" aria-hidden="true">
+              <img src="/assets/img/review/5.jpg" alt="" loading="lazy" />
+            </figure>
+          </article>
+
+          <!-- 6 -->
+          <article class="review-card" style="--card-bg:#F3E5FE" data-review>
+            <header class="review-card__head">
+              <span class="review-card__ava" aria-hidden="true">
+                <img src="/assets/img/review/woman.png" alt="" />
+              </span>
+              <h3 class="review-card__name">Ольга П.</h3>
+              <img class="review-card__stars" src="/assets/img/review/stars.svg" alt="★★★★★" />
+            </header>
+
+            <div class="review-card__text" style="font-family: Onest, Arial, sans-serif;">
+              Справляли дочери день рождения. Очень понравилось. Приветливый, вежливый персонал.
+              <strong> Ведущие на&nbsp;высшем уровне, дети не&nbsp;хотели уходить. </strong>
+              Спасибо за&nbsp;отличный праздник!
+            </div>
+
+            <figure class="review-card__media" aria-hidden="true">
+              <img src="/assets/img/review/6.png" alt="" loading="lazy" />
+            </figure>
+          </article>
+        </div>
+      </div>
+
+      <button class="reviews__nav reviews__nav--next" type="button" aria-label="Следующий отзыв" data-reviews-next>
+        <span aria-hidden="true">›</span>
+      </button>
+    </div>
+
+    <div class="reviews__yandex" role="region" aria-label="Отзывы на Яндекс">
+      <div class="reviews__yandex-left">
+        <div class="reviews__yandex-title">Смотрите больше<br />отзывов на&nbsp;Яндекс</div>
+
+        <div class="reviews__ya-crop" aria-hidden="true">
+          <img class="reviews__yandex-logo" src="/assets/img/review/ya.jpg" alt="" />
+        </div>
+      </div>
+
+      <a class="reviews__yandex-btn"
+         href="https://yandex.md/maps/org/yenot/189374871556/?ll=48.014637%2C46.332657&z=17"
+         target="_blank" rel="noopener noreferrer">Смотреть</a>
+    </div>
+  </div>
+</section>
+      <section class="section faq" id="faq">
+  <div class="container faq__container">
+    <header class="faq__head">
+      <h2 class="faq__title">
+        <span class="faq__title-main">Ответы на самые</span>
+        <span class="faq__title-accent">частые вопросы</span>
+      </h2>
+    </header>
+
+    <div class="faq__grid" data-faq>
+      <!-- LEFT COLUMN -->
+      <div class="faq__col" role="list">
+
+        <article class="faq-item" role="listitem" data-faq-item>
+          <button class="faq-item__toggle" type="button" aria-expanded="false">
+            <span class="faq-item__q">Есть ли минимальная сумма заказа?</span>
+            <span class="faq-item__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-item__panel" role="region">
+            <div class="faq-item__a">
+              <strong>Да.</strong> <strong>Минимальная стоимость праздника — от 5 000 ₽.</strong><br>
+              Итоговая цена зависит от наполнения, продолжительности и выбранных развлечений.<br><br>
+              <strong>
+                <a
+                  href="#"
+                  data-popup-open="universal"
+                  data-popup-title="Подобрать программу"
+                  data-popup-sub="Оставьте заявку — мы подберём программу под бюджет и возраст детей"
+                  data-popup-btn="Подобрать программу"
+                  data-popup-tag="faq:min-price"
+                >Подобрать программу</a>
+              </strong>
+            </div>
+          </div>
+        </article>
+
+        <article class="faq-item" role="listitem" data-faq-item>
+          <button class="faq-item__toggle" type="button" aria-expanded="false">
+            <span class="faq-item__q">Если ребёнок заболел — можно перенести?</span>
+            <span class="faq-item__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-item__panel" role="region">
+            <div class="faq-item__a">
+              Да, перенос возможен один раз.
+            </div>
+          </div>
+        </article>
+
+        <article class="faq-item" role="listitem" data-faq-item>
+          <button class="faq-item__toggle" type="button" aria-expanded="false">
+            <span class="faq-item__q">Чем «тематическая программа» отличается от обычной?</span>
+            <span class="faq-item__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-item__panel" role="region">
+            <div class="faq-item__a">
+              Тема — это костюм ведущего, музыка, реплики и мини-сюжет поверх нашей основной программы.<br><br>
+              <strong>
+                <a
+                  href="#"
+                  data-popup-open="universal"
+                  data-popup-title="Подобрать тематическую программу"
+                  data-popup-sub="Расскажите, какой праздник вы планируете — мы предложим подходящий формат"
+                  data-popup-btn="Подобрать программу"
+                  data-popup-tag="faq:theme"
+                >Подобрать программу</a>
+              </strong>
+            </div>
+          </div>
+        </article>
+
+        <article class="faq-item" role="listitem" data-faq-item>
+          <button class="faq-item__toggle" type="button" aria-expanded="false">
+            <span class="faq-item__q">Сколько детей оптимально для одной программы?</span>
+            <span class="faq-item__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-item__panel" role="region">
+            <div class="faq-item__a">
+              От 5 до 30 участников (меньше 5 — не так интересно, больше 30 — делим на команды или раунды).
+            </div>
+          </div>
+        </article>
+
+        <article class="faq-item" role="listitem" data-faq-item>
+          <button class="faq-item__toggle" type="button" aria-expanded="false">
+            <span class="faq-item__q">Как происходит бронирование?</span>
+            <span class="faq-item__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-item__panel" role="region">
+            <div class="faq-item__a">
+              Дата фиксируется по предоплате 2 000 ₽.<br><br>
+              <strong>
+                <a
+                  href="#"
+                  data-popup-open="universal"
+                  data-popup-title="Забронировать дату"
+                  data-popup-sub="Оставьте заявку — мы свяжемся с вами и зафиксируем дату праздника"
+                  data-popup-btn="Забронировать"
+                  data-popup-tag="faq:booking"
+                >Подобрать программу</a>
+              </strong>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div class="faq__col" role="list">
+
+        <article class="faq-item" role="listitem" data-faq-item>
+          <button class="faq-item__toggle" type="button" aria-expanded="false">
+            <span class="faq-item__q">Можно ли принести свой торт и еду?</span>
+            <span class="faq-item__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-item__panel" role="region">
+            <div class="faq-item__a">
+              Торт — можно. По остальному — только то, чего нет в нашем меню (по согласованию).
+            </div>
+          </div>
+        </article>
+
+        <article class="faq-item" role="listitem" data-faq-item>
+          <button class="faq-item__toggle" type="button" aria-expanded="false">
+            <span class="faq-item__q">Какие праздники, кроме дня рождения, вы проводите?</span>
+            <span class="faq-item__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-item__panel" role="region">
+            <div class="faq-item__a">
+              Новый год и выпускные.
+            </div>
+          </div>
+        </article>
+
+        <article class="faq-item" role="listitem" data-faq-item>
+          <button class="faq-item__toggle" type="button" aria-expanded="false">
+            <span class="faq-item__q">С какого возраста дети могут участвовать в ваших программах?</span>
+            <span class="faq-item__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-item__panel" role="region">
+            <div class="faq-item__a">
+              С 5 до 15 лет.
+            </div>
+          </div>
+        </article>
+
+        <article class="faq-item" role="listitem" data-faq-item>
+          <button class="faq-item__toggle" type="button" aria-expanded="false">
+            <span class="faq-item__q">Насколько безопасны ваши активности и шоу?</span>
+            <span class="faq-item__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-item__panel" role="region">
+            <div class="faq-item__a">
+              Все программы проходят в игровой форме и полностью подходят для детей.<br><br>
+              <strong>
+                <a
+                  href="#"
+                  data-popup-open="universal"
+                  data-popup-title="Безопасные программы для детей"
+                  data-popup-sub="Оставьте заявку — расскажем подробнее и подберём безопасный формат"
+                  data-popup-btn="Подобрать программу"
+                  data-popup-tag="faq:safety"
+                >Подобрать программу</a>
+              </strong>
+            </div>
+          </div>
+        </article>
+
+        <article class="faq-item" role="listitem" data-faq-item>
+          <button class="faq-item__toggle" type="button" aria-expanded="false">
+            <span class="faq-item__q">Какие есть способы оплаты?</span>
+            <span class="faq-item__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-item__panel" role="region">
+            <div class="faq-item__a">
+              Оплатить праздник можно так, как вам удобнее: банковской картой, наличными, по QR-коду или по безналу для юрлиц.
+              Если нужно — есть возможность оформить рассрочку через банк.<br><br>
+              <strong>
+                <a
+                  href="#"
+                  data-popup-open="universal"
+                  data-popup-title="Подобрать программу"
+                  data-popup-sub="Оставьте заявку — мы предложим удобный вариант оплаты и программу"
+                  data-popup-btn="Подобрать программу"
+                  data-popup-tag="faq:payment"
+                >Подобрать программу</a>
+              </strong>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </div>
+</section>
+      <section class="section lead-form" id="lead-form">
+  <div class="container lead-form__container">
+    <div class="lead-form__box">
+      <!-- декор только десктоп -->
+      <div class="lead-form__deco lead-form__deco--balloon" aria-hidden="true"></div>
+      <div class="lead-form__deco lead-form__deco--ribbon" aria-hidden="true"></div>
+
+      <div class="lead-form__grid">
+        <!-- LEFT -->
+        <div class="lead-form__left">
+          <h2 class="lead-form__title">
+            <span style="color:#2ED2F1;">Поможем</span><br>
+            организовать<br>
+            праздник
+          </h2>
+
+          <p class="lead-form__text">
+            Хотите, чтобы всё сошлось
+            <strong>по&nbsp;настроению и&nbsp;бюджету? </strong>
+            Давайте подберем решение вместе
+          </p>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="lead-form__right">
+          <form
+            class="lead-form__form"
+            action="#"
+            method="post"
+            novalidate
+            data-popup-id="lead-form"
+            data-tag="lead-form"
+          >
+            <!-- ✅ Honeypot (скрытое поле от ботов). Люди его не видят -->
+            <div style="position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;" aria-hidden="true">
+              <label>
+                Company
+                <input type="text" name="company" autocomplete="off" tabindex="-1" />
+              </label>
+            </div>
+
+            <label class="lf-field">
+              <span class="lf-field__sr">Ваше имя</span>
+              <input
+                class="lf-field__input"
+                type="text"
+                name="name"
+                placeholder="Ваше имя"
+                autocomplete="name"
+                required
+              />
+            </label>
+
+            <label class="lf-field">
+              <span class="lf-field__sr">Ваш вопрос/пожелание</span>
+              <textarea
+                class="lf-field__input lf-field__textarea"
+                name="message"
+                placeholder="Ваш вопрос/пожелание"
+                rows="3"
+              ></textarea>
+            </label>
+
+            <label class="lf-field">
+              <span class="lf-field__sr">Телефон</span>
+              <input
+                class="lf-field__input"
+                type="tel"
+                name="phone"
+                placeholder="+7 (___) ___-__-__"
+                autocomplete="tel"
+                inputmode="tel"
+                required
+                data-phone
+              />
+            </label>
+
+            <label class="lf-consent">
+              <input class="lf-consent__check" type="checkbox" name="consent" required />
+              <span class="lf-consent__box" aria-hidden="true"></span>
+              <span class="lf-consent__text">Я согласен(-на) на обработку персональных данных</span>
+            </label>
+
+            <button class="lf-submit" type="submit">
+              Подобрать программу
+            </button>
+
+            <div class="lf-messengers" aria-label="Связаться в мессенджерах">
+              <a class="lf-ms lf-ms--tg" href="https://t.me/enotclub" target="_blank" rel="noopener">
+                <span class="lf-ms__icon" aria-hidden="true">
+                  <img class="lf-ms__img" src="./assets/img/social/tg.svg" alt="" loading="lazy">
+                </span>
+                <span class="lf-ms__text">
+                  <span class="lf-ms__top">Связаться</span>
+                  <span class="lf-ms__bot">в Telegram</span>
+                </span>
+              </a>
+
+              <a class="lf-ms lf-ms--wa" href="https://wa.me/79378225558" target="_blank" rel="noopener">
+                <span class="lf-ms__icon" aria-hidden="true">
+                  <img class="lf-ms__img" src="./assets/img/social/wa.svg" alt="" loading="lazy">
+                </span>
+                <span class="lf-ms__text">
+                  <span class="lf-ms__top">Связаться</span>
+                  <span class="lf-ms__bot">в WhatsApp</span>
+                </span>
+              </a>
+            </div>
+
+            <p class="lf-error" role="alert" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
     </main>
 
-    <div data-include="/partials/footer.html"></div>
+    <!-- MAP (full width, not part of footer background) -->
+<section class="footer-map" id="contacts" aria-label="Карта">
+  <div class="footer-map__frame" role="application" aria-label="Карта Яндекс">
+    <iframe
+      class="footer-map__iframe"
+      src="https://yandex.ru/map-widget/v1/?um=constructor%3A7e31507383a935513c321bb0be9a3d19129e64b58d1df9c1b6646c4bc3cbd084&amp;source=constructor"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      frameborder="0"
+      aria-label="Мы на карте"
+    ></iframe>
   </div>
-  <div data-include="/partials/popup.html"></div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" aria-label="Контакты и реквизиты">
+  <div class="container footer__container">
+    <div class="footer__cards">
+      <!-- 1 -->
+      <section class="footer-card footer-card--1" aria-label="График и адрес">
+        <div class="footer-card__icon" aria-hidden="true">
+          <img src="/assets/img/footer/1.webp" alt="" />
+        </div>
+
+        <div class="footer-card__top">
+          <p class="footer-card__kicker">Работаем для вас:</p>
+
+          <p class="footer-card__title">
+            <strong>Без выходных</strong><br />
+            <strong>с 8:00 до 22:00</strong>
+          </p>
+        </div>
+
+        <div class="footer-card__bottom">
+          <p class="footer-card__text muted">По адресу:</p>
+
+          <p class="footer-card__title footer-card__title--bottom">
+            <strong>г. Астрахань,</strong><br />
+            <strong>ул. Пороховая, д. 6</strong>
+          </p>
+        </div>
+      </section>
+
+      <!-- 2 -->
+      <section class="footer-card footer-card--2" aria-label="Телефоны">
+        <div class="footer-card__icon" aria-hidden="true">
+          <img src="/assets/img/footer/2.webp" alt="" />
+        </div>
+
+        <div class="footer-card__top">
+          <p class="footer-card__kicker">
+            <strong>Звоните</strong>, мы подберем<br />
+            программу для вашего<br />
+            праздника:
+          </p>
+        </div>
+
+        <div class="footer-card__bottom">
+          <p class="footer-card__phones">
+            <a class="footer-card__phone" href="tel:+79170855501">8 (917) 085-55-01</a><br />
+            <a class="footer-card__phone" href="tel:+79378225558">8 (937) 822-55-58</a>
+          </p>
+        </div>
+      </section>
+
+      <!-- 3 -->
+      <section class="footer-card footer-card--3" aria-label="Мессенджеры">
+        <div class="footer-card__icon" aria-hidden="true">
+          <img src="/assets/img/footer/3.webp" alt="" />
+        </div>
+
+        <div class="footer-card__top">
+          <p class="footer-card__kicker">
+            <strong>Или напишите</strong><br />
+            в мессенджер — ответим<br />
+            в течение 30 минут:
+          </p>
+        </div>
+
+        <div class="footer-card__bottom">
+          <div class="footer-socials" aria-label="Ссылки на мессенджеры">
+            <!-- Если у тебя уже есть реальные ссылки — подставь вместо # -->
+            <a class="footer-social footer-social--tg" href="https://t.me/enotclub" aria-label="Telegram">
+              <img src="/assets/img/social/tg.svg" alt="Telegram" />
+            </a>
+            <a class="footer-social footer-social--wa" href="https://wa.me/79378225558" aria-label="WhatsApp">
+              <img src="/assets/img/social/wa.svg" alt="WhatsApp" />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4 -->
+      <section class="footer-card footer-card--4" aria-label="Почта">
+        <div class="footer-card__icon" aria-hidden="true">
+          <img src="/assets/img/footer/4.webp" alt="" />
+        </div>
+
+        <div class="footer-card__top">
+          <p class="footer-card__kicker">
+            <strong>Ждём ваши отзывы</strong>,<br />
+            предложения и идеи<br />
+            на почту:
+          </p>
+        </div>
+
+        <div class="footer-card__bottom">
+          <p class="footer-card__mail">
+            <a class="footer-card__email" href="mailto:Enotdc@yandex.ru">Enotdc@yandex.ru</a>
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="footer__brand">
+        <img class="footer__logo" src="/assets/img/logo.png" alt="Енот" />
+        <p class="footer__brand-text">
+          Организация детских<br />
+          праздников в Астрахани<br />
+          с 2008 года
+        </p>
+      </div>
+
+      <div class="footer__meta">
+        <a class="footer__policy" href="/privacy" aria-label="Политика конфиденциальности">Политика конфиденциальности</a>
+        <p class="footer__copy">© 2026, All rights reserved</p>
+      </div>
+    </div>
+  </div>
+</footer>
+  </div>
+  <!-- POPUPS: universal + 3 service popups -->
+
+<div class="popup-layer" id="popupLayer" aria-hidden="true">
+  <div class="popup-backdrop" data-popup-close aria-hidden="true"></div>
+
+  <!-- POPUP #1: universal -->
+  <section class="popup" role="dialog" aria-modal="true" aria-label="Лид форма" data-popup="universal" tabindex="-1">
+    <button class="popup__x" type="button" aria-label="Закрыть" data-popup-close></button>
+
+    <div class="popup__card">
+      <div class="popup__head" aria-hidden="true">
+        <img src="/assets/img/popup/head.jpg" alt="" loading="lazy" />
+      </div>
+
+      <div class="popup__body">
+        <h3 class="popup__title" data-popup-title>Подберём программу под ваш бюджет</h3>
+        <p class="popup__sub" data-popup-sub>
+          Оставьте заявку, мы свяжемся с вами в течение 30 минут, чтобы подобрать программу вашего праздника
+        </p>
+
+        <form class="popup-form" data-popup-form novalidate>
+          <input type="hidden" name="popup_id" value="universal">
+          <input type="hidden" name="tag" value="">
+
+          <!-- honeypot (anti-spam): должно оставаться пустым -->
+          <input class="pf-hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+          <label class="pf-field">
+            <span class="pf-sr">Ваше имя</span>
+            <input class="pf-input" type="text" name="name" placeholder="Ваше имя" autocomplete="name">
+          </label>
+
+          <label class="pf-field pf-field--phone">
+            <span class="pf-sr">Телефон</span>
+
+            <span class="pf-phone">
+              <input class="pf-input pf-input--code" type="text" name="code" inputmode="tel" autocomplete="tel-country-code"
+                     value="+7" aria-label="Код страны" />
+              <input class="pf-input pf-input--phone" type="tel" name="phone" inputmode="tel" autocomplete="tel"
+                     placeholder="(000) 000-00-00" aria-label="Номер телефона" />
+            </span>
+          </label>
+
+          <label class="pf-consent">
+            <input class="pf-check" type="checkbox" name="consent" checked>
+            <span>Я согласен(-на) с обработкой <a class="pf-link" href="/privacy" target="_blank" rel="noopener">персональных данных</a></span>
+          </label>
+
+          <button class="pf-btn" type="submit" data-popup-btn>Заказать праздник</button>
+          <div class="pf-status" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- POPUP #2: service-1 -->
+  <section class="popup" role="dialog" aria-modal="true" aria-label="Лид форма" data-popup="service-1" tabindex="-1">
+    <button class="popup__x" type="button" aria-label="Закрыть" data-popup-close></button>
+
+    <div class="popup__card">
+      <div class="popup__head" aria-hidden="true">
+        <img src="/assets/img/popup/head.jpg" alt="" loading="lazy" />
+      </div>
+
+      <div class="popup__body">
+        <h3 class="popup__title" data-popup-title>Заказать праздник услуги Маленькое чудо</h3>
+        <p class="popup__sub" data-popup-sub>Оставьте заявку — уточним детали и посчитаем стоимость</p>
+
+        <form class="popup-form" data-popup-form novalidate>
+          <input type="hidden" name="popup_id" value="service-1">
+          <input type="hidden" name="tag" value="service-1">
+
+          <!-- honeypot (anti-spam): должно оставаться пустым -->
+          <input class="pf-hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+          <label class="pf-field">
+            <span class="pf-sr">Ваше имя</span>
+            <input class="pf-input" type="text" name="name" placeholder="Ваше имя" autocomplete="name">
+          </label>
+
+          <label class="pf-field pf-field--phone">
+            <span class="pf-sr">Телефон</span>
+
+            <span class="pf-phone">
+              <input class="pf-input pf-input--code" type="text" name="code" inputmode="tel" autocomplete="tel-country-code"
+                     value="+7" aria-label="Код страны" />
+              <input class="pf-input pf-input--phone" type="tel" name="phone" inputmode="tel" autocomplete="tel"
+                     placeholder="(000) 000-00-00" aria-label="Номер телефона" />
+            </span>
+          </label>
+
+          <label class="pf-consent">
+            <input class="pf-check" type="checkbox" name="consent" checked>
+            <span>Я согласен(-на) с обработкой <a class="pf-link" href="#" target="_blank" rel="noopener">персональных данных</a></span>
+          </label>
+
+          <button class="pf-btn" type="submit" data-popup-btn>Заказать праздник</button>
+          <div class="pf-status" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- POPUP #3: service-2 -->
+  <section class="popup" role="dialog" aria-modal="true" aria-label="Лид форма" data-popup="service-2" tabindex="-1">
+    <button class="popup__x" type="button" aria-label="Закрыть" data-popup-close></button>
+
+    <div class="popup__card">
+      <div class="popup__head" aria-hidden="true">
+        <img src="/assets/img/popup/head.jpg" alt="" loading="lazy" />
+      </div>
+
+      <div class="popup__body">
+        <h3 class="popup__title" data-popup-title>Заказать праздник услуги Классический праздник</h3>
+        <p class="popup__sub" data-popup-sub>Оставьте заявку — мы перезвоним и всё расскажем</p>
+
+        <form class="popup-form" data-popup-form novalidate>
+          <input type="hidden" name="popup_id" value="service-2">
+          <input type="hidden" name="tag" value="service-2">
+
+          <!-- honeypot (anti-spam): должно оставаться пустым -->
+          <input class="pf-hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+          <label class="pf-field">
+            <span class="pf-sr">Ваше имя</span>
+            <input class="pf-input" type="text" name="name" placeholder="Ваше имя" autocomplete="name">
+          </label>
+
+          <label class="pf-field pf-field--phone">
+            <span class="pf-sr">Телефон</span>
+
+            <span class="pf-phone">
+              <input class="pf-input pf-input--code" type="text" name="code" inputmode="tel" autocomplete="tel-country-code"
+                     value="+7" aria-label="Код страны" />
+              <input class="pf-input pf-input--phone" type="tel" name="phone" inputmode="tel" autocomplete="tel"
+                     placeholder="(000) 000-00-00" aria-label="Номер телефона" />
+            </span>
+          </label>
+
+          <label class="pf-consent">
+            <input class="pf-check" type="checkbox" name="consent" checked>
+            <span>Я согласен(-на) с обработкой <a class="pf-link" href="#" target="_blank" rel="noopener">персональных данных</a></span>
+          </label>
+
+          <button class="pf-btn" type="submit" data-popup-btn>Заказать праздник</button>
+          <div class="pf-status" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- POPUP #4: service-3 -->
+  <section class="popup" role="dialog" aria-modal="true" aria-label="Лид форма" data-popup="service-3" tabindex="-1">
+    <button class="popup__x" type="button" aria-label="Закрыть" data-popup-close></button>
+
+    <div class="popup__card">
+      <div class="popup__head" aria-hidden="true">
+        <img src="/assets/img/popup/head.jpg" alt="" loading="lazy" />
+      </div>
+
+      <div class="popup__body">
+        <h3 class="popup__title" data-popup-title>Заказать праздник услуги История с героями</h3>
+        <p class="popup__sub" data-popup-sub>Оставьте заявку — уточним детали и скажем точную цену</p>
+
+        <form class="popup-form" data-popup-form novalidate>
+          <input type="hidden" name="popup_id" value="service-3">
+          <input type="hidden" name="tag" value="service-3">
+
+          <!-- honeypot (anti-spam): должно оставаться пустым -->
+          <input class="pf-hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+          <label class="pf-field">
+            <span class="pf-sr">Ваше имя</span>
+            <input class="pf-input" type="text" name="name" placeholder="Ваше имя" autocomplete="name">
+          </label>
+
+          <label class="pf-field pf-field--phone">
+            <span class="pf-sr">Телефон</span>
+
+            <span class="pf-phone">
+              <input class="pf-input pf-input--code" type="text" name="code" inputmode="tel" autocomplete="tel-country-code"
+                     value="+7" aria-label="Код страны" />
+              <input class="pf-input pf-input--phone" type="tel" name="phone" inputmode="tel" autocomplete="tel"
+                     placeholder="(000) 000-00-00" aria-label="Номер телефона" />
+            </span>
+          </label>
+
+          <label class="pf-consent">
+            <input class="pf-check" type="checkbox" name="consent" checked>
+            <span>Я согласен(-на) с обработкой <a class="pf-link" href="#" target="_blank" rel="noopener">персональных данных</a></span>
+          </label>
+
+          <button class="pf-btn" type="submit" data-popup-btn>Заказать праздник</button>
+          <div class="pf-status" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</div>
   <script type="module" src="/assets/js/main.js"></script>
 </body>
 </html>

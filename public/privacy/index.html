@@ -44,7 +44,113 @@
   <div id="app">
     
 
-    <main>
+        <header class="site-header" id="siteHeader">
+
+  <div class="site-header__inner container">
+    <!-- Left -->
+    <div class="brand" aria-label="Бренд">
+
+      <!-- ЛОГО: показываем на десктопе, и в sticky на мобилке -->
+      <a class="brand__logo brand__logo--img" href="#top" aria-label="На главную"></a>
+
+      <!-- НОМЕР слева: показываем на мобилке/планшете (НО НЕ в sticky) -->
+      <a class="brand__phone" href="tel:+79170855501" aria-label="Позвонить">
+        8 (917) 085-55-01
+      </a>
+
+      <!-- Текст бренда: только десктоп -->
+      <a class="brand__text" href="#top" aria-label="На главную">
+        <span class="brand__line">
+          Организация детских<br>
+          праздников в <b>Астрахани</b>
+        </span>
+        <span class="brand__since">с 2008 года</span>
+      </a>
+
+    </div>
+
+    <!-- Right -->
+    <div class="site-header__right">
+      <div class="social" aria-label="Социальные сети">
+        <a class="social__item social__item--max" href="https://max.ru/u/f9LHodD0cOIII4r9WSdMN6BhRPjQ7_R0TTnBOW-IQmWUKEOEHOUds3tlavc" aria-label="MAX"></a>
+        <a class="social__item social__item--tg" href="https://t.me/enotclub" aria-label="Telegram"></a>
+        <a class="social__item social__item--wa" href="https://wa.me/79378225558" aria-label="WhatsApp"></a>
+      </div>
+
+      <!-- НОМЕР справа для sticky на мобилке/планшете -->
+      <a class="phone phone--sticky" href="tel:+79170855501" aria-label="Позвонить">
+        8 (917) 085-55-01
+      </a>
+
+      <!-- Десктопный телефон (справа) -->
+      <a class="phone phone--desktop" href="tel:+79170855501" aria-label="Позвонить">
+        8 (917) 085-55-01
+      </a>
+
+      <!-- CTA: открывает попап (универсальный) -->
+      <a
+        class="header-cta"
+        href="#"
+        data-popup-open="universal"
+        data-popup-title="Обсудим праздник"
+        data-popup-sub="Оставьте заявку — мы свяжемся с вами в течение 30 минут и подберём программу под ваш бюджет"
+        data-popup-btn="Подобрать программу"
+        data-popup-tag="header:cta"
+      >
+        Обсудить праздник
+      </a>
+
+      <!-- кнопка меню -->
+      <button class="burger" id="burgerBtn" type="button" aria-label="Открыть меню">
+        <span class="burger__icon" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Overlay (затемнение) -->
+  <div class="menu-overlay" id="menuOverlay" hidden></div>
+
+  <!-- Drawer menu справа -->
+  <aside class="drawer" id="mobileMenu" aria-hidden="true" hidden>
+    <button class="drawer__close" id="menuCloseBtn" type="button" aria-label="Закрыть меню">×</button>
+
+    <div class="drawer__content">
+      <nav class="drawer__nav" aria-label="Навигация">
+        <a class="drawer__link" href="#addons">Собери своё приключение</a>
+        <a class="drawer__link" href="#why-us">Почему мы</a>
+        <a class="drawer__link" href="#program">Программы</a>
+        <a class="drawer__link" href="#services">Всё для атмосферы</a>
+        <a class="drawer__link" href="#kitchen">Еда и кухня</a>
+        <a class="drawer__link" href="#reviews">Отзывы</a>
+        <a class="drawer__link" href="#faq">Частые вопросы</a>
+        <a class="drawer__link" href="#contacts">Контакты</a>
+      </nav>
+
+      <div class="drawer__bottom">
+        <div class="drawer__small">
+          Организация детских<br>
+          праздников в Астрахани
+        </div>
+
+        <a class="drawer__phone" href="tel:+79170855501">8 (917) 085-55-01</a>
+
+        <!-- CTA в меню: тоже открывает попап -->
+        <a
+          class="drawer__cta"
+          href="#"
+          data-popup-open="universal"
+          data-popup-title="Обсудим праздник"
+          data-popup-sub="Оставьте заявку — мы свяжемся с вами в течение 30 минут и подберём программу под ваш бюджет"
+          data-popup-btn="Подобрать программу"
+          data-popup-tag="menu:cta"
+        >
+          Обсудить праздник
+        </a>
+      </div>
+    </div>
+  </aside>
+</header>
+<main>
       <section class="privacy" aria-label="Политика конфиденциальности">
         <div class="container">
           <div class="privacy__wrap">
@@ -129,10 +235,339 @@
       </section>
     </main>
 
-    <div data-include="/partials/footer.html"></div>
+    <!-- MAP (full width, not part of footer background) -->
+<section class="footer-map" id="contacts" aria-label="Карта">
+  <div class="footer-map__frame" role="application" aria-label="Карта Яндекс">
+    <iframe
+      class="footer-map__iframe"
+      src="https://yandex.ru/map-widget/v1/?um=constructor%3A7e31507383a935513c321bb0be9a3d19129e64b58d1df9c1b6646c4bc3cbd084&amp;source=constructor"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      frameborder="0"
+      aria-label="Мы на карте"
+    ></iframe>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" aria-label="Контакты и реквизиты">
+  <div class="container footer__container">
+    <div class="footer__cards">
+      <!-- 1 -->
+      <section class="footer-card footer-card--1" aria-label="График и адрес">
+        <div class="footer-card__icon" aria-hidden="true">
+          <img src="/assets/img/footer/1.webp" alt="" />
+        </div>
+
+        <div class="footer-card__top">
+          <p class="footer-card__kicker">Работаем для вас:</p>
+
+          <p class="footer-card__title">
+            <strong>Без выходных</strong><br />
+            <strong>с 8:00 до 22:00</strong>
+          </p>
+        </div>
+
+        <div class="footer-card__bottom">
+          <p class="footer-card__text muted">По адресу:</p>
+
+          <p class="footer-card__title footer-card__title--bottom">
+            <strong>г. Астрахань,</strong><br />
+            <strong>ул. Пороховая, д. 6</strong>
+          </p>
+        </div>
+      </section>
+
+      <!-- 2 -->
+      <section class="footer-card footer-card--2" aria-label="Телефоны">
+        <div class="footer-card__icon" aria-hidden="true">
+          <img src="/assets/img/footer/2.webp" alt="" />
+        </div>
+
+        <div class="footer-card__top">
+          <p class="footer-card__kicker">
+            <strong>Звоните</strong>, мы подберем<br />
+            программу для вашего<br />
+            праздника:
+          </p>
+        </div>
+
+        <div class="footer-card__bottom">
+          <p class="footer-card__phones">
+            <a class="footer-card__phone" href="tel:+79170855501">8 (917) 085-55-01</a><br />
+            <a class="footer-card__phone" href="tel:+79378225558">8 (937) 822-55-58</a>
+          </p>
+        </div>
+      </section>
+
+      <!-- 3 -->
+      <section class="footer-card footer-card--3" aria-label="Мессенджеры">
+        <div class="footer-card__icon" aria-hidden="true">
+          <img src="/assets/img/footer/3.webp" alt="" />
+        </div>
+
+        <div class="footer-card__top">
+          <p class="footer-card__kicker">
+            <strong>Или напишите</strong><br />
+            в мессенджер — ответим<br />
+            в течение 30 минут:
+          </p>
+        </div>
+
+        <div class="footer-card__bottom">
+          <div class="footer-socials" aria-label="Ссылки на мессенджеры">
+            <!-- Если у тебя уже есть реальные ссылки — подставь вместо # -->
+            <a class="footer-social footer-social--tg" href="https://t.me/enotclub" aria-label="Telegram">
+              <img src="/assets/img/social/tg.svg" alt="Telegram" />
+            </a>
+            <a class="footer-social footer-social--wa" href="https://wa.me/79378225558" aria-label="WhatsApp">
+              <img src="/assets/img/social/wa.svg" alt="WhatsApp" />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4 -->
+      <section class="footer-card footer-card--4" aria-label="Почта">
+        <div class="footer-card__icon" aria-hidden="true">
+          <img src="/assets/img/footer/4.webp" alt="" />
+        </div>
+
+        <div class="footer-card__top">
+          <p class="footer-card__kicker">
+            <strong>Ждём ваши отзывы</strong>,<br />
+            предложения и идеи<br />
+            на почту:
+          </p>
+        </div>
+
+        <div class="footer-card__bottom">
+          <p class="footer-card__mail">
+            <a class="footer-card__email" href="mailto:Enotdc@yandex.ru">Enotdc@yandex.ru</a>
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="footer__brand">
+        <img class="footer__logo" src="/assets/img/logo.png" alt="Енот" />
+        <p class="footer__brand-text">
+          Организация детских<br />
+          праздников в Астрахани<br />
+          с 2008 года
+        </p>
+      </div>
+
+      <div class="footer__meta">
+        <a class="footer__policy" href="/privacy" aria-label="Политика конфиденциальности">Политика конфиденциальности</a>
+        <p class="footer__copy">© 2026, All rights reserved</p>
+      </div>
+    </div>
+  </div>
+</footer>
   </div>
 
-  <div data-include="/partials/popup.html"></div>
+  <!-- POPUPS: universal + 3 service popups -->
+
+<div class="popup-layer" id="popupLayer" aria-hidden="true">
+  <div class="popup-backdrop" data-popup-close aria-hidden="true"></div>
+
+  <!-- POPUP #1: universal -->
+  <section class="popup" role="dialog" aria-modal="true" aria-label="Лид форма" data-popup="universal" tabindex="-1">
+    <button class="popup__x" type="button" aria-label="Закрыть" data-popup-close></button>
+
+    <div class="popup__card">
+      <div class="popup__head" aria-hidden="true">
+        <img src="/assets/img/popup/head.jpg" alt="" loading="lazy" />
+      </div>
+
+      <div class="popup__body">
+        <h3 class="popup__title" data-popup-title>Подберём программу под ваш бюджет</h3>
+        <p class="popup__sub" data-popup-sub>
+          Оставьте заявку, мы свяжемся с вами в течение 30 минут, чтобы подобрать программу вашего праздника
+        </p>
+
+        <form class="popup-form" data-popup-form novalidate>
+          <input type="hidden" name="popup_id" value="universal">
+          <input type="hidden" name="tag" value="">
+
+          <!-- honeypot (anti-spam): должно оставаться пустым -->
+          <input class="pf-hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+          <label class="pf-field">
+            <span class="pf-sr">Ваше имя</span>
+            <input class="pf-input" type="text" name="name" placeholder="Ваше имя" autocomplete="name">
+          </label>
+
+          <label class="pf-field pf-field--phone">
+            <span class="pf-sr">Телефон</span>
+
+            <span class="pf-phone">
+              <input class="pf-input pf-input--code" type="text" name="code" inputmode="tel" autocomplete="tel-country-code"
+                     value="+7" aria-label="Код страны" />
+              <input class="pf-input pf-input--phone" type="tel" name="phone" inputmode="tel" autocomplete="tel"
+                     placeholder="(000) 000-00-00" aria-label="Номер телефона" />
+            </span>
+          </label>
+
+          <label class="pf-consent">
+            <input class="pf-check" type="checkbox" name="consent" checked>
+            <span>Я согласен(-на) с обработкой <a class="pf-link" href="/privacy" target="_blank" rel="noopener">персональных данных</a></span>
+          </label>
+
+          <button class="pf-btn" type="submit" data-popup-btn>Заказать праздник</button>
+          <div class="pf-status" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- POPUP #2: service-1 -->
+  <section class="popup" role="dialog" aria-modal="true" aria-label="Лид форма" data-popup="service-1" tabindex="-1">
+    <button class="popup__x" type="button" aria-label="Закрыть" data-popup-close></button>
+
+    <div class="popup__card">
+      <div class="popup__head" aria-hidden="true">
+        <img src="/assets/img/popup/head.jpg" alt="" loading="lazy" />
+      </div>
+
+      <div class="popup__body">
+        <h3 class="popup__title" data-popup-title>Заказать праздник услуги Маленькое чудо</h3>
+        <p class="popup__sub" data-popup-sub>Оставьте заявку — уточним детали и посчитаем стоимость</p>
+
+        <form class="popup-form" data-popup-form novalidate>
+          <input type="hidden" name="popup_id" value="service-1">
+          <input type="hidden" name="tag" value="service-1">
+
+          <!-- honeypot (anti-spam): должно оставаться пустым -->
+          <input class="pf-hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+          <label class="pf-field">
+            <span class="pf-sr">Ваше имя</span>
+            <input class="pf-input" type="text" name="name" placeholder="Ваше имя" autocomplete="name">
+          </label>
+
+          <label class="pf-field pf-field--phone">
+            <span class="pf-sr">Телефон</span>
+
+            <span class="pf-phone">
+              <input class="pf-input pf-input--code" type="text" name="code" inputmode="tel" autocomplete="tel-country-code"
+                     value="+7" aria-label="Код страны" />
+              <input class="pf-input pf-input--phone" type="tel" name="phone" inputmode="tel" autocomplete="tel"
+                     placeholder="(000) 000-00-00" aria-label="Номер телефона" />
+            </span>
+          </label>
+
+          <label class="pf-consent">
+            <input class="pf-check" type="checkbox" name="consent" checked>
+            <span>Я согласен(-на) с обработкой <a class="pf-link" href="#" target="_blank" rel="noopener">персональных данных</a></span>
+          </label>
+
+          <button class="pf-btn" type="submit" data-popup-btn>Заказать праздник</button>
+          <div class="pf-status" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- POPUP #3: service-2 -->
+  <section class="popup" role="dialog" aria-modal="true" aria-label="Лид форма" data-popup="service-2" tabindex="-1">
+    <button class="popup__x" type="button" aria-label="Закрыть" data-popup-close></button>
+
+    <div class="popup__card">
+      <div class="popup__head" aria-hidden="true">
+        <img src="/assets/img/popup/head.jpg" alt="" loading="lazy" />
+      </div>
+
+      <div class="popup__body">
+        <h3 class="popup__title" data-popup-title>Заказать праздник услуги Классический праздник</h3>
+        <p class="popup__sub" data-popup-sub>Оставьте заявку — мы перезвоним и всё расскажем</p>
+
+        <form class="popup-form" data-popup-form novalidate>
+          <input type="hidden" name="popup_id" value="service-2">
+          <input type="hidden" name="tag" value="service-2">
+
+          <!-- honeypot (anti-spam): должно оставаться пустым -->
+          <input class="pf-hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+          <label class="pf-field">
+            <span class="pf-sr">Ваше имя</span>
+            <input class="pf-input" type="text" name="name" placeholder="Ваше имя" autocomplete="name">
+          </label>
+
+          <label class="pf-field pf-field--phone">
+            <span class="pf-sr">Телефон</span>
+
+            <span class="pf-phone">
+              <input class="pf-input pf-input--code" type="text" name="code" inputmode="tel" autocomplete="tel-country-code"
+                     value="+7" aria-label="Код страны" />
+              <input class="pf-input pf-input--phone" type="tel" name="phone" inputmode="tel" autocomplete="tel"
+                     placeholder="(000) 000-00-00" aria-label="Номер телефона" />
+            </span>
+          </label>
+
+          <label class="pf-consent">
+            <input class="pf-check" type="checkbox" name="consent" checked>
+            <span>Я согласен(-на) с обработкой <a class="pf-link" href="#" target="_blank" rel="noopener">персональных данных</a></span>
+          </label>
+
+          <button class="pf-btn" type="submit" data-popup-btn>Заказать праздник</button>
+          <div class="pf-status" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- POPUP #4: service-3 -->
+  <section class="popup" role="dialog" aria-modal="true" aria-label="Лид форма" data-popup="service-3" tabindex="-1">
+    <button class="popup__x" type="button" aria-label="Закрыть" data-popup-close></button>
+
+    <div class="popup__card">
+      <div class="popup__head" aria-hidden="true">
+        <img src="/assets/img/popup/head.jpg" alt="" loading="lazy" />
+      </div>
+
+      <div class="popup__body">
+        <h3 class="popup__title" data-popup-title>Заказать праздник услуги История с героями</h3>
+        <p class="popup__sub" data-popup-sub>Оставьте заявку — уточним детали и скажем точную цену</p>
+
+        <form class="popup-form" data-popup-form novalidate>
+          <input type="hidden" name="popup_id" value="service-3">
+          <input type="hidden" name="tag" value="service-3">
+
+          <!-- honeypot (anti-spam): должно оставаться пустым -->
+          <input class="pf-hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+          <label class="pf-field">
+            <span class="pf-sr">Ваше имя</span>
+            <input class="pf-input" type="text" name="name" placeholder="Ваше имя" autocomplete="name">
+          </label>
+
+          <label class="pf-field pf-field--phone">
+            <span class="pf-sr">Телефон</span>
+
+            <span class="pf-phone">
+              <input class="pf-input pf-input--code" type="text" name="code" inputmode="tel" autocomplete="tel-country-code"
+                     value="+7" aria-label="Код страны" />
+              <input class="pf-input pf-input--phone" type="tel" name="phone" inputmode="tel" autocomplete="tel"
+                     placeholder="(000) 000-00-00" aria-label="Номер телефона" />
+            </span>
+          </label>
+
+          <label class="pf-consent">
+            <input class="pf-check" type="checkbox" name="consent" checked>
+            <span>Я согласен(-на) с обработкой <a class="pf-link" href="#" target="_blank" rel="noopener">персональных данных</a></span>
+          </label>
+
+          <button class="pf-btn" type="submit" data-popup-btn>Заказать праздник</button>
+          <div class="pf-status" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</div>
 
   <script type="module" src="/assets/js/main.js"></script>
 
