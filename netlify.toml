@@ -2,8 +2,8 @@
   # Фронт без сборки: публикуем как есть из /public
   publish = "public"
   functions = "netlify/functions"
-  # Нужен только install для функций (nodemailer)
-  command = "npm ci"
+  # Нужен install для функций (nodemailer). npm ci требует package-lock.json, которого нет.
+  command = "npm install"
 
 [[redirects]]
   # Чтобы твой фронт продолжал слать на /api/lead
